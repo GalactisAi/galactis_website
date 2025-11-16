@@ -79,12 +79,19 @@ export default function Navbar() {
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 400, damping: 17 }}
         >
-          <Link href="/" className="flex items-center gap-2 text-zinc-900 dark:text-zinc-100">
-            <motion.span
-              className="h-6 w-6 rounded bg-gradient-to-br from-purple-500 to-emerald-500"
-              whileHover={{ rotate: 180, scale: 1.1 }}
-              transition={{ duration: 0.5 }}
-            />
+          <Link href="/" className="flex items-center gap-2.5 text-zinc-900 dark:text-zinc-100">
+            <motion.div
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              className="flex items-center justify-center"
+            >
+              <img 
+                src="/galactis-logo.svg" 
+                alt="Galactis Logo" 
+                className="h-8 w-8"
+              />
+            </motion.div>
             <span className="font-semibold bg-gradient-to-r from-purple-600 to-emerald-600 bg-clip-text text-transparent">
               Galactis.ai
             </span>
