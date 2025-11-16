@@ -168,12 +168,14 @@ export default function Hero() {
 
             <div className="mt-8 grid gap-3 sm:gap-4 lg:grid-cols-3">
               {heroMetrics.map((metric, index) => {
-                const cardRef = useRef<HTMLAnchorElement>(null);
+                const cardRef = useRef<HTMLDivElement>(null);
                 const { scrollYProgress } = useScroll({
                   target: cardRef,
                   offset: ["start end", "end start"],
                 });
                 
+                // CORRECT: MotionValue can be used directly in motion.div style prop
+                // This is the proper way to use MotionValue with Framer Motion
                 const scaleProgress = useTransform(scrollYProgress, [0, 0.5, 1], [0.98, 1, 0.98]);
                 const scale = useSpring(scaleProgress, { stiffness: 100, damping: 15, mass: 0.5 });
 
@@ -191,24 +193,28 @@ export default function Hero() {
                     }}
                     className="h-full"
                   >
-                    <Link
+                    {/* CORRECT: motion.div accepts MotionValue directly in style prop */}
+                    <motion.div
                       ref={cardRef}
-                      href={metric.href}
-                      className="block h-full rounded-xl border border-white/20 bg-white/10 p-3 text-left text-white transition-all duration-300 hover:border-white/40 hover:bg-white/15 sm:p-4"
                       style={{ scale }}
                     >
-                      <motion.div
-                        className="flex h-full flex-col"
-                        whileHover={{ 
-                          scale: 1.02,
-                          transition: { type: "spring", stiffness: 300, damping: 20 }
-                        }}
+                      <Link
+                        href={metric.href}
+                        className="block h-full rounded-xl border border-white/20 bg-white/10 p-3 text-left text-white transition-all duration-300 hover:border-white/40 hover:bg-white/15 sm:p-4"
                       >
+                        <motion.div
+                          className="flex h-full flex-col"
+                          whileHover={{ 
+                            scale: 1.02,
+                            transition: { type: "spring", stiffness: 300, damping: 20 }
+                          }}
+                        >
                         <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-white/60 sm:text-xs">{metric.label}</p>
                         <p className="mt-1.5 text-xl font-semibold text-white sm:mt-2 sm:text-2xl">{metric.stat}</p>
                         <p className="mt-1.5 flex-1 text-[11px] leading-relaxed text-white/70 sm:mt-2 sm:text-xs">{metric.detail}</p>
-                      </motion.div>
-                    </Link>
+                        </motion.div>
+                      </Link>
+                    </motion.div>
                   </motion.div>
                 );
               })}

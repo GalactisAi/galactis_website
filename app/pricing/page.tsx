@@ -2,7 +2,6 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import DownloadGateForm from "@/components/DownloadGateForm";
 import ContactSalesModal from "@/components/ContactSalesModal";
 import Link from "next/link";
 
@@ -46,12 +45,7 @@ const assurances = [
   "Managed success pods align to your industry and region.",
 ];
 
-const packContents = [
-  "Pricing frameworks for ITAM, Network Monitoring, and AI Agents",
-  "Reference architecture diagrams and integration matrices",
-  "Sample SOW, SLA, and security overview",
-  "ROI calculator inputs and case study benchmarks",
-];
+// Removed unused packContents array
 
 export default function PricingPage() {
   return (

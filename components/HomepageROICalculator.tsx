@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { trackEvent } from '@/lib/analytics';
-import { convertUSDtoINR, formatIndianNumber, USD_TO_INR_RATE } from '@/lib/currency';
+import { convertUSDtoINR, formatIndianNumber } from '@/lib/currency';
 
 export default function HomepageROICalculator() {
   // Default budget in INR (₹1.77 Cr = ~$2M USD)

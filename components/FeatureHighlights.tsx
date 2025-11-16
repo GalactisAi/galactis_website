@@ -1,7 +1,7 @@
 "use client";
 
 import { ShieldCheck, Network, Bot, Gauge, LucideIcon } from "lucide-react";
-import ScrollReveal, { ScrollRevealStagger } from "./ScrollReveal";
+import { ScrollRevealStagger } from "./ScrollReveal";
 import { motion, useSpring, useTransform, useScroll } from "framer-motion";
 import { useRef } from "react";
 

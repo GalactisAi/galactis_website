@@ -129,7 +129,7 @@ export default function AboutPage() {
           <div className="relative mt-8">
             <div className="absolute left-1/2 hidden h-full w-0.5 -translate-x-1/2 bg-purple-200 md:block" />
             <div className="space-y-8 md:space-y-0">
-              {milestones.map((milestone, index) => (
+              {milestones.map((milestone) => (
                 <div key={milestone.year} className="relative flex flex-col gap-4 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900 md:flex-row md:items-center">
                   <div className="text-sm font-semibold uppercase tracking-[0.3em] text-purple-600">{milestone.year}</div>
                   <p className="text-sm text-zinc-600 dark:text-zinc-300">{milestone.detail}</p>

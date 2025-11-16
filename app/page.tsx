@@ -7,7 +7,6 @@ import CustomersMarquee from "@/components/CustomersMarquee";
 import StatsSection from "@/components/StatsSection";
 import FeatureHighlights from "@/components/FeatureHighlights";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
-import ContactSalesModal from "@/components/ContactSalesModal";
 import WhyGalactis from "@/components/WhyGalactis";
 import HomepageROICalculator from "@/components/HomepageROICalculator";
 import CaseStudyCards from "@/components/CaseStudyCards";

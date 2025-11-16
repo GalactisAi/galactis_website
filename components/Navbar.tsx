@@ -9,7 +9,7 @@ import { useMotionValue, useSpring } from "framer-motion";
 import { useState } from "react";
 
 function MagneticButton({ children, href, className = "" }: { children: React.ReactNode; href: string; className?: string }) {
-  const [isHovered, setIsHovered] = useState(false);
+  const [, setIsHovered] = useState(false);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const springX = useSpring(x, { stiffness: 150, damping: 15 });
