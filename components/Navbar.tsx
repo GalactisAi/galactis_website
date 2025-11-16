@@ -81,7 +81,7 @@ export default function Navbar() {
         >
           <Link href="/" className="flex items-center gap-2.5 text-zinc-900 dark:text-zinc-100">
             <motion.div
-              whileHover={{ scale: 1.1, rotate: 5 }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
               className="flex items-center justify-center"
@@ -89,7 +89,8 @@ export default function Navbar() {
               <img 
                 src="/galactis-logo.svg" 
                 alt="Galactis Logo" 
-                className="h-8 w-8"
+                className="h-7 w-7 flex-shrink-0"
+                style={{ objectFit: "contain" }}
               />
             </motion.div>
             <span className="font-semibold bg-gradient-to-r from-purple-600 to-emerald-600 bg-clip-text text-transparent">

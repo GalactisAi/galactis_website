@@ -132,7 +132,8 @@ export default function MobileMenu() {
                         <img 
                           src="/galactis-logo.svg" 
                           alt="Galactis Logo" 
-                          className="h-6 w-6"
+                          className="h-6 w-6 flex-shrink-0"
+                          style={{ objectFit: "contain" }}
                         />
                         <span className="font-semibold">Galactis.ai</span>
                       </Link>
