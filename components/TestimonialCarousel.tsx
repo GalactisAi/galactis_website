@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
-import { convertUSDtoINR, formatIndianNumber } from "@/lib/currency";
 
 const testimonials = [
   {
