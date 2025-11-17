@@ -81,7 +81,7 @@ export default function MobileMenu() {
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
         <button
-          className="flex items-center justify-center p-2 text-zinc-700 transition-colors hover:text-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 md:hidden dark:text-zinc-300 dark:hover:text-purple-400"
+          className="flex min-h-[44px] min-w-[44px] items-center justify-center p-2 text-zinc-700 transition-colors hover:text-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 md:hidden dark:text-zinc-300 dark:hover:text-purple-400"
           aria-label="Toggle menu"
         >
           <motion.div

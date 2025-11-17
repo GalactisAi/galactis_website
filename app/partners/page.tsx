@@ -121,7 +121,7 @@ export default function PartnersPage() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h1 className="text-4xl font-bold leading-tight text-zinc-900 dark:text-white sm:text-5xl lg:text-6xl">
+              <h1 className="text-3xl font-bold leading-tight text-zinc-900 dark:text-white sm:text-4xl md:text-5xl lg:text-6xl">
               Find the right{" "}
               <span className="bg-gradient-to-r from-purple-600 to-emerald-600 bg-clip-text text-transparent">
                 partner path
@@ -134,8 +134,8 @@ export default function PartnersPage() {
             </p>
           </motion.div>
 
-          {/* Partner Type Cards */}
-          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Partner Type Cards - Mobile Optimized */}
+          <div className="mt-12 grid gap-4 sm:mt-16 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {partnerTypes.map((partner, index) => (
               <motion.div
                 key={partner.name}
@@ -227,7 +227,7 @@ export default function PartnersPage() {
             transition={{ duration: 0.6 }}
             className="text-center"
           >
-            <h2 className="text-3xl font-bold text-zinc-900 dark:text-white sm:text-4xl">
+            <h2 className="text-2xl font-bold text-zinc-900 dark:text-white sm:text-3xl md:text-4xl">
               Why partners choose Galactis
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-zinc-600 dark:text-zinc-400">
@@ -277,13 +277,13 @@ export default function PartnersPage() {
         </section>
       </main>
 
-      {/* Floating Action Buttons */}
+      {/* Floating Action Buttons - Mobile Optimized */}
       {showFloatingButtons && (
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
-          className="fixed bottom-6 right-6 z-50 flex flex-col gap-3"
+          className="fixed bottom-4 right-4 z-50 flex flex-col gap-3 sm:bottom-6 sm:right-6"
         >
           <motion.button
             whileHover={{ scale: 1.05 }}
@@ -293,18 +293,20 @@ export default function PartnersPage() {
               const button = document.querySelector('[data-contact-trigger]') as HTMLButtonElement;
               button?.click();
             }}
-            className="flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/50 transition-all hover:shadow-xl hover:shadow-purple-500/70"
+            className="flex min-h-[44px] min-w-[44px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 px-4 py-3 text-xs font-semibold text-white shadow-lg shadow-purple-500/50 transition-all hover:shadow-xl hover:shadow-purple-500/70 sm:px-6 sm:text-sm"
+            aria-label="Contact Sales"
           >
-            <MessageCircle className="h-5 w-5" />
-            Contact Sales
+            <MessageCircle className="h-5 w-5 flex-shrink-0" />
+            <span className="hidden sm:inline">Contact Sales</span>
           </motion.button>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 rounded-full border-2 border-purple-600 bg-white px-6 py-3 text-sm font-semibold text-purple-600 shadow-lg transition-all hover:bg-purple-50 dark:border-purple-400 dark:bg-zinc-950 dark:text-purple-400 dark:hover:bg-zinc-900"
+            className="flex min-h-[44px] min-w-[44px] items-center justify-center gap-2 rounded-full border-2 border-purple-600 bg-white px-4 py-3 text-xs font-semibold text-purple-600 shadow-lg transition-all hover:bg-purple-50 dark:border-purple-400 dark:bg-zinc-950 dark:text-purple-400 dark:hover:bg-zinc-900 sm:px-6 sm:text-sm"
+            aria-label="Watch Demo"
           >
-            <Play className="h-5 w-5" />
-            Watch Demo
+            <Play className="h-5 w-5 flex-shrink-0" />
+            <span className="hidden sm:inline">Watch Demo</span>
           </motion.button>
         </motion.div>
       )}

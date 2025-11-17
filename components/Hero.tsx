@@ -74,7 +74,7 @@ export default function Hero() {
   return (
         <section 
           ref={sectionRef}
-          className="relative flex h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-purple-900 via-indigo-900 to-teal-900 dark:from-black dark:via-purple-950 dark:to-black snap-start"
+          className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-purple-900 via-indigo-900 to-teal-900 py-12 dark:from-black dark:via-purple-950 dark:to-black sm:py-16 lg:h-screen lg:py-0 snap-start"
         >
       {/* Enhanced background blobs with parallax */}
       <div className="absolute inset-0 opacity-30">
@@ -114,14 +114,14 @@ export default function Hero() {
         />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16 w-full">
-        <div className="grid items-center gap-12 lg:grid-cols-2">
+      <div className="relative mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-16 w-full">
+        <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-3xl font-bold leading-tight tracking-tight text-white text-balance sm:text-4xl lg:text-5xl">
+            <h1 className="text-2xl font-bold leading-tight tracking-tight text-white text-balance sm:text-3xl md:text-4xl lg:text-5xl">
               {headlineWords.map((word, index) => {
                 const cleanWord = word.replace(/[^a-zA-Z]/g, "");
                 const isGradientWord = gradientWords.includes(cleanWord);

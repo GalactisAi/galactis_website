@@ -381,10 +381,10 @@ export default function CareersPage() {
             </div>
           </section>
 
-          {/* Search and Filter Bar */}
+          {/* Search and Filter Bar - Mobile Optimized */}
           <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-lg dark:border-zinc-800 dark:bg-zinc-950 sm:p-6">
-              <div className="grid gap-4 sm:grid-cols-3">
+              <div className="grid gap-3 sm:grid-cols-3 sm:gap-4">
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-zinc-400" />
                   <input
@@ -392,13 +392,13 @@ export default function CareersPage() {
                     placeholder="Search by role or keyword..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full rounded-lg border border-zinc-300 bg-white pl-10 pr-4 py-2.5 text-sm focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-100 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:focus:border-purple-500"
+                    className="w-full rounded-lg border border-zinc-300 bg-white pl-10 pr-4 py-3 text-base focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-100 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:focus:border-purple-500 sm:text-sm sm:py-2.5"
                   />
                 </div>
                 <select
                   value={selectedLocation}
                   onChange={(e) => setSelectedLocation(e.target.value)}
-                  className="rounded-lg border border-zinc-300 bg-white px-4 py-2.5 text-sm focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-100 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:focus:border-purple-500"
+                  className="rounded-lg border border-zinc-300 bg-white px-4 py-3 text-base focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-100 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:focus:border-purple-500 sm:text-sm sm:py-2.5"
                 >
                   {locations.map((loc) => (
                     <option key={loc} value={loc}>
@@ -409,7 +409,7 @@ export default function CareersPage() {
                 <select
                   value={selectedDepartment}
                   onChange={(e) => setSelectedDepartment(e.target.value)}
-                  className="rounded-lg border border-zinc-300 bg-white px-4 py-2.5 text-sm focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-100 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:focus:border-purple-500"
+                  className="rounded-lg border border-zinc-300 bg-white px-4 py-3 text-base focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-100 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:focus:border-purple-500 sm:text-sm sm:py-2.5"
                 >
                   {departments.map((dept) => (
                     <option key={dept} value={dept}>
@@ -472,7 +472,8 @@ export default function CareersPage() {
                       </div>
                       <button
                         onClick={() => setSelectedJob(job.id)}
-                        className="w-full rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 px-4 py-2.5 text-sm font-semibold text-white transition-all hover:shadow-lg hover:shadow-purple-500/50"
+                        className="w-full min-h-[44px] rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 px-4 py-3 text-sm font-semibold text-white transition-all hover:shadow-lg hover:shadow-purple-500/50"
+                        aria-label={`Apply for ${job.title}`}
                       >
                         Apply Now
                       </button>
@@ -505,7 +506,7 @@ export default function CareersPage() {
               transition={{ duration: 0.6 }}
               className="text-center"
             >
-              <h2 className="text-3xl font-bold text-zinc-900 dark:text-white sm:text-4xl">Why Join Galactis?</h2>
+              <h2 className="text-2xl font-bold text-zinc-900 dark:text-white sm:text-3xl md:text-4xl">Why Join Galactis?</h2>
               <p className="mx-auto mt-4 max-w-2xl text-zinc-600 dark:text-zinc-400">
                 We offer competitive benefits and a culture that supports your growth and well-being.
               </p>
@@ -537,7 +538,7 @@ export default function CareersPage() {
               transition={{ duration: 0.6 }}
               className="text-center"
             >
-              <h2 className="text-3xl font-bold text-zinc-900 dark:text-white sm:text-4xl">Hear From Our Team</h2>
+              <h2 className="text-2xl font-bold text-zinc-900 dark:text-white sm:text-3xl md:text-4xl">Hear From Our Team</h2>
               <p className="mx-auto mt-4 max-w-2xl text-zinc-600 dark:text-zinc-400">
                 See what our team members say about working at Galactis.
               </p>
@@ -575,7 +576,7 @@ export default function CareersPage() {
               transition={{ duration: 0.6 }}
               className="text-center"
             >
-              <h2 className="text-3xl font-bold text-zinc-900 dark:text-white sm:text-4xl">
+              <h2 className="text-2xl font-bold text-zinc-900 dark:text-white sm:text-3xl md:text-4xl">
                 Frequently Asked Questions
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-zinc-600 dark:text-zinc-400">
@@ -628,7 +629,7 @@ export default function CareersPage() {
               transition={{ duration: 0.6 }}
               className="rounded-3xl border border-purple-200 bg-gradient-to-br from-purple-50 to-indigo-50 p-8 text-center dark:border-purple-900 dark:from-purple-950/30 dark:to-indigo-950/30 sm:p-12"
             >
-              <h2 className="text-3xl font-bold text-zinc-900 dark:text-white sm:text-4xl">
+              <h2 className="text-2xl font-bold text-zinc-900 dark:text-white sm:text-3xl md:text-4xl">
                 Didn't see the right fit?
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-zinc-600 dark:text-zinc-400">
@@ -646,7 +647,7 @@ export default function CareersPage() {
         </section>
       </main>
 
-        {/* Sticky Apply Button */}
+        {/* Sticky Apply Button - Mobile Optimized */}
         <AnimatePresence>
           {showStickyButton && (
             <motion.button
@@ -660,7 +661,8 @@ export default function CareersPage() {
                 if (firstJob) setSelectedJob(firstJob.id);
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }}
-              className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-purple-500/50 transition-all hover:shadow-xl hover:shadow-purple-500/70"
+              className="fixed bottom-4 left-1/2 z-50 min-h-[48px] -translate-x-1/2 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-purple-500/50 transition-all hover:shadow-xl hover:shadow-purple-500/70 sm:bottom-6 sm:px-8 sm:py-4"
+              aria-label="Apply Now"
             >
               Apply Now
             </motion.button>
@@ -674,15 +676,15 @@ export default function CareersPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm"
+              className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/50 p-0 sm:p-4 backdrop-blur-sm"
               onClick={() => setSelectedJob(null)}
             >
               <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.9, opacity: 0 }}
+                initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.9, opacity: 0, y: 20 }}
                 onClick={(e) => e.stopPropagation()}
-                className="w-full max-w-2xl rounded-2xl border border-zinc-200 bg-white p-6 shadow-2xl dark:border-zinc-800 dark:bg-zinc-950 sm:p-8"
+                className="w-full max-h-[95vh] max-w-2xl overflow-y-auto rounded-t-3xl sm:rounded-2xl border border-zinc-200 bg-white p-4 shadow-2xl dark:border-zinc-800 dark:bg-zinc-950 sm:p-6 md:p-8"
               >
                 <CareersApplication jobId={selectedJob} onClose={() => setSelectedJob(null)} />
               </motion.div>

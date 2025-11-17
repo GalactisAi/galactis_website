@@ -165,7 +165,7 @@ export default function Home() {
                   <p className="text-xs font-semibold uppercase tracking-[0.35em] text-purple-600">
                     Galactis platform
                   </p>
-                  <h2 className="mt-3 text-3xl font-bold text-zinc-900 dark:text-white">
+                  <h2 className="mt-3 text-2xl font-bold text-zinc-900 dark:text-white sm:text-3xl">
                     One operating system, three critical domains
                   </h2>
                   <p className="mt-3 text-base text-zinc-600 dark:text-zinc-400">
@@ -186,7 +186,7 @@ export default function Home() {
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-purple-600">
                 Industry operating models
               </p>
-              <h2 className="text-3xl font-bold text-zinc-900 dark:text-white">Extracted from our solutions pages</h2>
+              <h2 className="text-2xl font-bold text-zinc-900 dark:text-white sm:text-3xl">Extracted from our solutions pages</h2>
               <p className="text-base text-zinc-600 dark:text-zinc-400">
                 Each card summarizes the pain, solution, and KPIs published on galactis.ai/solutions for regulated industries.
               </p>
@@ -201,7 +201,7 @@ export default function Home() {
             <div className="grid gap-10 lg:grid-cols-[1.1fr,0.9fr]">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/70">Build on Galactis</p>
-                <h2 className="mt-3 text-3xl font-bold text-white">Developers, architects, and integrators welcome</h2>
+                <h2 className="mt-3 text-2xl font-bold text-white sm:text-3xl">Developers, architects, and integrators welcome</h2>
                 <p className="mt-3 text-base text-white/70">
                   Highlights mirror what’s available on the Developers section: API reference, SDKs, integrations, and agent templates.
                 </p>
@@ -241,7 +241,7 @@ export default function Home() {
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col gap-3 text-center sm:text-left">
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-purple-600">Insights & research</p>
-              <h2 className="text-3xl font-bold text-zinc-900 dark:text-white">Taken from the actual resources library</h2>
+              <h2 className="text-2xl font-bold text-zinc-900 dark:text-white sm:text-3xl">Taken from the actual resources library</h2>
               <p className="text-base text-zinc-600 dark:text-zinc-400">
                 Blog posts and case studies that already live under /resources.
               </p>
