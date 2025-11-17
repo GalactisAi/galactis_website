@@ -4,100 +4,164 @@ import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, MapPin, Briefcase, Clock, Users, Award, Heart, BookOpen, Video, ChevronDown, CheckCircle, ArrowRight } from "lucide-react";
+import { Search, MapPin, Briefcase, Clock, Users, Award, Heart, BookOpen, ChevronDown, CheckCircle, ArrowRight } from "lucide-react";
 import CareersApplication from "@/components/CareersApplication";
 
-// Job listings data
+// Job listings data - Entry-level and Intern positions only
 const allJobs = [
   {
     id: 1,
-    title: "Senior Software Engineer",
+    title: "Marketing Intern",
     location: "Hybrid – Chennai",
-    department: "Engineering",
-    type: "Full-time",
-    summary: "Build scalable enterprise automation platforms using modern technologies.",
+    department: "Marketing",
+    type: "Internship",
+    summary: "Support marketing initiatives and learn digital marketing, content creation, and campaign management in a fast-paced startup environment.",
     responsibilities: [
-      "Design and develop microservices architecture",
-      "Implement AI-powered automation workflows",
-      "Collaborate with cross-functional teams",
-      "Mentor junior engineers and drive technical excellence",
+      "Assist with social media content creation and scheduling",
+      "Support email marketing campaigns",
+      "Help with market research and competitor analysis",
+      "Create marketing materials and presentations",
     ],
-    growth: ["Lead engineering initiatives", "Architect next-gen solutions", "Shape product roadmap"],
   },
   {
     id: 2,
-    title: "Product Designer",
+    title: "Software Intern",
     location: "Hybrid – Chennai",
-    department: "Design",
-    type: "Full-time",
-    summary: "Create intuitive, world-class user experiences for enterprise automation tools.",
+    department: "Engineering",
+    type: "Internship",
+    summary: "Learn software development by working on real projects, building features, and collaborating with the engineering team.",
     responsibilities: [
-      "Design user interfaces and experiences",
-      "Conduct user research and testing",
-      "Create design systems and components",
-      "Collaborate with product and engineering teams",
+      "Write and test code for new features",
+      "Participate in code reviews and team meetings",
+      "Learn modern development tools and practices",
+      "Contribute to documentation and bug fixes",
     ],
-    growth: ["Lead design strategy", "Build design team", "Influence product vision"],
   },
   {
     id: 3,
-    title: "Sales Specialist",
-    location: "Hybrid – Chennai",
-    department: "Sales",
-    type: "Full-time",
-    summary: "Drive revenue growth by connecting enterprise customers with our automation solutions.",
-    responsibilities: [
-      "Identify and qualify enterprise prospects",
-      "Deliver compelling product demonstrations",
-      "Build long-term customer relationships",
-      "Exceed quarterly sales targets",
-    ],
-    growth: ["Sales leadership opportunities", "Strategic account management", "Regional expansion"],
-  },
-  {
-    id: 4,
-    title: "DevOps Engineer",
+    title: "Junior Developer",
     location: "Hybrid – Chennai",
     department: "Engineering",
     type: "Full-time",
-    summary: "Ensure reliable, scalable infrastructure for our enterprise platform.",
+    summary: "Build and maintain features for our enterprise automation platform while learning from experienced developers.",
     responsibilities: [
-      "Manage cloud infrastructure and deployments",
-      "Implement CI/CD pipelines",
-      "Monitor system performance and reliability",
-      "Automate operational processes",
+      "Develop and maintain web applications",
+      "Write clean, maintainable code",
+      "Collaborate with team members on projects",
+      "Participate in agile development processes",
     ],
-    growth: ["Infrastructure leadership", "Cloud architecture expertise", "Platform scaling"],
   },
   {
-    id: 5,
-    title: "Customer Success Manager",
+    id: 4,
+    title: "Customer Support Representative",
     location: "Hybrid – Chennai",
     department: "Customer Success",
     type: "Full-time",
-    summary: "Help enterprise customers achieve success with our automation platform.",
+    summary: "Help customers succeed by providing excellent support, answering questions, and resolving issues.",
     responsibilities: [
-      "Onboard and train enterprise customers",
-      "Drive product adoption and value realization",
-      "Build strategic customer relationships",
-      "Identify expansion opportunities",
+      "Respond to customer inquiries via email and chat",
+      "Troubleshoot technical issues and provide solutions",
+      "Document customer feedback and issues",
+      "Maintain customer satisfaction and relationships",
     ],
-    growth: ["Customer success leadership", "Strategic account management", "Product expertise"],
+  },
+  {
+    id: 5,
+    title: "Operations Associate",
+    location: "Hybrid – Chennai",
+    department: "Operations",
+    type: "Full-time",
+    summary: "Support day-to-day operations, help streamline processes, and ensure smooth business functioning.",
+    responsibilities: [
+      "Assist with operational tasks and processes",
+      "Maintain records and documentation",
+      "Coordinate with different teams",
+      "Help improve operational efficiency",
+    ],
   },
   {
     id: 6,
-    title: "Marketing Manager",
+    title: "Sales Representative",
+    location: "Hybrid – Chennai",
+    department: "Sales",
+    type: "Full-time",
+    summary: "Connect with potential customers, understand their needs, and help them discover our automation solutions.",
+    responsibilities: [
+      "Reach out to potential customers",
+      "Conduct product demonstrations",
+      "Follow up on leads and opportunities",
+      "Maintain customer relationships",
+    ],
+  },
+  {
+    id: 7,
+    title: "Product Analyst",
+    location: "Hybrid – Chennai",
+    department: "Product",
+    type: "Full-time",
+    summary: "Analyze product usage, gather user feedback, and help improve our platform based on data insights.",
+    responsibilities: [
+      "Analyze product metrics and user behavior",
+      "Gather and document user feedback",
+      "Create reports and presentations",
+      "Support product decision-making",
+    ],
+  },
+  {
+    id: 8,
+    title: "Content Writer",
     location: "Hybrid – Chennai",
     department: "Marketing",
     type: "Full-time",
-    summary: "Build brand awareness and drive demand for enterprise automation solutions.",
+    summary: "Create engaging content for blogs, social media, and marketing materials to help tell our story.",
     responsibilities: [
-      "Develop and execute marketing campaigns",
-      "Create compelling content and messaging",
-      "Manage digital marketing channels",
-      "Analyze and optimize marketing performance",
+      "Write blog posts and articles",
+      "Create social media content",
+      "Develop marketing copy and materials",
+      "Edit and proofread content",
     ],
-    growth: ["Marketing leadership", "Brand strategy", "Demand generation expertise"],
+  },
+  {
+    id: 9,
+    title: "Designer (Generalist)",
+    location: "Hybrid – Chennai",
+    department: "Design",
+    type: "Full-time",
+    summary: "Create visual designs for our platform, marketing materials, and brand assets while learning design best practices.",
+    responsibilities: [
+      "Design user interfaces and components",
+      "Create marketing and brand materials",
+      "Work with design tools and systems",
+      "Collaborate with product and marketing teams",
+    ],
+  },
+  {
+    id: 10,
+    title: "QA Tester",
+    location: "Hybrid – Chennai",
+    department: "Engineering",
+    type: "Full-time",
+    summary: "Ensure our platform works perfectly by testing features, finding bugs, and helping maintain quality standards.",
+    responsibilities: [
+      "Test new features and functionality",
+      "Identify and report bugs",
+      "Create test cases and documentation",
+      "Work with developers to resolve issues",
+    ],
+  },
+  {
+    id: 11,
+    title: "Social Media Coordinator",
+    location: "Hybrid – Chennai",
+    department: "Marketing",
+    type: "Full-time",
+    summary: "Manage our social media presence, engage with our community, and help grow our online audience.",
+    responsibilities: [
+      "Create and schedule social media posts",
+      "Engage with followers and respond to comments",
+      "Monitor social media trends and analytics",
+      "Help grow our social media following",
+    ],
   },
 ];
 
@@ -198,7 +262,7 @@ export default function CareersPage() {
   }, []);
 
   const locations = ["All", "Chennai"];
-  const departments = ["All", "Engineering", "Design", "Sales", "Customer Success", "Marketing"];
+  const departments = ["All", "Engineering", "Design", "Sales", "Customer Success", "Marketing", "Operations", "Product"];
 
   return (
     <>
@@ -406,10 +470,6 @@ export default function CareersPage() {
                           ))}
                         </ul>
                       </div>
-                      <div className="mb-4 space-y-1">
-                        <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Growth Opportunities:</p>
-                        <p className="text-xs text-zinc-600 dark:text-zinc-400">{job.growth[0]}</p>
-                      </div>
                       <button
                         onClick={() => setSelectedJob(job.id)}
                         className="w-full rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 px-4 py-2.5 text-sm font-semibold text-white transition-all hover:shadow-lg hover:shadow-purple-500/50"
@@ -505,24 +565,6 @@ export default function CareersPage() {
             </div>
           </section>
 
-          {/* Video Placeholder */}
-          <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="overflow-hidden rounded-3xl border border-zinc-200 bg-gradient-to-br from-purple-50 to-indigo-50 dark:border-zinc-800 dark:from-purple-950/20 dark:to-indigo-950/20"
-            >
-              <div className="aspect-video flex items-center justify-center">
-                <div className="text-center">
-                  <Video className="mx-auto h-16 w-16 text-purple-400" />
-                  <p className="mt-4 text-lg font-semibold text-zinc-900 dark:text-white">Company Culture Video</p>
-                  <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">Watch our team share their experiences</p>
-                </div>
-              </div>
-            </motion.div>
-          </section>
 
           {/* FAQ Section */}
           <section className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
