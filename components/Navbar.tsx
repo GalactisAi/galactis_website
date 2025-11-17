@@ -89,8 +89,8 @@ export default function Navbar() {
               <img 
                 src="/galactis-logo.svg" 
                 alt="Galactis Logo" 
-                className="h-7 w-7 flex-shrink-0"
-                style={{ objectFit: "contain" }}
+                className="h-8 w-8 flex-shrink-0"
+                style={{ objectFit: "contain", display: "block" }}
               />
             </motion.div>
             <span className="font-semibold bg-gradient-to-r from-purple-600 to-emerald-600 bg-clip-text text-transparent">
