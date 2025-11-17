@@ -41,8 +41,16 @@ const jobs: Job[] = [
   },
 ];
 
-export default function CareersApplication() {
-  const [selectedJob, setSelectedJob] = useState<Job>(jobs[0]);
+export default function CareersApplication({ 
+  jobId, 
+  onClose 
+}: { 
+  jobId?: number | null; 
+  onClose?: () => void;
+}) {
+  // Use jobId if provided, otherwise default to first job
+  const initialJob = jobId && jobs[jobId - 1] ? jobs[jobId - 1] : jobs[0];
+  const [selectedJob, setSelectedJob] = useState<Job>(initialJob);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
   async function handleSubmit(formData: FormData) {
@@ -63,6 +71,9 @@ export default function CareersApplication() {
         body: JSON.stringify(payload),
       });
       setStatus("success");
+      setTimeout(() => {
+        if (onClose) onClose();
+      }, 2000);
     } catch (error) {
       console.error(error);
       setStatus("error");

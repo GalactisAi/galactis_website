@@ -1,40 +1,655 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import Breadcrumbs from "@/components/Breadcrumbs";
+import { motion, AnimatePresence } from "framer-motion";
+import { Search, MapPin, Briefcase, Clock, Users, Award, Heart, BookOpen, Video, ChevronDown, CheckCircle, ArrowRight } from "lucide-react";
 import CareersApplication from "@/components/CareersApplication";
 
+// Job listings data
+const allJobs = [
+  {
+    id: 1,
+    title: "Senior Software Engineer",
+    location: "Hybrid – Chennai",
+    department: "Engineering",
+    type: "Full-time",
+    summary: "Build scalable enterprise automation platforms using modern technologies.",
+    responsibilities: [
+      "Design and develop microservices architecture",
+      "Implement AI-powered automation workflows",
+      "Collaborate with cross-functional teams",
+      "Mentor junior engineers and drive technical excellence",
+    ],
+    growth: ["Lead engineering initiatives", "Architect next-gen solutions", "Shape product roadmap"],
+  },
+  {
+    id: 2,
+    title: "Product Designer",
+    location: "Hybrid – Chennai",
+    department: "Design",
+    type: "Full-time",
+    summary: "Create intuitive, world-class user experiences for enterprise automation tools.",
+    responsibilities: [
+      "Design user interfaces and experiences",
+      "Conduct user research and testing",
+      "Create design systems and components",
+      "Collaborate with product and engineering teams",
+    ],
+    growth: ["Lead design strategy", "Build design team", "Influence product vision"],
+  },
+  {
+    id: 3,
+    title: "Sales Specialist",
+    location: "Hybrid – Chennai",
+    department: "Sales",
+    type: "Full-time",
+    summary: "Drive revenue growth by connecting enterprise customers with our automation solutions.",
+    responsibilities: [
+      "Identify and qualify enterprise prospects",
+      "Deliver compelling product demonstrations",
+      "Build long-term customer relationships",
+      "Exceed quarterly sales targets",
+    ],
+    growth: ["Sales leadership opportunities", "Strategic account management", "Regional expansion"],
+  },
+  {
+    id: 4,
+    title: "DevOps Engineer",
+    location: "Hybrid – Chennai",
+    department: "Engineering",
+    type: "Full-time",
+    summary: "Ensure reliable, scalable infrastructure for our enterprise platform.",
+    responsibilities: [
+      "Manage cloud infrastructure and deployments",
+      "Implement CI/CD pipelines",
+      "Monitor system performance and reliability",
+      "Automate operational processes",
+    ],
+    growth: ["Infrastructure leadership", "Cloud architecture expertise", "Platform scaling"],
+  },
+  {
+    id: 5,
+    title: "Customer Success Manager",
+    location: "Hybrid – Chennai",
+    department: "Customer Success",
+    type: "Full-time",
+    summary: "Help enterprise customers achieve success with our automation platform.",
+    responsibilities: [
+      "Onboard and train enterprise customers",
+      "Drive product adoption and value realization",
+      "Build strategic customer relationships",
+      "Identify expansion opportunities",
+    ],
+    growth: ["Customer success leadership", "Strategic account management", "Product expertise"],
+  },
+  {
+    id: 6,
+    title: "Marketing Manager",
+    location: "Hybrid – Chennai",
+    department: "Marketing",
+    type: "Full-time",
+    summary: "Build brand awareness and drive demand for enterprise automation solutions.",
+    responsibilities: [
+      "Develop and execute marketing campaigns",
+      "Create compelling content and messaging",
+      "Manage digital marketing channels",
+      "Analyze and optimize marketing performance",
+    ],
+    growth: ["Marketing leadership", "Brand strategy", "Demand generation expertise"],
+  },
+];
+
+const perks = [
+  { icon: Clock, title: "Flexible Hours", description: "Work when you're most productive" },
+  { icon: MapPin, title: "Hybrid Work", description: "Balance office and remote work" },
+  { icon: Award, title: "Learning Budget", description: "₹50K annual learning & development" },
+  { icon: Heart, title: "Health Insurance", description: "Comprehensive health coverage" },
+  { icon: BookOpen, title: "Growth Opportunities", description: "Clear career progression paths" },
+  { icon: Users, title: "Team Culture", description: "Collaborative and inclusive environment" },
+];
+
+const testimonials = [
+  {
+    name: "Priya Sharma",
+    role: "Senior Software Engineer",
+    quote: "Working at Galactis has been transformative. The hybrid model gives me flexibility, and the team culture is incredibly supportive.",
+    image: "👩‍💻",
+  },
+  {
+    name: "Rahul Kumar",
+    role: "Product Designer",
+    quote: "I love how we're building products that truly matter for enterprises. The growth opportunities here are unmatched.",
+    image: "👨‍🎨",
+  },
+  {
+    name: "Anjali Patel",
+    role: "Customer Success Manager",
+    quote: "The learning culture here is amazing. I've grown so much professionally in just one year.",
+    image: "👩‍💼",
+  },
+];
+
+const faqs = [
+  {
+    question: "What is the application process?",
+    answer: "Our application process is straightforward: submit your application, we review it within 48 hours, conduct initial screening calls, followed by technical/role-specific interviews, and finally a culture fit conversation. The entire process typically takes 2-3 weeks.",
+  },
+  {
+    question: "Do you offer remote work options?",
+    answer: "Yes! We offer hybrid work arrangements for most roles, allowing you to work from our Chennai office and remotely. We believe in flexibility and work-life balance.",
+  },
+  {
+    question: "What learning and development opportunities are available?",
+    answer: "We provide ₹50,000 annual learning budget per employee, access to online courses, conference attendance, internal training sessions, and mentorship programs to support your professional growth.",
+  },
+  {
+    question: "What benefits do you offer?",
+    answer: "We offer comprehensive health insurance, flexible working hours, hybrid work options, competitive salaries, outcome-linked bonuses, learning & development budget, and a supportive team culture focused on growth.",
+  },
+  {
+    question: "What is the company culture like?",
+    answer: "Our culture is built on collaboration, innovation, and trust. We value diversity, encourage open communication, support work-life balance, and are committed to helping every team member grow and succeed.",
+  },
+  {
+    question: "Are there opportunities for career growth?",
+    answer: "Absolutely! We have clear career progression paths, regular performance reviews, mentorship programs, and opportunities to take on leadership roles as we scale. We invest in our people's long-term success.",
+  },
+];
+
 export default function CareersPage() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedLocation, setSelectedLocation] = useState("All");
+  const [selectedDepartment, setSelectedDepartment] = useState("All");
+  const [filteredJobs, setFilteredJobs] = useState(allJobs);
+  const [selectedJob, setSelectedJob] = useState<number | null>(null);
+  const [showStickyButton, setShowStickyButton] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  useEffect(() => {
+    let filtered = allJobs;
+
+    if (searchTerm) {
+      filtered = filtered.filter(
+        (job) =>
+          job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          job.summary.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+
+    if (selectedLocation !== "All") {
+      filtered = filtered.filter((job) => job.location.includes(selectedLocation));
+    }
+
+    if (selectedDepartment !== "All") {
+      filtered = filtered.filter((job) => job.department === selectedDepartment);
+    }
+
+    setFilteredJobs(filtered);
+  }, [searchTerm, selectedLocation, selectedDepartment]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowStickyButton(window.scrollY > 400);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const locations = ["All", "Chennai"];
+  const departments = ["All", "Engineering", "Design", "Sales", "Customer Success", "Marketing"];
+
   return (
+    <>
+
+      {/* SEO Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "Galactis",
+            url: "https://galactis.ai",
+            logo: "https://galactis.ai/galactis-logo.svg",
+            sameAs: ["https://galactis.ai"],
+            jobPosting: allJobs.map((job) => ({
+              "@type": "JobPosting",
+              title: job.title,
+              description: `${job.summary}\n\nResponsibilities:\n${job.responsibilities.join("\n")}`,
+              identifier: {
+                "@type": "PropertyValue",
+                name: "Galactis",
+                value: job.id.toString(),
+              },
+              datePosted: new Date().toISOString(),
+              employmentType: job.type,
+              jobLocation: {
+                "@type": "Place",
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "Chennai",
+                  addressRegion: "Tamil Nadu",
+                  addressCountry: "IN",
+                },
+              },
+              baseSalary: {
+                "@type": "MonetaryAmount",
+                currency: "INR",
+              },
+            })),
+          }),
+        }}
+      />
+
     <div className="min-h-screen bg-white dark:bg-black">
       <Navbar />
-      <main className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-        <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Company" }, { label: "Careers" }]} />
-        <section className="mt-6 rounded-3xl border border-zinc-200 bg-gradient-to-br from-purple-900 via-indigo-900 to-slate-900 p-8 text-white shadow-2xl dark:border-zinc-800">
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-white/70">Careers @ Galactis</p>
-          <h1 className="mt-3 text-4xl font-bold">Build Tamil Nadu's most ambitious enterprise platform</h1>
-          <p className="mt-4 text-base text-white/80">
-            We design, ship, and scale Galactis from our headquarters in Egattur, Kancheepuram, partnering with Indian and global enterprises on IT Asset Management, Network
-            Intelligence, and AI Agents. Choose a role, share your details, and our recruiting team will follow up within 48 hours.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3 text-xs font-semibold text-white/70">
-            <span className="rounded-full border border-white/30 px-4 py-2">Kancheepuram HQ + Bengaluru pods</span>
-            <span className="rounded-full border border-white/30 px-4 py-2">Hybrid & on-site roles</span>
-            <span className="rounded-full border border-white/30 px-4 py-2">Outcome-linked bonuses</span>
+        <main>
+          {/* Hero Section */}
+          <section className="relative overflow-hidden border-b border-zinc-200 bg-gradient-to-br from-purple-900 via-indigo-900 to-teal-900 px-4 py-20 sm:px-6 lg:px-8 dark:border-zinc-800">
+            <div className="mx-auto max-w-7xl">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-center text-white"
+              >
+                <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+                  Build Your Future With Us –{" "}
+                  <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
+                    Careers at Galactis
+                  </span>
+                </h1>
+                <p className="mx-auto mt-6 max-w-2xl text-lg text-white/80">
+                  Join a team that's transforming enterprise automation. Work on cutting-edge AI-powered solutions,
+                  collaborate with talented people, and grow your career in a supportive, hybrid work environment.
+                </p>
+              </motion.div>
+            </div>
+          </section>
+
+          {/* Culture Intro Section */}
+          <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+            <div className="grid gap-8 md:grid-cols-2 md:items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+              >
+                <h2 className="text-3xl font-bold text-zinc-900 dark:text-white sm:text-4xl">
+                  Life at Galactis
+                </h2>
+                <p className="mt-4 text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">
+                  We're building the future of enterprise automation from Chennai, India. Our team values innovation,
+                  collaboration, and work-life balance. With hybrid work options, flexible hours, and a culture of
+                  continuous learning, we create an environment where everyone can thrive.
+                </p>
+                <div className="mt-6 grid grid-cols-2 gap-4">
+                  <div className="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950">
+                    <p className="text-2xl font-bold text-purple-600 dark:text-purple-400">50+</p>
+                    <p className="text-sm text-zinc-600 dark:text-zinc-400">Team Members</p>
+                  </div>
+                  <div className="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950">
+                    <p className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">Hybrid</p>
+                    <p className="text-sm text-zinc-600 dark:text-zinc-400">Work Model</p>
+                  </div>
+                </div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="relative"
+              >
+                {/* Placeholder for team culture image */}
+                <div className="aspect-video rounded-2xl bg-gradient-to-br from-purple-100 to-indigo-100 dark:from-purple-900/20 dark:to-indigo-900/20">
+                  <div className="flex h-full items-center justify-center">
+                    <div className="text-center">
+                      <Users className="mx-auto h-16 w-16 text-purple-400" />
+                      <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-400">Team Culture & Diversity</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </section>
+
+          {/* Search and Filter Bar */}
+          <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="rounded-2xl border border-zinc-200 bg-white p-4 shadow-lg dark:border-zinc-800 dark:bg-zinc-950 sm:p-6">
+              <div className="grid gap-4 sm:grid-cols-3">
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-zinc-400" />
+                  <input
+                    type="text"
+                    placeholder="Search by role or keyword..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="w-full rounded-lg border border-zinc-300 bg-white pl-10 pr-4 py-2.5 text-sm focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-100 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:focus:border-purple-500"
+                  />
+                </div>
+                <select
+                  value={selectedLocation}
+                  onChange={(e) => setSelectedLocation(e.target.value)}
+                  className="rounded-lg border border-zinc-300 bg-white px-4 py-2.5 text-sm focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-100 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:focus:border-purple-500"
+                >
+                  {locations.map((loc) => (
+                    <option key={loc} value={loc}>
+                      {loc === "All" ? "All Locations" : loc}
+                    </option>
+                  ))}
+                </select>
+                <select
+                  value={selectedDepartment}
+                  onChange={(e) => setSelectedDepartment(e.target.value)}
+                  className="rounded-lg border border-zinc-300 bg-white px-4 py-2.5 text-sm focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-100 dark:border-zinc-700 dark:bg-zinc-900 dark:text-white dark:focus:border-purple-500"
+                >
+                  {departments.map((dept) => (
+                    <option key={dept} value={dept}>
+                      {dept === "All" ? "All Departments" : dept}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-400">
+                {filteredJobs.length} {filteredJobs.length === 1 ? "position" : "positions"} available
+              </p>
+            </div>
+          </section>
+
+          {/* Job Listings */}
+          <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+            <AnimatePresence mode="wait">
+              {filteredJobs.length > 0 ? (
+                <motion.div
+                  key="jobs"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+                >
+                  {filteredJobs.map((job, index) => (
+                    <motion.div
+                      key={job.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      whileHover={{ y: -4 }}
+                      className="group relative rounded-2xl border border-zinc-200 bg-white p-6 shadow-md transition-all duration-300 hover:border-purple-300 hover:shadow-xl dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-purple-600"
+                    >
+                      <div className="mb-4 flex items-start justify-between">
+                        <div>
+                          <h3 className="text-xl font-bold text-zinc-900 dark:text-white">{job.title}</h3>
+                          <div className="mt-2 flex flex-wrap gap-2">
+                            <span className="flex items-center gap-1 rounded-full bg-purple-50 px-3 py-1 text-xs font-medium text-purple-700 dark:bg-purple-900/30 dark:text-purple-300">
+                              <MapPin className="h-3 w-3" />
+                              {job.location}
+                            </span>
+                            <span className="rounded-full bg-zinc-100 px-3 py-1 text-xs font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300">
+                              {job.department}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <p className="mb-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{job.summary}</p>
+                      <div className="mb-4 space-y-2">
+                        <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Key Responsibilities:</p>
+                        <ul className="space-y-1 text-xs text-zinc-700 dark:text-zinc-300">
+                          {job.responsibilities.slice(0, 3).map((resp, idx) => (
+                            <li key={idx} className="flex items-start gap-2">
+                              <CheckCircle className="mt-0.5 h-3 w-3 flex-shrink-0 text-emerald-500" />
+                              <span>{resp}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="mb-4 space-y-1">
+                        <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Growth Opportunities:</p>
+                        <p className="text-xs text-zinc-600 dark:text-zinc-400">{job.growth[0]}</p>
+                      </div>
+                      <button
+                        onClick={() => setSelectedJob(job.id)}
+                        className="w-full rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 px-4 py-2.5 text-sm font-semibold text-white transition-all hover:shadow-lg hover:shadow-purple-500/50"
+                      >
+                        Apply Now
+                      </button>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="no-jobs"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="rounded-2xl border border-zinc-200 bg-white p-12 text-center dark:border-zinc-800 dark:bg-zinc-950"
+                >
+                  <Briefcase className="mx-auto h-12 w-12 text-zinc-400" />
+                  <p className="mt-4 text-lg font-semibold text-zinc-900 dark:text-white">No positions found</p>
+                  <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
+                    Try adjusting your search or filter criteria.
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </section>
+
+          {/* Perks Section */}
+          <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center"
+            >
+              <h2 className="text-3xl font-bold text-zinc-900 dark:text-white sm:text-4xl">Why Join Galactis?</h2>
+              <p className="mx-auto mt-4 max-w-2xl text-zinc-600 dark:text-zinc-400">
+                We offer competitive benefits and a culture that supports your growth and well-being.
+              </p>
+            </motion.div>
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {perks.map((perk, index) => (
+                <motion.div
+                  key={perk.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="rounded-xl border border-zinc-200 bg-white p-6 text-center shadow-sm transition-all hover:border-purple-300 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-purple-600"
+                >
+                  <perk.icon className="mx-auto h-10 w-10 text-purple-600 dark:text-purple-400" />
+                  <h3 className="mt-4 font-semibold text-zinc-900 dark:text-white">{perk.title}</h3>
+                  <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">{perk.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </section>
+
+          {/* Testimonials */}
+          <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center"
+            >
+              <h2 className="text-3xl font-bold text-zinc-900 dark:text-white sm:text-4xl">Hear From Our Team</h2>
+              <p className="mx-auto mt-4 max-w-2xl text-zinc-600 dark:text-zinc-400">
+                See what our team members say about working at Galactis.
+              </p>
+            </motion.div>
+            <div className="mt-12 grid gap-6 md:grid-cols-3">
+              {testimonials.map((testimonial, index) => (
+                <motion.div
+                  key={testimonial.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-md dark:border-zinc-800 dark:bg-zinc-950"
+                >
+                  <div className="mb-4 text-4xl">{testimonial.image}</div>
+                  <p className="mb-4 text-sm italic leading-relaxed text-zinc-700 dark:text-zinc-300">
+                    "{testimonial.quote}"
+                  </p>
+                  <div>
+                    <p className="font-semibold text-zinc-900 dark:text-white">{testimonial.name}</p>
+                    <p className="text-xs text-zinc-600 dark:text-zinc-400">{testimonial.role}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </section>
+
+          {/* Video Placeholder */}
+          <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="overflow-hidden rounded-3xl border border-zinc-200 bg-gradient-to-br from-purple-50 to-indigo-50 dark:border-zinc-800 dark:from-purple-950/20 dark:to-indigo-950/20"
+            >
+              <div className="aspect-video flex items-center justify-center">
+                <div className="text-center">
+                  <Video className="mx-auto h-16 w-16 text-purple-400" />
+                  <p className="mt-4 text-lg font-semibold text-zinc-900 dark:text-white">Company Culture Video</p>
+                  <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">Watch our team share their experiences</p>
+                </div>
+              </div>
+            </motion.div>
+          </section>
+
+          {/* FAQ Section */}
+          <section className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center"
+            >
+              <h2 className="text-3xl font-bold text-zinc-900 dark:text-white sm:text-4xl">
+                Frequently Asked Questions
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-zinc-600 dark:text-zinc-400">
+                Get answers to common questions about working at Galactis.
+              </p>
+            </motion.div>
+            <div className="mt-12 space-y-4">
+              {faqs.map((faq, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="overflow-hidden rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-950"
+                >
+                  <button
+                    onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                    className="flex w-full items-center justify-between p-6 text-left"
+                  >
+                    <span className="font-semibold text-zinc-900 dark:text-white">{faq.question}</span>
+                    <ChevronDown
+                      className={`h-5 w-5 text-zinc-500 transition-transform ${openFaq === index ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                  <AnimatePresence>
+                    {openFaq === index && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <p className="px-6 pb-6 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{faq.answer}</p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+            ))}
           </div>
         </section>
 
-        <CareersApplication />
-
-        <section className="mt-12 rounded-3xl border border-purple-200 bg-purple-50 p-6 dark:border-purple-900 dark:bg-purple-950/30">
-          <h2 className="text-xl font-semibold text-purple-900 dark:text-purple-100">Didn’t see the right fit?</h2>
-          <p className="mt-2 text-sm text-purple-900/80 dark:text-purple-100/80">
-            Email your profile to <a href="mailto:careers@galactis.ai" className="underline">careers@galactis.ai</a> with the subject “General Application”.
-            We constantly open roles across product, engineering, GTM, and delivery.
-          </p>
+          {/* CTA Section */}
+          <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="rounded-3xl border border-purple-200 bg-gradient-to-br from-purple-50 to-indigo-50 p-8 text-center dark:border-purple-900 dark:from-purple-950/30 dark:to-indigo-950/30 sm:p-12"
+            >
+              <h2 className="text-3xl font-bold text-zinc-900 dark:text-white sm:text-4xl">
+                Didn't see the right fit?
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-zinc-600 dark:text-zinc-400">
+                We're always looking for talented people. Send us your profile and we'll reach out when a matching role
+                opens up.
+              </p>
+              <a
+                href="mailto:hr@galactis.ai"
+                className="mt-6 inline-flex items-center gap-2 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 px-6 py-3 text-sm font-semibold text-white transition-all hover:shadow-lg hover:shadow-purple-500/50"
+              >
+                Send General Application
+                <ArrowRight className="h-4 w-4" />
+              </a>
+            </motion.div>
         </section>
       </main>
+
+        {/* Sticky Apply Button */}
+        <AnimatePresence>
+          {showStickyButton && (
+            <motion.button
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                const firstJob = filteredJobs[0];
+                if (firstJob) setSelectedJob(firstJob.id);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-purple-500/50 transition-all hover:shadow-xl hover:shadow-purple-500/70"
+            >
+              Apply Now
+            </motion.button>
+          )}
+        </AnimatePresence>
+
+        {/* Job Application Modal */}
+        <AnimatePresence>
+          {selectedJob && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm"
+              onClick={() => setSelectedJob(null)}
+            >
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                onClick={(e) => e.stopPropagation()}
+                className="w-full max-w-2xl rounded-2xl border border-zinc-200 bg-white p-6 shadow-2xl dark:border-zinc-800 dark:bg-zinc-950 sm:p-8"
+              >
+                <CareersApplication jobId={selectedJob} onClose={() => setSelectedJob(null)} />
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
       <Footer />
     </div>
+    </>
   );
 }
-

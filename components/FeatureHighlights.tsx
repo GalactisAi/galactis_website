@@ -91,10 +91,10 @@ export default function FeatureHighlights() {
             The highlights below summarize content from the ITAM blueprint, NOC automation briefings, and AI agent studio docs available in the product.
           </p>
         </div>
-        <ScrollRevealStagger 
-          direction="up" 
-          staggerDelay={0.1} 
-          distance={30} 
+        <ScrollRevealStagger
+          direction="up"
+          staggerDelay={0.1}
+          distance={30}
           className="mt-12 grid gap-5 sm:gap-6 md:grid-cols-2"
         >
           {features.map((feature) => (
