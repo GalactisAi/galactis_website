@@ -130,7 +130,7 @@ export default function Home() {
           "@type": "Organization",
           name: "Galactis.ai",
           url: "https://galactis.ai",
-          logo: "https://galactis.ai/logo.png",
+          logo: "https://galactis.ai/galactis-logo.svg",
           description:
             "Enterprise ITAM, Network Monitoring & AI Agents Platform",
           contactPoint: {

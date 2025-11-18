@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, MapPin, Briefcase, Clock, Users, Award, Heart, BookOpen, ChevronDown, CheckCircle, ArrowRight } from "lucide-react";
+import { Search, MapPin, Briefcase, Clock, Users, Award, BookOpen, ChevronDown, CheckCircle, ArrowRight } from "lucide-react";
 import CareersApplication from "@/components/CareersApplication";
 
 // Job listings data - Entry-level and Intern positions only
@@ -169,7 +169,6 @@ const perks = [
   { icon: Clock, title: "Flexible Hours", description: "Work when you're most productive" },
   { icon: MapPin, title: "Hybrid Work", description: "Balance office and remote work" },
   { icon: Award, title: "Learning Budget", description: "₹50K annual learning & development" },
-  { icon: Heart, title: "Health Insurance", description: "Comprehensive health coverage" },
   { icon: BookOpen, title: "Growth Opportunities", description: "Clear career progression paths" },
   { icon: Users, title: "Team Culture", description: "Collaborative and inclusive environment" },
 ];
@@ -205,12 +204,8 @@ const faqs = [
     answer: "Yes! We offer hybrid work arrangements for most roles, allowing you to work from our Chennai office and remotely. We believe in flexibility and work-life balance.",
   },
   {
-    question: "What learning and development opportunities are available?",
-    answer: "We provide ₹50,000 annual learning budget per employee, access to online courses, conference attendance, internal training sessions, and mentorship programs to support your professional growth.",
-  },
-  {
     question: "What benefits do you offer?",
-    answer: "We offer comprehensive health insurance, flexible working hours, hybrid work options, competitive salaries, outcome-linked bonuses, learning & development budget, and a supportive team culture focused on growth.",
+    answer: "We offer flexible working hours, hybrid work options, competitive salaries, outcome-linked bonuses, learning & development budget, and a supportive team culture focused on growth.",
   },
   {
     question: "What is the company culture like?",

@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Menu, ChevronDown } from "lucide-react";
 
 const navItems = [
-  { label: "Partners", href: "/partners" },
+  { label: "Partners", href: "/partner" },
   { label: "Careers", href: "/company/careers" },
   { label: "Company", href: "/company/about" },
   { label: "Pricing", href: "/pricing" },
@@ -127,13 +127,13 @@ export default function MobileMenu() {
                       <Link
                         href="/"
                         onClick={handleLinkClick}
-                        className="flex items-center gap-2 text-zinc-900 dark:text-zinc-100"
+                        className="flex items-center gap-1.5 text-zinc-900 dark:text-zinc-100"
                       >
                         <img 
                           src="/galactis-logo.svg" 
-                          alt="Galactis Logo" 
-                          className="h-7 w-7 flex-shrink-0"
-                          style={{ objectFit: "contain", display: "block" }}
+                          alt="Galactis.ai company logo, stylized geometric 'G' with blue-purple gradient" 
+                          className="h-8 w-auto flex-shrink-0"
+                          style={{ objectFit: "contain", display: "block", backgroundColor: "transparent" }}
                         />
                         <span className="font-semibold">Galactis.ai</span>
                       </Link>

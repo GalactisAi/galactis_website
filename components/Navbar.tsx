@@ -5,46 +5,7 @@ import { motion } from "framer-motion";
 import ProductsDropdown from "./ProductsDropdown";
 import SolutionsDropdown from "./SolutionsDropdown";
 import MobileMenu from "./MobileMenu";
-import { useMotionValue, useSpring } from "framer-motion";
-import { useState } from "react";
-
-function MagneticButton({ children, href, className = "" }: { children: React.ReactNode; href: string; className?: string }) {
-  const [, setIsHovered] = useState(false);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const springX = useSpring(x, { stiffness: 150, damping: 15 });
-  const springY = useSpring(y, { stiffness: 150, damping: 15 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    const deltaX = (e.clientX - centerX) * 0.2;
-    const deltaY = (e.clientY - centerY) * 0.2;
-    x.set(deltaX);
-    y.set(deltaY);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-    setIsHovered(false);
-  };
-
-  return (
-    <motion.div style={{ x: springX, y: springY }}>
-      <Link
-        href={href}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        onMouseEnter={() => setIsHovered(true)}
-        className={className}
-      >
-        {children}
-      </Link>
-    </motion.div>
-  );
-}
+import ContactSalesModal from "./ContactSalesModal";
 
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
@@ -79,7 +40,7 @@ export default function Navbar() {
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 400, damping: 17 }}
         >
-          <Link href="/" className="flex items-center gap-2.5 text-zinc-900 dark:text-zinc-100">
+          <Link href="/" className="flex items-center gap-2 md:gap-2.5 text-zinc-900 dark:text-zinc-100">
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -88,9 +49,9 @@ export default function Navbar() {
             >
               <img 
                 src="/galactis-logo.svg" 
-                alt="Galactis Logo" 
-                className="h-8 w-8 flex-shrink-0"
-                style={{ objectFit: "contain", display: "block" }}
+                alt="Galactis.ai company logo, stylized geometric 'G' with blue-purple gradient" 
+                className="h-10 md:h-12 w-auto flex-shrink-0"
+                style={{ objectFit: "contain", display: "block", backgroundColor: "transparent" }}
               />
             </motion.div>
             <span className="font-semibold bg-gradient-to-r from-purple-600 to-emerald-600 bg-clip-text text-transparent">
@@ -101,15 +62,21 @@ export default function Navbar() {
         <nav className="hidden items-center gap-6 md:flex">
           <ProductsDropdown />
           <SolutionsDropdown />
-          <NavLink href="/partners">Partners</NavLink>
+          <NavLink href="/partner">Partners</NavLink>
           <NavLink href="/company/careers">Careers</NavLink>
           <NavLink href="/company/about">Company</NavLink>
           <NavLink href="/pricing">Pricing</NavLink>
         </nav>
         <div className="hidden items-center gap-3 md:flex">
-          <MagneticButton
-            href="/contact"
-            className="group relative overflow-hidden rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-purple-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/50 hover:scale-105"
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => {
+              // Trigger contact modal - will be handled by ContactSalesModal component
+              const button = document.querySelector('[data-contact-trigger][data-intent="sales"]') as HTMLButtonElement;
+              button?.click();
+            }}
+            className="group relative overflow-hidden rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-purple-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/50"
           >
             <motion.span
               className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0"
@@ -118,7 +85,11 @@ export default function Navbar() {
               transition={{ duration: 0.6, repeat: Infinity, repeatDelay: 2 }}
             />
             <span className="relative">Contact Sales</span>
-          </MagneticButton>
+          </motion.button>
+          {/* Hidden trigger for ContactSalesModal */}
+          <div className="hidden">
+            <ContactSalesModal intent="sales" />
+          </div>
         </div>
         {/* Mobile Menu */}
         <div className="md:hidden">
