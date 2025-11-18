@@ -27,7 +27,7 @@ export default function EnterpriseCTA() {
         </div>
         <div className="grid gap-4 rounded-2xl bg-white/10 p-6 backdrop-blur">
           <div>
-            <p className="text-3xl font-semibold">₹75 Lakhs</p>
+            <p className="text-3xl font-semibold">₹7.5 Cr</p>
             <p className="text-sm text-white/70">technology waste eliminated to date</p>
           </div>
           <div>

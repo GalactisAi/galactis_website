@@ -12,14 +12,14 @@ const gradientWords = ["Enterprise", "Technology", "Stack"];
 const heroMetrics = [
   {
     label: "IT Asset Management",
-    stat: "₹8 Lakhs waste removed",
+    stat: "₹2.8 Cr waste removed",
     detail: "Based on the ITAM blueprint featured on galactis.ai/products/itam.",
     href: "/products/itam",
   },
   {
     label: "Network Intelligence",
     stat: "99.95% uptime",
-    detail: "Data from the Northwind Telecom study in the Network Monitoring page.",
+    detail: "Data from the Airtel study in the Network Monitoring page.",
     href: "/products/network-monitoring",
   },
   {
@@ -134,7 +134,7 @@ export default function Hero() {
                       className="inline-block"
                     >
                       {isGradientWord ? (
-                        <span className="bg-gradient-to-r from-purple-400 via-teal-400 to-purple-400 bg-clip-text text-transparent bg-[length:200%_100%] animate-gradient">
+                        <span className="bg-gradient-to-r from-purple-400 via-teal-400 to-purple-400 bg-clip-text text-transparent bg-[length:200%_100%] animate-gradient font-bold">
                           {word}
                         </span>
                       ) : (

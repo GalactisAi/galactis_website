@@ -11,7 +11,7 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
   return (
     <Link
       href={href}
-      className="group relative text-sm font-medium text-zinc-700 transition-colors dark:text-zinc-300"
+      className="group relative text-sm font-medium text-zinc-700 transition-colors hover:text-purple-600 dark:text-zinc-300 dark:hover:text-purple-400"
     >
       <span className="relative">
         {children}

@@ -363,14 +363,132 @@ export default function CareersPage() {
                 transition={{ duration: 0.6 }}
                 className="relative"
               >
-                {/* Placeholder for team culture image */}
-                <div className="aspect-video rounded-2xl bg-gradient-to-br from-purple-100 to-indigo-100 dark:from-purple-900/20 dark:to-indigo-900/20">
-                  <div className="flex h-full items-center justify-center">
-                    <div className="text-center">
-                      <Users className="mx-auto h-16 w-16 text-purple-400" />
-                      <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-400">Team Culture & Diversity</p>
+                {/* Team Culture Graphic */}
+                <div className="relative aspect-video overflow-hidden rounded-2xl bg-gradient-to-br from-purple-100 via-indigo-100 to-teal-100 dark:from-purple-900/20 dark:via-indigo-900/20 dark:to-teal-900/20">
+                  {/* Animated background circles */}
+                  <motion.div
+                    animate={{ 
+                      scale: [1, 1.2, 1],
+                      rotate: [0, 180, 360]
+                    }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    className="absolute -left-10 -top-10 h-40 w-40 rounded-full bg-purple-300/30 blur-3xl dark:bg-purple-600/20"
+                  />
+                  <motion.div
+                    animate={{ 
+                      scale: [1.2, 1, 1.2],
+                      rotate: [360, 180, 0]
+                    }}
+                    transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                    className="absolute -right-10 -bottom-10 h-40 w-40 rounded-full bg-indigo-300/30 blur-3xl dark:bg-indigo-600/20"
+                  />
+                  
+                  {/* Team members illustration */}
+                  <div className="relative flex h-full items-center justify-center p-8">
+                    <div className="grid grid-cols-3 gap-4">
+                      {/* Row 1 */}
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2, duration: 0.6 }}
+                        className="flex flex-col items-center"
+                      >
+                        <motion.div
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-indigo-500 shadow-lg"
+                        >
+                          <Users className="h-8 w-8 text-white" />
+                        </motion.div>
+                        <div className="mt-2 h-1 w-12 rounded-full bg-purple-300 dark:bg-purple-600" />
+                      </motion.div>
+                      
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3, duration: 0.6 }}
+                        className="flex flex-col items-center"
+                      >
+                        <motion.div
+                          whileHover={{ scale: 1.1, rotate: -5 }}
+                          className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-teal-500 shadow-lg"
+                        >
+                          <Users className="h-8 w-8 text-white" />
+                        </motion.div>
+                        <div className="mt-2 h-1 w-12 rounded-full bg-indigo-300 dark:bg-indigo-600" />
+                      </motion.div>
+                      
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.4, duration: 0.6 }}
+                        className="flex flex-col items-center"
+                      >
+                        <motion.div
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-teal-500 to-emerald-500 shadow-lg"
+                        >
+                          <Users className="h-8 w-8 text-white" />
+                        </motion.div>
+                        <div className="mt-2 h-1 w-12 rounded-full bg-teal-300 dark:bg-teal-600" />
+                      </motion.div>
+                      
+                      {/* Row 2 */}
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.5, duration: 0.6 }}
+                        className="flex flex-col items-center"
+                      >
+                        <motion.div
+                          whileHover={{ scale: 1.1, rotate: -5 }}
+                          className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-pink-500 to-purple-500 shadow-lg"
+                        >
+                          <Users className="h-8 w-8 text-white" />
+                        </motion.div>
+                        <div className="mt-2 h-1 w-12 rounded-full bg-pink-300 dark:bg-pink-600" />
+                      </motion.div>
+                      
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.6, duration: 0.6 }}
+                        className="flex flex-col items-center"
+                      >
+                        <motion.div
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-orange-500 to-pink-500 shadow-lg"
+                        >
+                          <Users className="h-8 w-8 text-white" />
+                        </motion.div>
+                        <div className="mt-2 h-1 w-12 rounded-full bg-orange-300 dark:bg-orange-600" />
+                      </motion.div>
+                      
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.7, duration: 0.6 }}
+                        className="flex flex-col items-center"
+                      >
+                        <motion.div
+                          whileHover={{ scale: 1.1, rotate: -5 }}
+                          className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 shadow-lg"
+                        >
+                          <Users className="h-8 w-8 text-white" />
+                        </motion.div>
+                        <div className="mt-2 h-1 w-12 rounded-full bg-blue-300 dark:bg-blue-600" />
+                      </motion.div>
                     </div>
                   </div>
+                  
+                  {/* Label */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.8 }}
+                    className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full border border-purple-300 bg-white/90 px-4 py-2 backdrop-blur dark:border-purple-700 dark:bg-zinc-900/90"
+                  >
+                    <p className="text-sm font-semibold text-purple-600 dark:text-purple-400">Team Culture & Diversity</p>
+                  </motion.div>
                 </div>
               </motion.div>
             </div>
@@ -437,7 +555,7 @@ export default function CareersPage() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 }}
                       whileHover={{ y: -4 }}
-                      className="group relative rounded-2xl border border-zinc-200 bg-white p-6 shadow-md transition-all duration-300 hover:border-purple-300 hover:shadow-xl dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-purple-600"
+                      className="group relative flex flex-col rounded-2xl border border-zinc-200 bg-white p-6 shadow-md transition-all duration-300 hover:border-purple-300 hover:shadow-xl dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-purple-600"
                     >
                       <div className="mb-4 flex items-start justify-between">
                         <div>
@@ -454,7 +572,7 @@ export default function CareersPage() {
                         </div>
                       </div>
                       <p className="mb-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{job.summary}</p>
-                      <div className="mb-4 space-y-2">
+                      <div className="mb-4 flex-grow space-y-2">
                         <p className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Key Responsibilities:</p>
                         <ul className="space-y-1 text-xs text-zinc-700 dark:text-zinc-300">
                           {job.responsibilities.slice(0, 3).map((resp, idx) => (
@@ -467,7 +585,7 @@ export default function CareersPage() {
                       </div>
                       <button
                         onClick={() => setSelectedJob(job.id)}
-                        className="w-full min-h-[44px] rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 px-4 py-3 text-sm font-semibold text-white transition-all hover:shadow-lg hover:shadow-purple-500/50"
+                        className="mt-auto w-full min-h-[44px] rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 px-4 py-3 text-sm font-semibold text-white transition-all hover:shadow-lg hover:shadow-purple-500/50"
                         aria-label={`Apply for ${job.title}`}
                       >
                         Apply Now

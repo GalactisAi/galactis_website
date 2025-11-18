@@ -1,5 +1,9 @@
+"use client";
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ContactSalesModal from "@/components/ContactSalesModal";
+import { useEffect } from "react";
 
 const templates = [
   {
@@ -21,6 +25,14 @@ const templates = [
 ];
 
 export default function AgentTemplatesPage() {
+  const handleRequestTemplate = () => {
+    // Find and click the hidden trigger button for the ContactSalesModal
+    const trigger = document.getElementById('contact-trigger-sales-default');
+    if (trigger) {
+      trigger.click();
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white dark:bg-black">
       <Navbar />
@@ -32,7 +44,10 @@ export default function AgentTemplatesPage() {
             <div key={template.title} className="rounded-lg border border-zinc-200 p-6 dark:border-zinc-800">
               <h2 className="text-lg font-semibold">{template.title}</h2>
               <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">{template.description}</p>
-              <button className="mt-4 rounded-md bg-purple-600 px-4 py-2 text-sm font-semibold text-white hover:bg-purple-700">
+              <button 
+                onClick={handleRequestTemplate}
+                className="mt-4 rounded-md bg-purple-600 px-4 py-2 text-sm font-semibold text-white hover:bg-purple-700"
+              >
                 Request Template
               </button>
             </div>
@@ -40,7 +55,9 @@ export default function AgentTemplatesPage() {
         </div>
       </main>
       <Footer />
+
+      {/* Hidden ContactSalesModal that opens when any Request Template button is clicked */}
+      <ContactSalesModal intent="sales" />
     </div>
   );
 }
-

@@ -1,4 +1,4 @@
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, Linkedin, Instagram, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 const productLinks = [
@@ -30,74 +30,92 @@ const companyLinks = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-zinc-100/60 bg-white text-sm dark:border-zinc-900 dark:bg-black">
-      <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5">
-          <div>
-            <Link href="/" className="mb-4 flex items-center gap-1.5 text-zinc-900 dark:text-zinc-100">
-              <img 
-                src="/galactis-logo.svg" 
-                alt="Galactis.ai company logo, stylized geometric 'G' with blue-purple gradient" 
-                className="h-10 w-auto flex-shrink-0"
-                style={{ display: "block", maxWidth: "none", objectFit: "contain" }}
-              />
-              <span className="text-base font-semibold bg-gradient-to-r from-purple-600 to-emerald-600 bg-clip-text text-transparent leading-none">
-                Galactis.ai
-              </span>
-            </Link>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400">
-              Modern ITAM, network intelligence, and AI agent orchestration sourced from the same operational data.
-            </p>
-            <div className="mt-4 space-y-1 text-xs text-zinc-500 dark:text-zinc-400">
-              <p>info@galactis.ai</p>
-              <p className="leading-relaxed">
-                Wing A, Greenwood,<br />
-                Rajiv Gandhi Salai,<br />
-                Egattur, Kancheepuram,<br />
-                Tamil Nadu - 603103
-              </p>
-            </div>
-          </div>
-          <FooterColumn heading="Products" links={productLinks} />
-          <FooterColumn heading="Solutions" links={solutionLinks} />
-          <FooterColumn heading="Resources" links={resourceLinks} />
-          <FooterColumn heading="Company" links={companyLinks} className="md:col-span-1" />
-        </div>
-      </div>
-
-      <div className="border-t border-zinc-100 bg-gray-50 py-8 dark:border-zinc-900/80 dark:bg-zinc-950">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+    <footer className="relative mt-20 text-sm">
+      <div className="absolute inset-0 bg-gradient-to-br from-[#040216] via-[#0c0828] to-[#041a1f]" />
+      <div className="relative z-10">
+        <div className="mx-auto max-w-6xl px-4 py-16 text-white sm:px-6 lg:px-8">
+          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
             <div>
-              <p className="text-sm font-medium text-gray-800 dark:text-gray-200">Enterprise security & compliance</p>
-              <p className="text-xs text-gray-500 dark:text-gray-400">
-                Information below reflects the certifications listed on galactis.ai/security.
+              <Link href="/" className="mb-4 inline-flex items-center gap-2">
+                <img
+                  src="/galactis-logo.svg"
+                  alt="Galactis.ai logo"
+                  className="h-10 w-auto"
+                />
+                <span className="text-base font-semibold tracking-wide">Galactis.ai</span>
+              </Link>
+              <p className="text-sm text-white/70">
+                The leading platform for technology leaders. ITAM, NetOps, and AI agents.
               </p>
+              <div className="mt-4 space-y-1 text-xs text-white/60">
+                <p>info@galactis.ai</p>
+                <p>Wing A, Greenwood · Rajiv Gandhi Salai · Chennai, IN</p>
+              </div>
+              <div className="mt-5 flex gap-3">
+                <FooterSocial href="https://www.linkedin.com/company/galactisaitech/posts/?feedView=all" label="LinkedIn">
+                  <Linkedin className="h-4 w-4" />
+                </FooterSocial>
+                <FooterSocial href="https://www.instagram.com/galactis_tech/" label="Instagram">
+                  <Instagram className="h-4 w-4" />
+                </FooterSocial>
+              </div>
             </div>
-            <div className="flex flex-wrap gap-4">
-              {["SOC 2 Type II", "ISO 27001", "HIPAA", "GDPR"].map((badge) => (
-                <div key={badge} className="flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4 text-emerald-500" />
-                  <span className="text-xs font-semibold uppercase tracking-wide text-gray-700 dark:text-gray-300">
+            <FooterColumn heading="Products" links={productLinks} />
+            <FooterColumn heading="Solutions" links={solutionLinks} />
+            <FooterColumn heading="Resources" links={resourceLinks} />
+            <FooterColumn heading="Company" links={companyLinks} />
+          </div>
+
+          <div className="mt-16 rounded-3xl border border-white/10 bg-white/5 p-6">
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-200">Security</p>
+                <p className="text-lg font-semibold text-white">Enterprise certifications</p>
+                <p className="text-xs text-white/70">
+                  Mapped to the documents hosted on galactis.ai/security. Request evidence any time.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {["SOC 2 Type II", "ISO 27001", "HIPAA", "GDPR"].map((badge) => (
+                  <div key={badge} className="flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-wide">
+                    <CheckCircle className="h-4 w-4 text-emerald-300" />
                     {badge}
-                  </span>
-                </div>
-              ))}
+                  </div>
+                ))}
+              </div>
+              <Link
+                href="/security"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 transition hover:text-white"
+              >
+                View security brief →
+              </Link>
             </div>
-            <a
-              href="/security"
-              className="text-sm font-semibold text-purple-600 transition hover:text-purple-700 dark:text-purple-400"
-            >
-              View security brief →
-            </a>
+          </div>
+
+          <div className="mt-8 rounded-3xl border border-white/10 bg-white/5 p-4 text-xs text-white/70">
+            <div className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between">
+              <p>© {new Date().getFullYear()} Galactis.ai · All rights reserved</p>
+              <div className="flex items-center gap-2 text-white/60">
+                <Sparkles className="h-4 w-4 text-purple-300" />
+                Easter egg: ask the homepage chatbot “What’s the Sense-Decide-Act mantra?” for a surprise meme.
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div className="border-t border-zinc-100 py-6 text-center text-xs text-zinc-500 dark:border-zinc-900 dark:text-zinc-400">
-        © {new Date().getFullYear()} Galactis.ai · All rights reserved
       </div>
     </footer>
+  );
+}
+
+function FooterSocial({ href, label, children }: { href: string; label: string; children: React.ReactNode }) {
+  return (
+    <a
+      href={href}
+      aria-label={label}
+      className="rounded-full border border-white/20 p-2 text-white/70 transition hover:border-white hover:text-white"
+    >
+      {children}
+    </a>
   );
 }
 

@@ -4,11 +4,12 @@ import Link from 'next/link';
 import { motion, useSpring, useTransform, useScroll } from "framer-motion";
 import { useRef } from "react";
 import ScrollReveal, { ScrollRevealStagger } from "./ScrollReveal";
+import CompanyLogo from "./CompanyLogo";
 
 type CaseStudy = {
   industry: string;
   customer: string;
-  icon: string;
+  companyName: string;
   summary: string;
   outcomes: string[];
   link: string;
@@ -18,16 +19,16 @@ const caseStudies: CaseStudy[] = [
   {
     industry: "Financial Services",
     customer: "HDFC Bank · Chennai",
-    icon: "🏦",
+    companyName: "HDFC Bank",
     summary:
       "Unified ITAM + FinOps platform delivered regulator-ready license positions and automated compliance evidence across Chennai operations and regional branches.",
-    outcomes: ["₹8 Lakhs audit risk avoided", "28% software waste removed", "Evidence packs delivered in 7 days"],
+    outcomes: ["₹2.8 Cr audit risk avoided", "28% software waste removed", "Evidence packs delivered in 7 days"],
     link: "/resources/case-studies",
   },
   {
     industry: "Telecommunications",
     customer: "Airtel · Chennai",
-    icon: "📡",
+    companyName: "Airtel",
     summary:
       "AI-driven network observability correlated NetOps, customer experience, and AI runbooks to protect SLAs across Tamil Nadu fiber footprint and 5G infrastructure.",
     outcomes: ["42% fewer P1 incidents", "99.95% uptime sustained", "Customer comms automated in minutes"],
@@ -36,7 +37,7 @@ const caseStudies: CaseStudy[] = [
   {
     industry: "Healthcare",
     customer: "Apollo Hospitals · Chennai",
-    icon: "🏥",
+    companyName: "Apollo Hospitals",
     summary:
       "Clinical asset governance and HIPAA-ready workflows unified biomedical, IT, and research environments across Chennai facilities with automated validation.",
     outcomes: ["0 PHI findings post-launch", "75% faster compliance documentation", "40% faster clinic onboarding"],
@@ -45,7 +46,7 @@ const caseStudies: CaseStudy[] = [
   {
     industry: "Manufacturing & Logistics",
     customer: "TVS Motors · Chennai",
-    icon: "🚚",
+    companyName: "TVS Motors",
     summary:
       "Real-time asset telemetry plus AI agents for supply chain documentation improved OTIF performance and automated vendor workflows across manufacturing plants.",
     outcomes: ["+19% OTIF", "45% faster vendor reconciliation", "120K support calls deflected by agents"],
@@ -66,27 +67,48 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
   return (
     <motion.div
       ref={cardRef}
-      className="group rounded-3xl border border-gray-200 bg-white p-5 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl dark:border-gray-800 dark:bg-gray-950 sm:p-6 lg:p-8"
-      style={{ scale }}
+      className="group rounded-3xl border border-gray-200 bg-white p-5 shadow-lg transition-all duration-300 overflow-hidden dark:border-gray-800 dark:bg-gray-950 sm:p-6 lg:p-8"
+      style={{ scale, transformStyle: "preserve-3d" }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
       whileHover={{ 
         scale: 1.02,
+        y: -8,
+        rotateY: 2,
         transition: { type: "spring", stiffness: 300, damping: 20 }
       }}
     >
-      <div className="flex items-center gap-3 text-gray-900 dark:text-gray-100">
-        <span className="text-3xl">{study.icon}</span>
+      {/* Animated background gradient on hover */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-teal-500/0"
+        whileHover={{ from: "purple-500/5", to: "teal-500/5" }}
+      />
+      <div className="relative flex items-center gap-4 text-gray-900 dark:text-gray-100">
+        <CompanyLogo company={study.companyName} size={56} className="shrink-0" />
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-purple-600">{study.industry}</p>
           <h3 className="text-xl font-semibold">{study.customer}</h3>
         </div>
       </div>
       <p className="mt-4 text-sm leading-relaxed text-gray-600 dark:text-gray-400">{study.summary}</p>
-      <ul className="mt-6 space-y-2 text-sm text-gray-900 dark:text-gray-200">
-        {study.outcomes.map((outcome) => (
-          <li key={outcome} className="flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+      <ul className="mt-6 space-y-2 text-sm text-gray-900 dark:text-gray-200 relative">
+        {study.outcomes.map((outcome, i) => (
+          <motion.li 
+            key={outcome} 
+            className="flex items-center gap-2"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ delay: i * 0.1, duration: 0.4 }}
+          >
+            <motion.span 
+              className="h-1.5 w-1.5 rounded-full bg-emerald-500"
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 2, repeat: Infinity, delay: i * 0.2 }}
+            />
             <span>{outcome}</span>
-          </li>
+          </motion.li>
         ))}
       </ul>
       <Link

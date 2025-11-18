@@ -160,14 +160,14 @@ export default function PartnersPage() {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 + 0.3 }}
-                className="group relative rounded-2xl border border-zinc-200 bg-white p-6 shadow-md transition-all duration-300 hover:border-purple-300 hover:shadow-xl dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-purple-600"
+                className="group relative flex flex-col rounded-2xl border border-zinc-200 bg-white p-6 shadow-md transition-all duration-300 hover:border-purple-300 hover:shadow-xl dark:border-zinc-800 dark:bg-zinc-950 dark:hover:border-purple-600"
               >
                 <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-indigo-500 text-white shadow-lg">
                   <partner.icon className="h-6 w-6" />
                 </div>
                 <h3 className="text-xl font-bold text-zinc-900 dark:text-white">{partner.name}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{partner.description}</p>
-                <ul className="mt-4 space-y-2">
+                <ul className="mt-4 flex-grow space-y-2">
                   {partner.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-2 text-xs text-zinc-700 dark:text-zinc-300">
                       <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-emerald-500" />
@@ -211,7 +211,7 @@ export default function PartnersPage() {
                   </div>
                   <div className="rounded-xl bg-white/10 px-4 py-2 backdrop-blur-sm">
                     <p className="text-xs font-semibold uppercase tracking-wider text-white/70">Average Revenue</p>
-                    <p className="mt-1 text-lg font-bold text-white">₹25 Lakhs+</p>
+                    <p className="mt-1 text-lg font-bold text-white">₹2.5 Cr+</p>
                   </div>
                 </div>
               </motion.div>

@@ -1,18 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 
 const testimonials = [
   {
     quote:
-      "Galactis unified every application and device across our Chennai operations, eliminating 28% redundant spend in six months. Their AI reconciliation uncovered ₹12 Lakhs in annual savings we can reinvest in innovation.",
+      "Galactis unified every application and device across our Chennai operations, eliminating 28% redundant spend in six months. Their AI reconciliation uncovered ₹1.2 Cr in annual savings we can reinvest in innovation.",
     name: "Rajesh Kumar",
     title: "CIO, ICICI Bank · Chennai",
     metrics: [
       { label: "Cost Reduction", value: "28%" },
-      { label: "Annual Savings", value: "₹12 Lakhs", useINR: true },
+      { label: "Annual Savings", value: "₹1.2 Cr", useINR: true },
       { label: "Time to Value", value: "6 months" },
     ],
     icon: "🏦",
@@ -31,12 +31,12 @@ const testimonials = [
   },
   {
     quote:
-      "Our Chennai and Bangalore contact centres run on Galactis AI Agents. 120K calls were deflected in year one, saving ₹15 Lakhs while delivering consistent, multilingual support across Tamil, Telugu, and Kannada.",
+      "Our Chennai and Bangalore contact centres run on Galactis AI Agents. 120K calls were deflected in year one, saving ₹1.5 Cr while delivering consistent, multilingual support across Tamil, Telugu, and Kannada.",
     name: "Meera Subramanian",
     title: "COO, Infosys · Chennai",
     metrics: [
       { label: "Calls Deflected", value: "120K" },
-      { label: "Annual Savings", value: "₹15 Lakhs", useINR: true },
+      { label: "Annual Savings", value: "₹1.5 Cr", useINR: true },
       { label: "Sites Powered", value: "4" },
     ],
     icon: "📞",
@@ -46,6 +46,26 @@ const testimonials = [
 export default function TestimonialCarousel() {
   const [active, setActive] = useState(0);
   const testimonial = testimonials[active];
+  const [displayedQuote, setDisplayedQuote] = useState("");
+  const [isTyping, setIsTyping] = useState(true);
+
+  // Typewriter effect
+  useEffect(() => {
+    setDisplayedQuote("");
+    setIsTyping(true);
+    let i = 0;
+    const interval = setInterval(() => {
+      if (i < testimonial.quote.length) {
+        setDisplayedQuote(testimonial.quote.slice(0, i + 1));
+        i++;
+      } else {
+        setIsTyping(false);
+        clearInterval(interval);
+      }
+    }, 20); // Speed of typing
+
+    return () => clearInterval(interval);
+  }, [active, testimonial.quote]);
 
   return (
     <section className="bg-gradient-to-b from-gray-50 to-white py-20 dark:from-gray-900 dark:to-black">
@@ -75,7 +95,12 @@ export default function TestimonialCarousel() {
                 {testimonial.icon}
               </motion.div>
               <blockquote className="mt-8 text-center text-xl font-medium leading-relaxed text-gray-800 dark:text-gray-100">
-                "{testimonial.quote}"
+                "{displayedQuote}"
+                {isTyping && <motion.span
+                  animate={{ opacity: [1, 0, 1] }}
+                  transition={{ duration: 0.8, repeat: Infinity }}
+                  className="inline-block ml-1 w-0.5 h-6 bg-purple-600 align-middle"
+                />}
               </blockquote>
               <div className="mt-6 text-center">
                 <p className="font-semibold text-gray-900 dark:text-white">{testimonial.name}</p>

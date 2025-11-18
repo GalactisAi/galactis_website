@@ -11,25 +11,25 @@ export default function CaseStudiesPage() {
         <div className="mt-8 grid gap-6 md:grid-cols-2">
           {[
             {
-              title: "Tier-1 Global Bank",
+              title: "ICICI Bank",
               industry: "Financial Services",
-              outcome: "$3.2M audit risk avoided; 28% software waste reduction",
+              outcome: "₹3.2 Cr audit risk avoided; 28% software waste reduction",
               summary: "Unified ITAM + FinOps platform delivering regulator-ready license positions and automated compliance evidence.",
             },
             {
-              title: "Northwind Telecom",
+              title: "Airtel",
               industry: "Telecommunications",
               outcome: "42% fewer P1 incidents; 99.95% uptime",
               summary: "AI-driven network observability with automated remediation playbooks and proactive customer comms.",
             },
             {
-              title: "Integrated Healthcare Network",
-              industry: "Healthcare",
+              title: "Corpay",
+              industry: "Financial Technology",
               outcome: "Zero PHI findings; 75% faster compliance documentation",
-              summary: "Clinical asset governance and automated HIPAA evidence packs across 60 facilities.",
+              summary: "Global payment automation with real-time compliance monitoring and automated audit trails across 150+ countries.",
             },
             {
-              title: "Orbit Logistics",
+              title: "LOM Logistics",
               industry: "Logistics & Supply Chain",
               outcome: "+19% OTIF performance; 45% faster customs clearance",
               summary: "Real-time asset telemetry, AI agents for trade documentation, and resilient network automation.",

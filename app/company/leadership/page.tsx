@@ -5,27 +5,27 @@ import Link from "next/link";
 
 const execTeam = [
   {
-    name: "Madhujith Rao",
+    name: "Madhujith",
     role: "Chief Executive Officer",
     bio: "Guides Galactis across product, go-to-market, and culture. Former CIO who led multi-region ITAM modernization at a tier-one bank.",
   },
   {
-    name: "Aryan Kapoor",
+    name: "Aryan",
     role: "Chief Operating Officer",
     bio: "Drives delivery, customer success, and security programs to ensure every deployment hits compliance and ROI goals.",
   },
   {
-    name: "Nikitha Iyer",
+    name: "Nikitha",
     role: "Chief Technology Officer",
     bio: "Owns platform architecture and AI roadmap after leading observability and automation teams at hyperscale cloud providers.",
   },
   {
-    name: "Natasha Mehta",
+    name: "Natasha",
     role: "Chief Marketing Officer",
     bio: "Shaped the Galactis category narrative with analysts, partners, and enterprise communities worldwide.",
   },
   {
-    name: "Harini Bhatt",
+    name: "Harini",
     role: "Chief People Officer",
     bio: "Builds the builder-operator culture across New York, Bengaluru, Dublin, and Singapore hubs.",
   },
@@ -33,17 +33,17 @@ const execTeam = [
 
 const advisors = [
   {
-    name: "Jordan Ellis",
+    name: "Jordan",
     role: "Board Director · Former CIO, Fortune 50 insurer",
     note: "Champions financial governance, regulatory strategy, and executive alignment.",
   },
   {
-    name: "Priya D’Souza",
+    name: "Priya",
     role: "Board Advisor · ex-Global Head of NetOps, Telco",
     note: "Guides network automation and telco partnerships.",
   },
   {
-    name: "Marcus Silva",
+    name: "Marcus",
     role: "Security Advisor · CISO, Healthcare group",
     note: "Shapes HIPAA/GDPR guardrails and trust programs.",
   },

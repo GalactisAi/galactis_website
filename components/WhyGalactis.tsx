@@ -11,7 +11,7 @@ const reasons = [
     title: "Single operating system for ITAM, NOC, and AI agents",
     description:
       "Inventory, contracts, telemetry, and agent automation share the same data fabric, so CIO, COO, and CTO teams finally work from one plan of record.",
-    proof: ["₹8 Lakhs average waste eliminated", "220+ systems bi-directionally synced"],
+    proof: ["₹2.8 Cr average waste eliminated", "220+ systems bi-directionally synced"],
   },
   {
     icon: Brain,
@@ -42,13 +42,32 @@ function WhyCard({ reason }: { reason: typeof reasons[0] }) {
   return (
     <motion.div
       ref={cardRef}
-      className="group rounded-3xl border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl dark:border-gray-800 dark:bg-gray-950 sm:p-7 lg:p-8"
-      style={{ scale }}
+      className="group rounded-3xl border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 overflow-hidden dark:border-gray-800 dark:bg-gray-950 sm:p-7 lg:p-8 relative"
+      style={{ scale, transformStyle: "preserve-3d" }}
+      initial={{ opacity: 0, y: 30, rotateX: 10 }}
+      whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
       whileHover={{ 
         scale: 1.02,
+        y: -8,
+        rotateY: 2,
         transition: { type: "spring", stiffness: 300, damping: 20 }
       }}
     >
+      {/* Animated gradient background on hover */}
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-emerald-500/0"
+        whileHover={{ 
+          background: "linear-gradient(to bottom right, rgba(168, 85, 247, 0.03), rgba(16, 185, 129, 0.03))"
+        }}
+        transition={{ duration: 0.3 }}
+      />
+      {/* Icon glow on hover */}
+      <motion.div
+        className="absolute top-6 left-6 w-14 h-14 bg-gradient-to-br from-purple-500 to-emerald-500 rounded-2xl opacity-0 blur-xl"
+        whileHover={{ opacity: 0.3 }}
+        transition={{ duration: 0.3 }}
+      />
               <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500/15 to-emerald-500/15 text-purple-600 dark:text-purple-300">
                 <reason.icon className="h-6 w-6" />
               </div>

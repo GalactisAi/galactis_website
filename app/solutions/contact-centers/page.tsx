@@ -4,30 +4,29 @@ export default function ContactCentersPage() {
   return (
     <IndustryPage
       title="Contact Centers"
-      subtitle="TCPA and GDPR compliant customer engagement with AI-powered voice, chat, and workflow automation."
+      subtitle="TRAI and DPDP Act compliant customer engagement with AI-powered voice, chat, and workflow automation for Indian markets."
       pains={[
-        "High agent turnover drives inconsistent CX and rising operational costs.",
-        "Legacy IVR and siloed systems prolong handle times and lower CSAT.",
-        "Regulatory compliance (TCPA, GDPR) requires robust consent and data handling controls.",
+        "High agent turnover and multilingual requirements drive inconsistent CX and rising operational costs.",
+        "Legacy IVR and siloed CRM systems prolong handle times, lower CSAT, and create customer frustration.",
+        "Regulatory compliance (TRAI, DPDP Act, DND Registry) requires robust consent management and data handling controls.",
       ]}
       solutions={[
-        "AI agents triage and resolve Tier 1 inquiries with sentiment-aware escalation.",
-        "Integrated knowledge base and workflow automation reduce handle time by surfacing next-best actions.",
-        "Consent tracking, call recording governance, and automated compliance reporting.",
+        "AI agents triage and resolve Tier 1 inquiries in English, Hindi, and regional languages with sentiment-aware escalation.",
+        "Integrated knowledge base and workflow automation reduce handle time by surfacing next-best actions across all channels.",
+        "Consent tracking, call recording governance, DND registry compliance, and automated DPDP reporting.",
       ]}
-      compliance={["TCPA", "GDPR", "PCI-DSS", "SOC2", "ISO 27001"]}
+      compliance={["TRAI DND Registry", "DPDP Act 2023", "PCI-DSS", "SOC2", "ISO 27001"]}
       caseStudy={{
-        client: "Skyline Contact Services",
-        challenge: "Rising call volumes and regulatory scrutiny created backlog and fines.",
-        solution: "Galactis deployed voice and chat agents integrated with CRM, QA analytics, and compliance workflows.",
-        result: "30% reduction in average handle time and 18-point increase in NPS within 90 days.",
+        client: "Infosys",
+        challenge: "Rising call volumes across global delivery centers and DPDP compliance requirements created backlog and regulatory risk.",
+        solution: "Galactis deployed multilingual voice and chat agents integrated with CRM, QA analytics, and compliance workflows.",
+        result: "30% reduction in average handle time, 18-point NPS increase, and ₹2.8 Cr saved in operational costs within 90 days.",
       }}
       metrics={[
         { label: "Average Handle Time", value: "30% reduction" },
         { label: "First Contact Resolution", value: "+22% improvement" },
-        { label: "Compliance Exceptions", value: "Zero TCPA violations post-deployment" },
+        { label: "Compliance Violations", value: "Zero TRAI/DPDP violations" },
       ]}
     />
   );
 }
-

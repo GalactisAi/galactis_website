@@ -18,7 +18,7 @@ const useCases: UseCase[] = [
     description:
       "Normalize contracts across 150+ countries, feed finance with real-time compliance, and automate true-ups with zero business disruption.",
     metrics: [
-      { label: "Redundant spend removed", value: "₹8 Lakhs" },
+      { label: "Redundant spend removed", value: "₹2.8 Cr" },
       { label: "Audit prep time", value: "8 weeks → 7 days" },
     ],
     playbooks: ["Oracle & Microsoft reconciliations", "Regulator-ready evidence packs", "Automated remediation with ITSM hand-offs"],

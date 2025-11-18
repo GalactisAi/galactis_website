@@ -1,11 +1,14 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSpring, animated } from '@react-spring/web';
+import confetti from 'canvas-confetti';
 import { trackEvent } from '@/lib/analytics';
 import { convertUSDtoINR, formatIndianNumber } from '@/lib/currency';
+import MagneticButton from './MagneticButton';
 
 export default function HomepageROICalculator() {
-  // Default budget in INR (₹1.77 Cr = ~$2M USD)
-  const defaultBudgetINR = convertUSDtoINR(2000000);
+  // Default budget in INR (₹4.2 Lakhs = ~$500K USD)
+  const defaultBudgetINR = convertUSDtoINR(500000);
   const [assets, setAssets] = useState(5000);
   const [budget, setBudget] = useState(defaultBudgetINR);
   const [hours, setHours] = useState(40);
@@ -18,9 +21,25 @@ export default function HomepageROICalculator() {
   const assetCostINR = convertUSDtoINR(50);
   const roi = Math.round((savings / (assets * assetCostINR)) * 100);
 
+  // Animated number springs
+  const savingsSpring = useSpring({ number: savings, from: { number: 0 }, config: { tension: 20, friction: 10 } });
+  const timeSavedSpring = useSpring({ number: timeSaved, from: { number: 0 }, config: { tension: 20, friction: 10 } });
+  const roiSpring = useSpring({ number: roi, from: { number: 0 }, config: { tension: 20, friction: 10 } });
+
   const handleGetReport = () => {
+    // Confetti celebration
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 },
+      colors: ['#9333ea', '#4f46e5', '#14b8a6'],
+    });
+    
     trackEvent('roi_calculator_submitted', { assets, budget, hours, savings });
-    window.location.href = '/contact?source=roi-calculator';
+    
+    setTimeout(() => {
+      window.location.href = '/contact?source=roi-calculator';
+    }, 500);
   };
 
   return (
@@ -75,7 +94,7 @@ export default function HomepageROICalculator() {
                 className="mt-2 w-full rounded-lg border border-gray-300 px-4 py-3 text-lg dark:border-gray-700 dark:bg-gray-900"
               />
               <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
-                Default: {formatIndianNumber(defaultBudgetINR)} (~$2M USD)
+                Default: {formatIndianNumber(defaultBudgetINR)} (~$500K USD)
               </p>
             </div>
 
@@ -100,25 +119,36 @@ export default function HomepageROICalculator() {
             <dl className="mt-6 space-y-6">
               <div>
                 <dt className="text-sm font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">Annual Savings</dt>
-                <dd className="mt-1 text-4xl font-bold text-green-600 dark:text-green-400">{formatIndianNumber(savings)}</dd>
+                <dd className="mt-1 text-4xl font-bold text-green-600 dark:text-green-400">
+                  <animated.span>
+                    {savingsSpring.number.to(n => formatIndianNumber(Math.round(n)))}
+                  </animated.span>
+                </dd>
               </div>
               <div>
                 <dt className="text-sm font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">Time Saved</dt>
                 <dd className="mt-1 text-4xl font-bold text-blue-600 dark:text-blue-400">
-                  {timeSaved.toLocaleString()} <span className="text-2xl">hrs/year</span>
+                  <animated.span>
+                    {timeSavedSpring.number.to(n => Math.round(n).toLocaleString())}
+                  </animated.span> <span className="text-2xl">hrs/year</span>
                 </dd>
               </div>
               <div>
                 <dt className="text-sm font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400">ROI</dt>
-                <dd className="mt-1 text-4xl font-bold text-purple-600 dark:text-purple-400">{roi}%</dd>
+                <dd className="mt-1 text-4xl font-bold text-purple-600 dark:text-purple-400">
+                  <animated.span>
+                    {roiSpring.number.to(n => Math.round(n))}
+                  </animated.span>%
+                </dd>
               </div>
             </dl>
-            <button
+            <MagneticButton
               onClick={handleGetReport}
-              className="mt-8 w-full rounded-lg bg-purple-600 px-6 py-4 text-lg font-semibold text-white transition hover:bg-purple-700"
+              className="mt-8 w-full rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 px-6 py-4 text-lg font-semibold text-white shadow-lg hover:shadow-xl hover:from-purple-700 hover:to-indigo-700 transition-all duration-300"
+              magneticStrength={0.2}
             >
-              Get Custom ROI Report
-            </button>
+              Get Custom ROI Report 🎉
+            </MagneticButton>
           </div>
         </div>
       </div>
