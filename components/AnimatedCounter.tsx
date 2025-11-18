@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSpring, animated } from "@react-spring/web";
 import { useInView } from "react-intersection-observer";
 

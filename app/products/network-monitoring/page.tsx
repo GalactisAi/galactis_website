@@ -9,7 +9,7 @@ import Link from "next/link";
 import { 
   Activity, Zap, Shield, Network, CheckCircle2, ArrowRight,
   Radio, TrendingDown, Clock, AlertTriangle, GitBranch, 
-  Cpu, Cloud, Globe, Server
+  Cpu, Globe
 } from "lucide-react";
 import CompanyLogo from "@/components/CompanyLogo";
 

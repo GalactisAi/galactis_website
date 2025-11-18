@@ -8,7 +8,7 @@ import { trackEvent } from "@/lib/analytics";
 import { motion } from "framer-motion";
 import { 
   CheckCircle2, Clock, Shield, Users, TrendingUp, 
-  ArrowRight, Zap, Globe, Lock, Target, ChevronDown 
+  ArrowRight, Zap, Globe, Target, ChevronDown 
 } from "lucide-react";
 import { useState } from "react";
 

@@ -9,8 +9,8 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { 
   Package, Shield, TrendingUp, Database, CheckCircle2, 
-  ArrowRight, BarChart3, FileText, AlertCircle, Clock,
-  Layers, Target, DollarSign, Lock
+  ArrowRight, FileText, AlertCircle, Clock,
+  Layers, DollarSign, Lock
 } from "lucide-react";
 import CompanyLogo from "@/components/CompanyLogo";
 

@@ -10,9 +10,8 @@ import Link from "next/link";
 import { 
   Bot, Sparkles, Shield, Zap, Users, MessageSquare, 
   BarChart3, Workflow, Database, Lock, CheckCircle2, 
-  ArrowRight, TrendingUp, Clock, Target, Code, Globe
+  ArrowRight, TrendingUp, Clock, Code, Globe
 } from "lucide-react";
-import { useState } from "react";
 import CompanyLogo from "@/components/CompanyLogo";
 
 const pillars = [
@@ -118,8 +117,6 @@ const pricing = [
 ];
 
 export default function AIAgentsPage() {
-  const [activePillar, setActivePillar] = useState(0);
-
   return (
     <div className="min-h-screen bg-white dark:bg-black">
       <JsonLd
@@ -301,10 +298,7 @@ export default function AIAgentsPage() {
                 whileHover={{ scale: 1.03, y: -5 }}
                 className="group relative overflow-hidden rounded-3xl border border-zinc-200 bg-white p-8 shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
               >
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-teal-500/0"
-                  whileHover={{ from: "purple-500/5", to: "teal-500/5" }}
-                />
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-teal-500/0 transition-all duration-300 group-hover:from-purple-500/5 group-hover:to-teal-500/5" />
                 <div className="relative">
                   <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-purple-600 to-teal-600 shadow-lg">
                     <pillar.icon className="h-7 w-7 text-white" />

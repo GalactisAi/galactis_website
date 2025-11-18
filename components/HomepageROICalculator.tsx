@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import confetti from 'canvas-confetti';
 import { trackEvent } from '@/lib/analytics';

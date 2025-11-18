@@ -15,16 +15,12 @@ import CaseStudyCards from "@/components/CaseStudyCards";
 import PlatformBlueprint from "@/components/PlatformBlueprint";
 import UseCaseTabs from "@/components/UseCaseTabs";
 import EnterpriseCTA from "@/components/EnterpriseCTA";
-import ScrollReveal from "@/components/ScrollReveal";
 import PlatformShowcase from "@/components/PlatformShowcase";
 import IndustrySpotlightCards from "@/components/IndustrySpotlightCards";
-import InsightHighlightCards from "@/components/InsightHighlightCards";
 import ImpactStreams from "@/components/ImpactStreams";
 import CustomerProof from "@/components/CustomerProof";
 import LifeAtGalactis from "@/components/LifeAtGalactis";
 import StickyCTABand from "@/components/StickyCTABand";
-import { ArrowUpRight, Code2, Shield, Share2 } from "lucide-react";
-import Link from "next/link";
 
 const industrySpotlights = [
   {
@@ -44,45 +40,6 @@ const industrySpotlights = [
     summary: "HIPAA-ready IT + biomedical operations with validation workflows and PHI guardrails.",
     bullets: ["0 PHI findings", "75% faster compliance documentation"],
     href: "/solutions/healthcare",
-  },
-];
-
-const builderHighlights = [
-  {
-    title: "API-first platform",
-    body: "OpenAPI 3.1 spec, Postman collection, and CLI from galactis.ai/developers.",
-    icon: Code2,
-  },
-  {
-    title: "Compliance-aware sandboxes",
-    body: "Mirrors production controls for SOC 2, ISO 27001, HIPAA, and GDPR.",
-    icon: Shield,
-  },
-  {
-    title: "Connectors & events",
-    body: "200+ integrations plus streaming into EventBridge, Kafka, or webhooks.",
-    icon: Share2,
-  },
-];
-
-const insightHighlights = [
-  {
-    type: "Case study",
-    title: "Tier-1 Global Bank",
-    snippet: "$3.2M audit risk avoided; 28% software waste reduction.",
-    href: "/resources/case-studies",
-  },
-  {
-    type: "Guide",
-    title: "Network Automation Reference Kit",
-    snippet: "Reference architectures and integration tips we share during partner enablement.",
-    href: "/resources/case-studies",
-  },
-  {
-    type: "Blog",
-    title: "Architecting Agentic Workflows for Regulated Industries",
-    snippet: "Design patterns for AI agents with governance, approvals, and audit trails.",
-    href: "/resources/blog",
   },
 ];
 

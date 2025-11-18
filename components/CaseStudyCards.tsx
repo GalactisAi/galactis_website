@@ -80,10 +80,7 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
       }}
     >
       {/* Animated background gradient on hover */}
-      <motion.div
-        className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-teal-500/0"
-        whileHover={{ from: "purple-500/5", to: "teal-500/5" }}
-      />
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-teal-500/0 transition-all duration-300 group-hover:from-purple-500/5 group-hover:to-teal-500/5" />
       <div className="relative flex items-center gap-4 text-gray-900 dark:text-gray-100">
         <CompanyLogo company={study.companyName} size={56} className="shrink-0" />
         <div>

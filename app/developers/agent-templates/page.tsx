@@ -3,7 +3,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContactSalesModal from "@/components/ContactSalesModal";
-import { useEffect } from "react";
 
 const templates = [
   {

@@ -14,7 +14,7 @@ export default function StickyCTABand() {
   return (
     <div className="sticky bottom-4 z-40 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto flex max-w-4xl flex-wrap gap-3 rounded-3xl border border-purple-300/50 bg-white/90 p-4 text-sm shadow-2xl backdrop-blur dark:border-purple-700/50 dark:bg-black/80">
-        {ctas.map((cta, index) => (
+        {ctas.map((cta) => (
           <motion.div
             key={cta.label}
             whileHover={{ y: -2, scale: 1.02 }}

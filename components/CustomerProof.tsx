@@ -13,8 +13,6 @@ const awards = [
   { title: "Best AI Ops Platform", year: "SaaS Awards" },
 ];
 
-const sliderMarks = ["IT Assets", "Budget", "Manual Hours"];
-
 export default function CustomerProof() {
   const [assets, setAssets] = useState(5000);
   const [budget, setBudget] = useState(2);

@@ -6,7 +6,6 @@ import ContactSalesModal from "@/components/ContactSalesModal";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Clock, Users, Rocket, Mail, MapPin, ArrowRight, CheckCircle2 } from "lucide-react";
-import { useState } from "react";
 import MagneticButton from "@/components/MagneticButton";
 
 const funnelSteps = [
@@ -30,17 +29,7 @@ const funnelSteps = [
   },
 ];
 
-const touchpoints = [
-  { label: "Email", value: "info@galactis.ai" },
-  { 
-    label: "Office", 
-    value: "Wing A, Greenwood, Rajiv Gandhi Salai, Egattur, Kancheepuram, Tamil Nadu - 603103" 
-  },
-];
-
 export default function ContactPage() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-purple-50/20 to-white dark:from-black dark:via-purple-950/10 dark:to-black">
       <Navbar />

@@ -2,7 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
-import { Users, Globe2, Podcast, Sparkles, Zap, Heart, Code, Coffee, Rocket, Target, Blocks, type LucideIcon } from "lucide-react";
+import { Users, Globe2, Podcast, Sparkles, Zap, Heart, Code, Coffee, Rocket, Target, Blocks } from "lucide-react";
 import { useRef } from "react";
 
 const leaders = [
