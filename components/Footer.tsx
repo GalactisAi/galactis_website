@@ -21,9 +21,9 @@ const resourceLinks = [
 ];
 
 const companyLinks = [
-  { label: "About", href: "/company/about" },
+  { label: "About", href: "/company" },
   { label: "Leadership", href: "/company/leadership" },
-  { label: "Careers", href: "/company/careers" },
+  { label: "Careers", href: "/careers" },
   { label: "Pricing", href: "/pricing" },
   { label: "Contact", href: "/contact" },
 ];
@@ -35,20 +35,20 @@ export default function Footer() {
       <div className="relative z-10">
         <div className="mx-auto max-w-6xl px-4 py-16 text-white sm:px-6 lg:px-8">
           <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
-            <div>
+          <div>
               <Link href="/" className="mb-4 inline-flex items-center gap-2">
-                <img
-                  src="/galactis-logo.svg"
+              <img 
+                src="/galactis-logo.svg" 
                   alt="Galactis.ai logo"
                   className="h-10 w-auto"
-                />
+              />
                 <span className="text-base font-semibold tracking-wide">Galactis.ai</span>
-              </Link>
+            </Link>
               <p className="text-sm text-white/70">
                 The leading platform for technology leaders. ITAM, NetOps, and AI agents.
-              </p>
+            </p>
               <div className="mt-4 space-y-1 text-xs text-white/60">
-                <p>info@galactis.ai</p>
+              <p>info@galactis.ai</p>
                 <p>Wing A, Greenwood · Rajiv Gandhi Salai · Chennai, IN</p>
               </div>
               <div className="mt-5 flex gap-3">
@@ -58,36 +58,36 @@ export default function Footer() {
                 <FooterSocial href="https://www.instagram.com/galactis_tech/" label="Instagram">
                   <Instagram className="h-4 w-4" />
                 </FooterSocial>
-              </div>
             </div>
-            <FooterColumn heading="Products" links={productLinks} />
-            <FooterColumn heading="Solutions" links={solutionLinks} />
-            <FooterColumn heading="Resources" links={resourceLinks} />
-            <FooterColumn heading="Company" links={companyLinks} />
           </div>
+          <FooterColumn heading="Products" links={productLinks} />
+          <FooterColumn heading="Solutions" links={solutionLinks} />
+          <FooterColumn heading="Resources" links={resourceLinks} />
+            <FooterColumn heading="Company" links={companyLinks} />
+      </div>
 
           <div className="mt-16 rounded-3xl border border-white/10 bg-white/5 p-6">
-            <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-              <div>
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-200">Security</p>
                 <p className="text-lg font-semibold text-white">Enterprise certifications</p>
                 <p className="text-xs text-white/70">
                   Mapped to the documents hosted on galactis.ai/security. Request evidence any time.
-                </p>
-              </div>
+              </p>
+            </div>
               <div className="flex flex-wrap gap-3">
-                {["SOC 2 Type II", "ISO 27001", "HIPAA", "GDPR"].map((badge) => (
+              {["SOC 2 Type II", "ISO 27001", "HIPAA", "GDPR"].map((badge) => (
                   <div key={badge} className="flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-wide">
                     <CheckCircle className="h-4 w-4 text-emerald-300" />
                     {badge}
-                  </div>
-                ))}
-              </div>
+                </div>
+              ))}
+            </div>
               <Link
-                href="/security"
+              href="/security"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-300 transition hover:text-white"
-              >
-                View security brief →
+            >
+              View security brief →
               </Link>
             </div>
           </div>

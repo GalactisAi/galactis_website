@@ -8,8 +8,8 @@ import { X, Menu, ChevronDown } from "lucide-react";
 
 const navItems = [
   { label: "Partners", href: "/partner" },
-  { label: "Careers", href: "/company/careers" },
-  { label: "Company", href: "/company/about" },
+  { label: "Careers", href: "/careers" },
+  { label: "Company", href: "/company" },
   { label: "Pricing", href: "/pricing" },
 ];
 

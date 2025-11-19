@@ -88,7 +88,7 @@ export default function LeadershipPage() {
               <h2 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100">Executive team</h2>
               <p className="text-sm text-zinc-500 dark:text-zinc-400">Distributed across New York, Bengaluru, Dublin, and Singapore.</p>
             </div>
-            <Link href="/company/careers" className="text-sm font-semibold text-purple-600 hover:text-purple-700 dark:text-purple-300">
+            <Link href="/careers" className="text-sm font-semibold text-purple-600 hover:text-purple-700 dark:text-purple-300">
               Join the team →
             </Link>
           </div>

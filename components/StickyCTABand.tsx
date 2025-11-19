@@ -7,7 +7,7 @@ import { ArrowUpRight } from "lucide-react";
 const ctas = [
   { label: "Get custom ROI report", href: "/contact?source=roi" },
   { label: "Book design session", href: "/contact?source=design" },
-  { label: "Explore careers", href: "/company/careers" },
+  { label: "Explore careers", href: "/careers" },
 ];
 
 export default function StickyCTABand() {

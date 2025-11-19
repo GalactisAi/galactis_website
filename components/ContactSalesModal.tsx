@@ -84,7 +84,7 @@ export default function ContactSalesModal({ intent: initialIntent = "sales", par
       ...(initialPartnerType && intent === "partner" ? { partnerType: initialPartnerType } : {}),
     },
   });
-  
+
   const {
     register,
     handleSubmit,

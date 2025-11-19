@@ -12,7 +12,6 @@ const partners = [
   { name: "TVS Motors", metric: "Manufacturing ITAM & automation" },
   { name: "Airtel", metric: "Predictive network assurance" },
   { name: "Ashok Leyland", metric: "OT/IT convergence platform" },
-  { name: "LOM Logistics", metric: "Supply chain visibility & automation" },
   { name: "Corpay", metric: "Financial operations & payments" },
 ];
 
@@ -35,67 +34,121 @@ export default function CustomersMarquee() {
           <div className="relative mt-8 overflow-hidden">
             <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-zinc-50/90 dark:from-zinc-900/90" />
             <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-zinc-50/90 dark:from-zinc-900/90" />
-            <div className="flex min-w-full gap-6 py-4 animate-marquee">
-              {[...partners, ...partners].map((partner, index) => (
-                <motion.div
-                  key={`${partner.name}-${index}`}
-                  className="group relative flex min-w-[260px] items-center gap-4 rounded-2xl border border-zinc-200/60 bg-white px-5 py-4 shadow-md dark:border-zinc-700/60 dark:bg-zinc-800/90"
-                  style={{ transformStyle: "preserve-3d" }}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: index * 0.03, duration: 0.4 }}
-                  whileHover={{
-                    scale: 1.05,
-                    rotateY: 5,
-                    rotateX: 3,
-                    z: 50,
-                    transition: { type: "spring", stiffness: 300, damping: 20 }
-                  }}
-                >
-                  <CompanyLogo company={partner.name} size={56} />
-                  <div className="flex-1">
-                    <p className="text-base font-bold text-zinc-900 dark:text-zinc-100">
-                      {partner.name}
-                    </p>
-                    <p className="mt-1 text-xs leading-tight text-zinc-600 dark:text-zinc-400">
-                      {partner.metric}
-                    </p>
-                  </div>
-                  {/* Animated gradient overlay on hover */}
-                  <motion.div 
-                    className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500/0 via-transparent to-indigo-500/0"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 0.15 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                  {/* Glow effect */}
+            <div className="flex gap-6 py-4">
+              <motion.div
+                className="flex min-w-full shrink-0 gap-6"
+                animate={{
+                  x: [0, -100 + "%"],
+                }}
+                transition={{
+                  x: {
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    duration: 40,
+                    ease: "linear",
+                  },
+                }}
+              >
+                {partners.map((partner, index) => (
                   <motion.div
-                    className="pointer-events-none absolute -inset-1 rounded-2xl bg-gradient-to-r from-purple-500 to-teal-500 opacity-0 blur-xl"
-                    whileHover={{ opacity: 0.3 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </motion.div>
-              ))}
+                    key={`${partner.name}-${index}`}
+                    className="group relative flex min-w-[260px] items-center gap-4 rounded-2xl border border-zinc-200/60 bg-white px-5 py-4 shadow-md dark:border-zinc-700/60 dark:bg-zinc-800/90"
+                    style={{ transformStyle: "preserve-3d" }}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.03, duration: 0.4 }}
+                    whileHover={{
+                      scale: 1.05,
+                      rotateY: 5,
+                      rotateX: 3,
+                      z: 50,
+                      transition: { type: "spring", stiffness: 300, damping: 20 }
+                    }}
+                  >
+                    <CompanyLogo company={partner.name} size={56} />
+                    <div className="flex-1">
+                      <p className="text-base font-bold text-zinc-900 dark:text-zinc-100">
+                        {partner.name}
+                      </p>
+                      <p className="mt-1 text-xs leading-tight text-zinc-600 dark:text-zinc-400">
+                        {partner.metric}
+                      </p>
+                    </div>
+                    {/* Animated gradient overlay on hover */}
+                    <motion.div 
+                      className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500/0 via-transparent to-indigo-500/0"
+                      initial={{ opacity: 0 }}
+                      whileHover={{ opacity: 0.15 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    {/* Glow effect */}
+                    <motion.div
+                      className="pointer-events-none absolute -inset-1 rounded-2xl bg-gradient-to-r from-purple-500 to-teal-500 opacity-0 blur-xl"
+                      whileHover={{ opacity: 0.3 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </motion.div>
+                ))}
+              </motion.div>
+              <motion.div
+                className="flex min-w-full shrink-0 gap-6"
+                animate={{
+                  x: [0, -100 + "%"],
+                }}
+                transition={{
+                  x: {
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    duration: 40,
+                    ease: "linear",
+                  },
+                }}
+              >
+                {partners.map((partner, index) => (
+                  <motion.div
+                    key={`${partner.name}-duplicate-${index}`}
+                    className="group relative flex min-w-[260px] items-center gap-4 rounded-2xl border border-zinc-200/60 bg-white px-5 py-4 shadow-md dark:border-zinc-700/60 dark:bg-zinc-800/90"
+                    style={{ transformStyle: "preserve-3d" }}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.03, duration: 0.4 }}
+                    whileHover={{
+                      scale: 1.05,
+                      rotateY: 5,
+                      rotateX: 3,
+                      z: 50,
+                      transition: { type: "spring", stiffness: 300, damping: 20 }
+                    }}
+                  >
+                    <CompanyLogo company={partner.name} size={56} />
+                    <div className="flex-1">
+                      <p className="text-base font-bold text-zinc-900 dark:text-zinc-100">
+                        {partner.name}
+                      </p>
+                      <p className="mt-1 text-xs leading-tight text-zinc-600 dark:text-zinc-400">
+                        {partner.metric}
+                      </p>
+                    </div>
+                    {/* Animated gradient overlay on hover */}
+                    <motion.div 
+                      className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-purple-500/0 via-transparent to-indigo-500/0"
+                      initial={{ opacity: 0 }}
+                      whileHover={{ opacity: 0.15 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                    {/* Glow effect */}
+                    <motion.div
+                      className="pointer-events-none absolute -inset-1 rounded-2xl bg-gradient-to-r from-purple-500 to-teal-500 opacity-0 blur-xl"
+                      whileHover={{ opacity: 0.3 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </motion.div>
+                ))}
+              </motion.div>
             </div>
           </div>
         </div>
       </div>
-      <style jsx>{`
-        .animate-marquee {
-          animation: marquee 40s linear infinite;
-        }
-        .animate-marquee:hover {
-          animation-play-state: paused;
-        }
-        @keyframes marquee {
-          0% {
-            transform: translateX(0%);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-      `}</style>
     </section>
   );
 }

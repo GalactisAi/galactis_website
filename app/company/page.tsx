@@ -143,7 +143,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="mt-6 max-w-3xl text-lg leading-relaxed text-zinc-700 dark:text-zinc-300"
               >
-                Galactis.ai unifies IT Asset Management, Network Intelligence, and AI Agents so enterprises can see every asset, predict disruption, and orchestrate autonomous operations. We are a distributed team of builders, operators, and researchers obsessed with measurable outcomes.
+            Galactis.ai unifies IT Asset Management, Network Intelligence, and AI Agents so enterprises can see every asset, predict disruption, and orchestrate autonomous operations. We are a distributed team of builders, operators, and researchers obsessed with measurable outcomes.
               </motion.p>
               
               {/* Animated KPI Stats */}
@@ -164,19 +164,19 @@ export default function AboutPage() {
                       <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
                         {stat.label}
                       </p>
-                    </div>
+              </div>
                   </motion.div>
                 ))}
               </ScrollRevealStagger>
             </div>
-          </section>
+        </section>
         </ScrollReveal>
 
         {/* Leadership Section - Enhanced 3D Glass Cards */}
         <ScrollReveal direction="up" delay={0.2}>
           <section className="mt-20">
-            <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-              <div>
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.3em] text-purple-600 dark:text-purple-400">Leadership</p>
                 <h2 className="mt-2 text-4xl font-bold text-zinc-900 dark:text-white lg:text-5xl">
                   Operators who{" "}
@@ -184,20 +184,20 @@ export default function AboutPage() {
                     shipped at scale
                   </span>
                 </h2>
-              </div>
+            </div>
               <Link 
-                href="/company/careers" 
+                href="/careers" 
                 className="group inline-flex items-center gap-2 text-sm font-semibold text-purple-600 transition-all hover:gap-4 hover:text-purple-700 dark:text-purple-300"
               >
                 Meet the team
                 <span className="transition-transform group-hover:translate-x-1">→</span>
-              </Link>
-            </div>
+            </Link>
+          </div>
             
             <div className="mt-12 space-y-12">
               {/* Top Row - 3 Cards */}
               <ScrollRevealStagger staggerDelay={0.15} className="grid gap-6 md:grid-cols-3">
-                {leadershipTop.map((leader) => (
+              {leadershipTop.map((leader) => (
                   <motion.div
                     key={leader.name}
                     whileHover={{ scale: 1.03, y: -8 }}
@@ -234,9 +234,9 @@ export default function AboutPage() {
                       <p className="mt-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                         {leader.bio}
                       </p>
-                    </div>
+                </div>
                   </motion.div>
-                ))}
+              ))}
               </ScrollRevealStagger>
               
               {/* Bottom Row - 2 Cards */}
@@ -259,7 +259,7 @@ export default function AboutPage() {
                       <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-purple-200 bg-purple-50 px-3 py-1 text-xs font-semibold text-purple-700 dark:border-purple-800 dark:bg-purple-900/30 dark:text-purple-300">
                         <Sparkles className="h-3 w-3" />
                         {leader.badge}
-                      </div>
+            </div>
                       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-purple-600 dark:text-purple-400">
                         {leader.title}
                       </p>
@@ -272,9 +272,9 @@ export default function AboutPage() {
                       <p className="mt-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                         {leader.bio}
                       </p>
-                    </div>
+                </div>
                   </motion.div>
-                ))}
+              ))}
               </ScrollRevealStagger>
             </div>
           </section>
@@ -306,11 +306,11 @@ export default function AboutPage() {
                     <p className="mt-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                       {value.description}
                     </p>
-                  </div>
+          </div>
                 </motion.div>
               );
             })}
-          </section>
+        </section>
         </ScrollReveal>
 
         {/* Interactive Timeline */}
@@ -347,21 +347,21 @@ export default function AboutPage() {
                         <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
                           {milestone.detail}
                         </p>
-                      </div>
+                </div>
                     </motion.div>
                   );
                 })}
-              </div>
             </div>
-          </section>
+          </div>
+        </section>
         </ScrollReveal>
 
         {/* Culture & Careers CTA - Enhanced */}
         <ScrollReveal direction="up" delay={0.5}>
           <section className="mt-20 rounded-3xl border border-purple-200 bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 px-8 py-12 text-white shadow-2xl dark:border-purple-900">
-            <div className="grid gap-8 md:grid-cols-2">
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-white/80">Culture</p>
+          <div className="grid gap-8 md:grid-cols-2">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-white/80">Culture</p>
                 <h2 className="mt-4 text-3xl font-bold">We celebrate curious, outcome-obsessed teams</h2>
                 <ul className="mt-6 space-y-4 text-sm text-white/90">
                   <li className="flex items-start gap-3">
@@ -376,25 +376,25 @@ export default function AboutPage() {
                     <span className="mt-1 text-purple-300">•</span>
                     <span>AI lab for open research, compliance, and safety innovation.</span>
                   </li>
-                </ul>
-              </div>
+              </ul>
+            </div>
               <div className="rounded-2xl border border-white/30 bg-white/10 p-8 backdrop-blur-md">
                 <p className="text-xl font-bold">We are hiring across product, engineering, GTM, and customer success.</p>
                 <p className="mt-3 text-sm text-white/80">
                   Join us to ship platforms that redefine how enterprises run technology.
                 </p>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                  <Link
-                    href="/company/careers"
+              <Link
+                href="/careers"
                     className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-white px-6 py-4 text-sm font-bold text-purple-700 shadow-xl transition-all hover:shadow-2xl"
-                  >
-                    Explore Careers
+              >
+                Explore Careers
                     <span className="transition-transform group-hover:translate-x-1">→</span>
-                  </Link>
+              </Link>
                 </motion.div>
-              </div>
             </div>
-          </section>
+          </div>
+        </section>
         </ScrollReveal>
       </main>
       <Footer />

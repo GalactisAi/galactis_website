@@ -54,6 +54,22 @@ const nextConfig: NextConfig = {
   // Turbopack configuration (Next.js 16+)
   // Disabled due to runtime chunk issues - using webpack instead
   // turbopack: {},
+
+  // Redirects for SEO migration
+  async redirects() {
+    return [
+      {
+        source: "/company/careers",
+        destination: "/careers",
+        permanent: true, // 301 redirect for SEO
+      },
+      {
+        source: "/company/about",
+        destination: "/company",
+        permanent: true, // 301 redirect for SEO
+      },
+    ];
+  },
 };
 
 export default nextConfig;

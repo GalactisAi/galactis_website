@@ -42,7 +42,7 @@ function WhyCard({ reason }: { reason: typeof reasons[0] }) {
   return (
     <motion.div
       ref={cardRef}
-      className="group rounded-3xl border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 overflow-hidden dark:border-gray-800 dark:bg-gray-950 sm:p-7 lg:p-8 relative"
+      className="group flex h-full rounded-3xl border border-gray-200 bg-white p-6 shadow-lg transition-all duration-300 overflow-hidden dark:border-gray-800 dark:bg-gray-950 sm:p-7 lg:p-8 relative"
       style={{ scale, transformStyle: "preserve-3d" }}
       initial={{ opacity: 0, y: 30, rotateX: 10 }}
       whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
@@ -68,19 +68,21 @@ function WhyCard({ reason }: { reason: typeof reasons[0] }) {
         whileHover={{ opacity: 0.3 }}
         transition={{ duration: 0.3 }}
       />
-              <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500/15 to-emerald-500/15 text-purple-600 dark:text-purple-300">
-                <reason.icon className="h-6 w-6" />
-              </div>
-              <h3 className="mt-4 text-xl font-semibold text-gray-900 dark:text-white">{reason.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-gray-600 dark:text-gray-400">{reason.description}</p>
-              <ul className="mt-4 space-y-2 text-sm text-gray-800 dark:text-gray-200">
-                {reason.proof.map((item) => (
-                  <li key={item} className="flex items-start gap-2">
-                    <span className="mt-1 h-2 w-2 rounded-full bg-emerald-500" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-      </ul>
+      <div className="relative flex flex-col w-full">
+        <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500/15 to-emerald-500/15 text-purple-600 dark:text-purple-300">
+          <reason.icon className="h-6 w-6" />
+        </div>
+        <h3 className="mt-4 text-xl font-semibold text-gray-900 dark:text-white">{reason.title}</h3>
+        <p className="mt-3 text-sm leading-relaxed text-gray-600 dark:text-gray-400 flex-grow">{reason.description}</p>
+        <ul className="mt-4 space-y-2 text-sm text-gray-800 dark:text-gray-200">
+          {reason.proof.map((item) => (
+            <li key={item} className="flex items-start gap-2">
+              <span className="mt-1 h-2 w-2 rounded-full bg-emerald-500" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </motion.div>
   );
 }

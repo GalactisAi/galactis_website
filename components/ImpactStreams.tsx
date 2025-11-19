@@ -148,24 +148,24 @@ export default function ImpactStreams() {
                   const ActiveIcon = streamCarousel[active].icon;
                   const item = streamCarousel[active];
                   return (
-                    <motion.div
+                <motion.div
                       key={item.label}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      transition={{ duration: 0.4 }}
-                      className="rounded-2xl border border-zinc-200/70 bg-white/70 p-6 shadow-inner dark:border-zinc-800/70 dark:bg-zinc-900/70"
-                    >
-                      <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-purple-600">
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4 }}
+                  className="rounded-2xl border border-zinc-200/70 bg-white/70 p-6 shadow-inner dark:border-zinc-800/70 dark:bg-zinc-900/70"
+                >
+                  <div className="flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.3em] text-purple-600">
                         <ActiveIcon className="h-4 w-4" />
                         {item.label}
-                      </div>
-                      <p className="mt-4 text-3xl font-bold text-zinc-900 dark:text-white">
+                  </div>
+                  <p className="mt-4 text-3xl font-bold text-zinc-900 dark:text-white">
                         {item.kpi}
-                      </p>
+                  </p>
                       <p className="mt-4 text-lg text-zinc-700 dark:text-zinc-200">{item.quote}</p>
                       <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">{item.person}</p>
-                    </motion.div>
+                </motion.div>
                   );
                 })()}
               </AnimatePresence>

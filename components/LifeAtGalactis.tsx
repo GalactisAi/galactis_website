@@ -185,14 +185,14 @@ export default function LifeAtGalactis() {
                 </motion.div>
 
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.35em] text-purple-500">{leader.role}</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.35em] text-purple-500">{leader.role}</p>
                   <h3 className="mt-2 text-2xl font-bold text-zinc-900 dark:text-white">{leader.name}</h3>
                   <p className="mt-1 text-sm font-semibold text-transparent bg-gradient-to-r from-purple-600 to-teal-600 bg-clip-text">{leader.focus}</p>
                 </div>
                 
                 <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">{leader.quote}</p>
                 
-                <Link href="/company/about" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-purple-600 transition hover:text-purple-800 hover:gap-3">
+                <Link href="/company" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-purple-600 transition hover:text-purple-800 hover:gap-3">
                   View profile →
                 </Link>
               </div>
@@ -230,8 +230,8 @@ export default function LifeAtGalactis() {
               </div>
               
               <p className="mt-4 text-lg leading-relaxed text-zinc-700 dark:text-zinc-200">
-                Application security leads sit next to AI researchers. Ops veterans mentor new hires through builder rotations, then hop into customer squads.
-              </p>
+              Application security leads sit next to AI researchers. Ops veterans mentor new hires through builder rotations, then hop into customer squads.
+            </p>
               
               <div className="mt-8 grid gap-4 sm:grid-cols-3">
                 {cultureStats.map((stat, index) => (
@@ -257,7 +257,7 @@ export default function LifeAtGalactis() {
                     <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-400">{stat.description}</p>
                   </motion.div>
                 ))}
-              </div>
+                </div>
               
               <div className="mt-8 flex flex-wrap gap-3">
                 {[
@@ -277,8 +277,8 @@ export default function LifeAtGalactis() {
                     <badge.icon className="h-4 w-4" />
                     {badge.text}
                   </motion.span>
-                ))}
-              </div>
+              ))}
+            </div>
             </div>
           </motion.div>
 
@@ -310,22 +310,22 @@ export default function LifeAtGalactis() {
                   <Podcast className="h-5 w-5" />
                 </motion.div>
                 Join the team
-              </div>
+          </div>
               
               <p className="mt-4 text-base leading-relaxed text-zinc-700 dark:text-zinc-200">
-                Catch day-in-the-life stories, leadership podcasts, and AMA snippets from our global team.
-              </p>
+              Catch day-in-the-life stories, leadership podcasts, and AMA snippets from our global team.
+            </p>
               
-              <Link href="/company/careers">
+              <Link href="/careers">
                 <motion.button
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   className="mt-6 inline-flex items-center gap-2 rounded-2xl border-2 border-purple-500 bg-gradient-to-r from-purple-600 to-indigo-600 px-6 py-3 text-sm font-bold text-white shadow-lg hover:shadow-xl hover:from-purple-700 hover:to-indigo-700 transition-all"
                 >
                   <Rocket className="h-4 w-4" />
-                  See open roles
+              See open roles
                 </motion.button>
-              </Link>
+            </Link>
 
               {/* Animated dots decoration */}
               <div className="mt-6 flex gap-2">
@@ -338,7 +338,7 @@ export default function LifeAtGalactis() {
                   />
                 ))}
               </div>
-            </div>
+          </div>
           </motion.div>
         </div>
       </div>

@@ -84,7 +84,7 @@ export default function PlatformShowcase() {
                 rotateY: 3,
                 transition: { type: "spring", stiffness: 300, damping: 20 }
               }}
-              className="rounded-3xl border border-zinc-200/80 bg-white shadow-xl dark:border-zinc-800/80 dark:bg-zinc-900 relative overflow-hidden"
+              className="flex flex-col rounded-3xl border border-zinc-200/80 bg-white shadow-xl dark:border-zinc-800/80 dark:bg-zinc-900 relative overflow-hidden"
               style={{ transformStyle: "preserve-3d" }}
             >
               {/* Hover glow effect */}
@@ -105,13 +105,15 @@ export default function PlatformShowcase() {
                   ))}
                 </div>
               </div>
-              <div className="space-y-3 p-6">
-                {domain.bullets.map((bullet) => (
-                  <div key={bullet} className="flex items-start gap-3 text-sm text-zinc-600 dark:text-zinc-300">
-                    <span className="mt-1 h-2 w-2 rounded-full bg-purple-500" />
-                    {bullet}
-                  </div>
-                ))}
+              <div className="flex flex-col flex-grow p-6">
+                <div className="space-y-3 flex-grow">
+                  {domain.bullets.map((bullet) => (
+                    <div key={bullet} className="flex items-start gap-3 text-sm text-zinc-600 dark:text-zinc-300">
+                      <span className="mt-1 h-2 w-2 rounded-full bg-purple-500" />
+                      {bullet}
+                    </div>
+                  ))}
+                </div>
                 <Link
                   href={domain.href}
                   className="mt-6 inline-flex items-center text-sm font-semibold text-purple-600 transition hover:text-purple-700"

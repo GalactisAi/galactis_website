@@ -244,7 +244,7 @@ export default function PricingPage() {
                     <div className="flex items-center gap-3">
                       <item.icon className="h-5 w-5 text-white/60" />
                       <dt className="text-sm text-white/70">{item.label}</dt>
-                    </div>
+                </div>
                     <dd className="text-lg font-semibold text-white">{item.value}</dd>
                   </motion.div>
                 ))}
@@ -252,7 +252,7 @@ export default function PricingPage() {
             </motion.div>
           </motion.div>
         </main>
-      </section>
+        </section>
 
       {/* Solution Bundles */}
       <section className="bg-gradient-to-b from-zinc-50 to-white py-20 dark:from-zinc-950 dark:to-black">
@@ -296,8 +296,8 @@ export default function PricingPage() {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
+          </div>
+        </section>
 
       {/* Engagement Journey */}
       <section className="bg-white py-20 dark:bg-black">
@@ -329,16 +329,16 @@ export default function PricingPage() {
                     <stage.icon className="h-6 w-6 text-purple-600" />
                   </div>
                   <div className="flex-1">
-                    <div className="text-xs font-semibold uppercase tracking-[0.3em] text-purple-600">{stage.phase}</div>
+                <div className="text-xs font-semibold uppercase tracking-[0.3em] text-purple-600">{stage.phase}</div>
                     <h3 className="mt-2 text-xl font-bold text-zinc-900 dark:text-white">{stage.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">{stage.detail}</p>
                   </div>
-                </div>
+              </div>
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
+          </div>
+        </section>
 
       {/* Checklist & Guarantees */}
       <section className="bg-gradient-to-b from-zinc-50 to-white py-20 dark:from-zinc-950 dark:to-black">
@@ -358,13 +358,13 @@ export default function PricingPage() {
                 <h2 className="text-2xl font-bold text-zinc-900 dark:text-white">Come Prepared With</h2>
               </div>
               <ul className="mt-6 space-y-4">
-                {readinessChecklist.map((item) => (
+              {readinessChecklist.map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm text-zinc-700 dark:text-zinc-300">
                     <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-purple-500" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
             </motion.div>
 
             {/* Guarantees */}
@@ -379,25 +379,25 @@ export default function PricingPage() {
                   <Shield className="h-6 w-6 text-emerald-600" />
                 </div>
                 <h2 className="text-2xl font-bold text-zinc-900 dark:text-white">What We Guarantee</h2>
-              </div>
+          </div>
               <ul className="mt-6 space-y-4">
-                {assurances.map((assurance) => (
+              {assurances.map((assurance) => (
                   <li key={assurance} className="flex items-start gap-3 text-sm text-zinc-700 dark:text-zinc-300">
                     <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-500" />
-                    <span>{assurance}</span>
-                  </li>
-                ))}
-              </ul>
+                  <span>{assurance}</span>
+                </li>
+              ))}
+            </ul>
               <div className="mt-6 rounded-xl border border-emerald-200 bg-white/80 p-4 dark:border-emerald-800 dark:bg-zinc-900/50">
                 <p className="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-600">Volume & Add-ons</p>
-                <p className="mt-2 text-sm text-zinc-700 dark:text-zinc-300">
+              <p className="mt-2 text-sm text-zinc-700 dark:text-zinc-300">
                   Enterprise agreements include volume discounts for large deployments. Add-ons: professional services, premium support tiers, and managed success programs.
-                </p>
+              </p>
               </div>
             </motion.div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* CTA Section */}
       <section className="bg-white py-20 dark:bg-black">
@@ -409,12 +409,12 @@ export default function PricingPage() {
             className="rounded-3xl border border-purple-200 bg-gradient-to-br from-purple-50 via-indigo-50 to-purple-50 p-12 shadow-xl dark:border-purple-800 dark:from-purple-950/30 dark:via-indigo-950/30 dark:to-purple-950/30"
           >
             <div className="grid gap-8 md:grid-cols-[1.2fr,0.8fr]">
-              <div>
+            <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.35em] text-purple-600">Next Step</p>
                 <h2 className="mt-4 text-3xl font-bold text-purple-900 dark:text-purple-100">Ready For A Tailored Proposal?</h2>
                 <p className="mt-4 text-lg text-purple-900/80 dark:text-purple-100/80">
-                  Bring your KPIs, integrations, and compliance constraints. We'll present a tailored commercial model and success plan in under a week.
-                </p>
+                Bring your KPIs, integrations, and compliance constraints. We'll present a tailored commercial model and success plan in under a week.
+              </p>
                 <motion.button
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}
@@ -424,7 +424,7 @@ export default function PricingPage() {
                   Request Pricing Consultation
                   <ArrowRight className="h-5 w-5" />
                 </motion.button>
-              </div>
+            </div>
               
               <div className="rounded-2xl border border-purple-200 bg-white/80 p-6 shadow-sm backdrop-blur dark:border-purple-800 dark:bg-zinc-900/50">
                 <p className="text-sm font-semibold uppercase tracking-[0.3em] text-purple-900 dark:text-purple-100">
@@ -449,12 +449,12 @@ export default function PricingPage() {
                       {item}
                     </motion.li>
                   ))}
-                </ul>
-              </div>
+              </ul>
             </div>
+          </div>
           </motion.div>
-        </div>
-      </section>
+          </div>
+        </section>
 
       {/* FAQ Section */}
       <section className="bg-gradient-to-b from-zinc-50 to-white py-20 dark:from-zinc-950 dark:to-black">
@@ -503,8 +503,8 @@ export default function PricingPage() {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
+          </div>
+        </section>
 
       {/* Hidden ContactSalesModal */}
       <ContactSalesModal intent="sales" />

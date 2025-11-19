@@ -61,15 +61,15 @@ export default function IndustryPage({
         </div>
 
         <main className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <Breadcrumbs
-            items={
-              breadcrumbs ?? [
-                { label: "Home", href: "/" },
-                { label: "Solutions" },
-                { label: title },
-              ]
-            }
-          />
+        <Breadcrumbs
+          items={
+            breadcrumbs ?? [
+              { label: "Home", href: "/" },
+              { label: "Solutions" },
+              { label: title },
+            ]
+          }
+        />
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -147,7 +147,7 @@ export default function IndustryPage({
             </motion.div>
           </motion.div>
         </main>
-      </section>
+        </section>
 
       {/* Pain Points & Solutions */}
       <section className="bg-gradient-to-b from-zinc-50 to-white py-20 dark:from-zinc-950 dark:to-black">
@@ -169,7 +169,7 @@ export default function IndustryPage({
               </div>
               <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-400">
                 Challenges identified from stakeholder interviews and operational assessments with {title.toLowerCase()} teams
-              </p>
+            </p>
               <ul className="mt-6 space-y-4">
                 {pains.map((item, index) => (
                   <motion.li
@@ -181,10 +181,10 @@ export default function IndustryPage({
                     className="flex items-start gap-3 text-sm text-zinc-700 dark:text-zinc-300"
                   >
                     <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-rose-500" />
-                    <span>{item}</span>
+                  <span>{item}</span>
                   </motion.li>
-                ))}
-              </ul>
+              ))}
+            </ul>
             </motion.div>
 
             {/* Solutions */}
@@ -200,10 +200,10 @@ export default function IndustryPage({
                   <CheckCircle2 className="h-6 w-6 text-emerald-600" />
                 </div>
                 <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">Galactis Solution</h2>
-              </div>
+          </div>
               <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-400">
                 Each control maps to capabilities in the Galactis platform, accelerators, and partner playbooks
-              </p>
+            </p>
               <ul className="mt-6 space-y-4">
                 {solutions.map((item, index) => (
                   <motion.li
@@ -215,10 +215,10 @@ export default function IndustryPage({
                     className="flex items-start gap-3 text-sm text-zinc-700 dark:text-zinc-300"
                   >
                     <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-500" />
-                    <span>{item}</span>
+                  <span>{item}</span>
                   </motion.li>
-                ))}
-              </ul>
+              ))}
+            </ul>
             </motion.div>
           </div>
         </div>
@@ -243,22 +243,22 @@ export default function IndustryPage({
               </div>
               <p className="mt-4 text-sm text-zinc-600 dark:text-zinc-400">
                 Controls synthesized from compliance packs available in Resources → Whitepapers
-              </p>
+            </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 {compliance.map((control, index) => (
                   <motion.span
-                    key={control}
+                  key={control}
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.05 }}
                     whileHover={{ scale: 1.1 }}
                     className="rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-blue-700 dark:border-blue-800 dark:bg-blue-950/30 dark:text-blue-300"
-                  >
-                    {control}
+                >
+                  {control}
                   </motion.span>
-                ))}
-              </div>
+              ))}
+            </div>
             </motion.div>
 
             {/* Case Study */}
@@ -277,11 +277,11 @@ export default function IndustryPage({
                   <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">Production deployment results</p>
                 </div>
                 <CompanyLogo company={caseStudy.client} size={48} />
-              </div>
+          </div>
               
               <div className="mt-6 space-y-4 text-sm text-zinc-700 dark:text-zinc-300">
                 <div>
-                  <p className="font-semibold text-zinc-900 dark:text-zinc-100">{caseStudy.client}</p>
+              <p className="font-semibold text-zinc-900 dark:text-zinc-100">{caseStudy.client}</p>
                 </div>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">Challenge</p>
@@ -297,9 +297,9 @@ export default function IndustryPage({
                 </div>
               </div>
             </motion.div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* CTA Section */}
       <section className="bg-gradient-to-b from-zinc-50 to-white py-20 dark:from-zinc-950 dark:to-black">
@@ -311,22 +311,22 @@ export default function IndustryPage({
             className="rounded-3xl border border-purple-200 bg-gradient-to-br from-purple-50 via-indigo-50 to-purple-50 p-12 shadow-xl dark:border-purple-800 dark:from-purple-950/30 dark:via-indigo-950/30 dark:to-purple-950/30"
           >
             <div className="grid gap-8 lg:grid-cols-[1.1fr,0.9fr]">
-              <div>
+            <div>
                 <h2 className="text-3xl font-bold text-purple-900 dark:text-purple-100">Partner With Galactis</h2>
                 <p className="mt-4 text-lg text-purple-900/80 dark:text-purple-100/80">
                   Book an industry blueprint session to walkthrough controls, integrations, and KPIs tailored to your regulatory, operational, and financial objectives
-                </p>
+              </p>
                 <Link href="/contact">
                   <motion.button
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                     className="mt-6 flex items-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 px-8 py-4 text-lg font-semibold text-white shadow-lg"
-                  >
-                    Contact Sales
+              >
+                Contact Sales
                     <ArrowRight className="h-5 w-5" />
                   </motion.button>
                 </Link>
-              </div>
+            </div>
               
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -356,12 +356,12 @@ export default function IndustryPage({
                       {item}
                     </motion.li>
                   ))}
-                </ul>
+              </ul>
               </motion.div>
             </div>
           </motion.div>
-        </div>
-      </section>
+          </div>
+        </section>
 
       <Footer />
     </div>

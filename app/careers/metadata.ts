@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: "Careers at Galactis - Build Your Future With Us",
     description: "Join a team transforming enterprise automation. Hybrid work, competitive benefits, and growth opportunities in Chennai, India.",
     type: "website",
-    url: "https://galactis.ai/company/careers",
+    url: "https://galactis.ai/careers",
   },
   twitter: {
     card: "summary_large_image",

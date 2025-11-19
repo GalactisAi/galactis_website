@@ -191,16 +191,17 @@ export default function Hero() {
                       stiffness: 100,
                       damping: 15
                     }}
-                    className="h-full"
+                    className="flex h-full"
                   >
                     {/* CORRECT: motion.div accepts MotionValue directly in style prop */}
                     <motion.div
                       ref={cardRef}
                       style={{ scale }}
+                      className="flex-1"
                     >
                       <Link
                         href={metric.href}
-                        className="block h-full rounded-xl border border-white/20 bg-white/10 p-3 text-left text-white transition-all duration-300 hover:border-white/40 hover:bg-white/15 sm:p-4"
+                        className="flex h-full flex-col rounded-xl border border-white/20 bg-white/10 p-3 text-left text-white transition-all duration-300 hover:border-white/40 hover:bg-white/15 sm:p-4"
                       >
                         <motion.div
                           className="flex h-full flex-col"

@@ -38,7 +38,7 @@ export default function HomepageROICalculator() {
     trackEvent('roi_calculator_submitted', { assets, budget, hours, savings });
     
     setTimeout(() => {
-      window.location.href = '/contact?source=roi-calculator';
+    window.location.href = '/contact?source=roi-calculator';
     }, 500);
   };
 

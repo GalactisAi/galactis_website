@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Award, Trophy, Building2, Calculator, X } from "lucide-react";
+import CompanyLogo from "./CompanyLogo";
 
 const logos = ["ICICI Bank", "Airtel", "Apollo Hospitals", "Ashok Leyland", "TVS Motors", "Infosys"];
 
@@ -44,9 +45,10 @@ export default function CustomerProof() {
                   <motion.div
                     key={logo}
                     whileHover={{ scale: 1.05 }}
-                    className="rounded-2xl border border-white/60 bg-white/70 px-4 py-3 text-center shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-white"
+                    className="flex items-center gap-3 rounded-2xl border border-white/60 bg-white/70 px-4 py-3 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-white"
                   >
-                    {logo}
+                    <CompanyLogo company={logo} size={40} />
+                    <span className="text-sm font-semibold">{logo}</span>
                   </motion.div>
                 ))}
               </div>
