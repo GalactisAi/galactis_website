@@ -132,7 +132,6 @@ export default function PlatformShowcase() {
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-purple-600">Deployments</p>
               <h3 className="text-2xl font-semibold text-zinc-900 dark:text-white">Platform decisions driven by enterprise requirements</h3>
             </div>
-            <p className="text-sm text-zinc-500 dark:text-zinc-400">Hover or drag to see outcomes from live programs.</p>
           </div>
           <div className="flex gap-4 overflow-x-auto pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {deployments.map((deployment, index) => (
