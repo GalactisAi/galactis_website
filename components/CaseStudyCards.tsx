@@ -80,7 +80,7 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
       }}
     >
       {/* Animated background gradient on hover */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-teal-500/0 transition-all duration-300 group-hover:from-purple-500/5 group-hover:to-teal-500/5" />
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/0 to-teal-500/0 transition-all duration-300 group-hover:from-purple-500/5 group-hover:to-teal-500/5 pointer-events-none" />
       <div className="relative flex items-center gap-4 text-gray-900 dark:text-gray-100">
         <CompanyLogo company={study.companyName} size={56} className="shrink-0" />
         <div>
@@ -110,9 +110,10 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
       </ul>
       <Link
         href={study.link}
-        className="mt-6 inline-flex items-center text-sm font-semibold text-purple-600 transition hover:text-purple-700 dark:text-purple-400"
+        className="relative z-10 mt-6 inline-flex items-center rounded-lg border border-purple-200 bg-white px-4 py-2.5 text-sm font-semibold text-purple-600 transition-all hover:border-purple-400 hover:bg-purple-50 hover:text-purple-700 dark:border-purple-800 dark:bg-zinc-900 dark:text-purple-400 dark:hover:bg-purple-900/20 dark:hover:text-purple-300 cursor-pointer"
       >
-        Explore the full story →
+        Explore the full story
+        <span className="ml-1">→</span>
       </Link>
     </motion.div>
   );

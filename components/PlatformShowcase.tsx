@@ -89,7 +89,7 @@ export default function PlatformShowcase() {
             >
               {/* Hover glow effect */}
               <motion.div
-                className="absolute -inset-2 bg-gradient-to-r from-purple-500 to-teal-500 opacity-0 blur-2xl"
+                className="absolute -inset-2 bg-gradient-to-r from-purple-500 to-teal-500 opacity-0 blur-2xl pointer-events-none"
                 whileHover={{ opacity: 0.2 }}
                 transition={{ duration: 0.3 }}
               />
@@ -116,7 +116,7 @@ export default function PlatformShowcase() {
                 </div>
                 <Link
                   href={domain.href}
-                  className="mt-6 inline-flex items-center text-sm font-semibold text-purple-600 transition hover:text-purple-700"
+                  className="relative z-10 mt-6 inline-flex items-center justify-center rounded-lg border border-purple-200 bg-white px-4 py-2.5 text-sm font-semibold text-purple-600 transition-all hover:border-purple-400 hover:bg-purple-50 hover:text-purple-700 dark:border-purple-800 dark:bg-zinc-900 dark:hover:bg-purple-900/20 dark:hover:text-purple-400 cursor-pointer"
                 >
                   Explore blueprint
                   <ArrowUpRight className="ml-1 h-4 w-4" />
@@ -157,13 +157,22 @@ export default function PlatformShowcase() {
                 Use the visual below to explain Galactis to execs or operators—each node maps to live product capabilities.
               </p>
             </div>
-            <Link
-              href="/platform"
-              className="inline-flex items-center rounded-full border border-purple-300 px-4 py-2 text-sm font-semibold text-purple-700 transition hover:border-purple-500 hover:text-purple-900 dark:border-purple-700 dark:text-purple-200"
+            <button
+              onClick={() => {
+                // Trigger the contact sales modal for platform map download
+                const trigger = document.querySelector('[data-contact-trigger][data-intent="sales"]') as HTMLButtonElement;
+                if (trigger) {
+                  trigger.click();
+                } else {
+                  // Fallback: open email
+                  window.location.href = 'mailto:sales@galactis.ai?subject=Request Platform Map Download';
+                }
+              }}
+              className="relative z-10 inline-flex items-center rounded-full border border-purple-300 bg-white px-4 py-2 text-sm font-semibold text-purple-700 transition-all hover:border-purple-500 hover:bg-purple-50 hover:text-purple-900 dark:border-purple-700 dark:bg-zinc-900 dark:text-purple-200 dark:hover:bg-purple-900/20 dark:hover:text-purple-400 cursor-pointer"
             >
               Download platform map
               <ArrowUpRight className="ml-2 h-4 w-4" />
-            </Link>
+            </button>
           </div>
           <div className="mt-8 grid gap-6 lg:grid-cols-3">
             {senseDecideAct.map((stage, index) => (
