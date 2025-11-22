@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { CheckCircle2, AlertCircle, Shield, TrendingUp, ArrowRight } from "lucide-react";
 import CompanyLogo from "@/components/CompanyLogo";
 import Link from "next/link";
+import HubSpotContactModal from "@/components/HubSpotContactModal";
 
 type IndustryPageProps = {
   title: string;
@@ -316,16 +317,12 @@ export default function IndustryPage({
                 <p className="mt-4 text-lg text-purple-900/80 dark:text-purple-100/80">
                   Book an industry blueprint session to walkthrough controls, integrations, and KPIs tailored to your regulatory, operational, and financial objectives
               </p>
-                <Link href="/contact">
-                  <motion.button
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="mt-6 flex items-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 px-8 py-4 text-lg font-semibold text-white shadow-lg"
-              >
-                Contact Sales
-                    <ArrowRight className="h-5 w-5" />
-                  </motion.button>
-                </Link>
+                <div className="mt-6">
+                  <HubSpotContactModal 
+                    triggerText="Contact Sales"
+                    triggerClassName="flex items-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 px-8 py-4 text-lg font-semibold text-white shadow-lg hover:scale-105 transition-transform"
+                  />
+                </div>
             </div>
               
               <motion.div

@@ -2,7 +2,7 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import ContactSalesModal from "@/components/ContactSalesModal";
+import HubSpotContactModal from "@/components/HubSpotContactModal";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Clock, Users, Rocket, Mail, MapPin, ArrowRight, CheckCircle2 } from "lucide-react";
@@ -311,10 +311,8 @@ export default function ContactPage() {
         </section>
       </main>
       
-      {/* Hidden trigger for ContactSalesModal */}
-      <div className="hidden">
-        <ContactSalesModal intent="sales" />
-      </div>
+      {/* Hidden trigger for HubSpot Contact Modal */}
+      <HubSpotContactModal triggerClassName="hidden" />
       
       <Footer />
     </div>

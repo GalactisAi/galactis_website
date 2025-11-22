@@ -2,7 +2,7 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import ContactSalesModal from "@/components/ContactSalesModal";
+import HubSpotContactModal from "@/components/HubSpotContactModal";
 
 const templates = [
   {
@@ -25,8 +25,8 @@ const templates = [
 
 export default function AgentTemplatesPage() {
   const handleRequestTemplate = () => {
-    // Find and click the hidden trigger button for the ContactSalesModal
-    const trigger = document.getElementById('contact-trigger-sales-default');
+    // Find and click the hidden trigger button for the HubSpotContactModal
+    const trigger = document.querySelector('[data-contact-trigger][data-intent="sales"]') as HTMLButtonElement;
     if (trigger) {
       trigger.click();
     }
@@ -55,8 +55,8 @@ export default function AgentTemplatesPage() {
       </main>
       <Footer />
 
-      {/* Hidden ContactSalesModal that opens when any Request Template button is clicked */}
-      <ContactSalesModal intent="sales" />
+      {/* Hidden HubSpotContactModal trigger that opens when any Request Template button is clicked */}
+      <HubSpotContactModal triggerClassName="hidden" />
     </div>
   );
 }

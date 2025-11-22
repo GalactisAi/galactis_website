@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
-import ContactSalesModal from "./ContactSalesModal";
+import HubSpotContactModal from "./HubSpotContactModal";
 
 export default function AnimatedValueProposition() {
   return (
@@ -57,7 +57,7 @@ export default function AnimatedValueProposition() {
           </div>
           <div className="mt-6 flex flex-wrap items-center gap-4">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <ContactSalesModal />
+              <HubSpotContactModal />
             </motion.div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link

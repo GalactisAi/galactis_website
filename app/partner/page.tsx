@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle, Users, Building2, Briefcase, Code, MessageCircle } from "lucide-react";
 import { useState, useEffect } from "react";
-import ContactSalesModal from "@/components/ContactSalesModal";
+import HubSpotPartnerModal from "@/components/HubSpotPartnerModal";
 import PartnerSuccessIllustration from "@/components/PartnerSuccessIllustration";
 
 const steps = [
@@ -72,8 +72,6 @@ const partnerTypes = [
 
 export default function PartnersPage() {
   const [showFloatingButtons, setShowFloatingButtons] = useState(false);
-  const [modalIntent, setModalIntent] = useState<"sales" | "partner" | "support">("partner");
-  const [modalPartnerType, setModalPartnerType] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -82,21 +80,6 @@ export default function PartnersPage() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const handlePartnerClick = (partnerType: string) => {
-    setModalIntent("partner");
-    setModalPartnerType(partnerType);
-    // Trigger the modal with the specific intent and partner type
-    setTimeout(() => {
-      const button = document.querySelector(`[data-contact-trigger][data-intent="partner"][data-partner-type="${partnerType}"]`) as HTMLButtonElement;
-      if (!button) {
-        // Fallback: try to find any partner modal trigger
-        const fallbackButton = document.querySelector('[data-contact-trigger][data-intent="partner"]') as HTMLButtonElement;
-        fallbackButton?.click();
-      } else {
-        button.click();
-      }
-    }, 100); // Small delay to ensure state update
   };
 
   return (
@@ -175,13 +158,13 @@ export default function PartnersPage() {
                     </li>
                   ))}
                 </ul>
-                <button
-                  onClick={() => handlePartnerClick(partner.name)}
-                  className="mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 px-4 py-2.5 text-sm font-semibold text-white transition-all hover:shadow-lg hover:shadow-purple-500/50 sm:justify-start"
-                >
-                  {partner.cta}
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </button>
+                <div className="mt-6">
+                  <HubSpotPartnerModal
+                    triggerText={partner.cta}
+                    triggerClassName="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 px-4 py-2.5 text-sm font-semibold text-white transition-all hover:shadow-lg hover:shadow-purple-500/50 sm:justify-start"
+                    partnerType={partner.name}
+                  />
+                </div>
               </motion.div>
             ))}
           </div>
@@ -289,37 +272,21 @@ export default function PartnersPage() {
 
       {/* Floating Action Button - Mobile Optimized */}
       {showFloatingButtons && (
-        <motion.button
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onClick={() => {
-            setModalIntent("partner");
-            setModalPartnerType(undefined);
-            // Trigger contact modal - will be handled by ContactSalesModal component
-            setTimeout(() => {
-              const button = document.querySelector('[data-contact-trigger][data-intent="partner"]') as HTMLButtonElement;
-              button?.click();
-            }, 100);
-          }}
-          className="fixed bottom-4 right-4 z-50 flex min-h-[44px] min-w-[44px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 px-4 py-3 text-xs font-semibold text-white shadow-lg shadow-purple-500/50 transition-all hover:shadow-xl hover:shadow-purple-500/70 sm:bottom-6 sm:right-6 sm:px-6 sm:text-sm"
-          aria-label="Apply as Partner"
+          className="fixed bottom-4 right-4 z-50 sm:bottom-6 sm:right-6"
         >
-          <MessageCircle className="h-5 w-5 flex-shrink-0" />
-          <span className="hidden sm:inline">Apply as Partner</span>
-        </motion.button>
+          <HubSpotPartnerModal
+            triggerText="Apply as Partner"
+            triggerClassName="flex min-h-[44px] min-w-[44px] items-center justify-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 px-4 py-3 text-xs font-semibold text-white shadow-lg shadow-purple-500/50 transition-all hover:shadow-xl hover:shadow-purple-500/70 sm:px-6 sm:text-sm"
+          />
+        </motion.div>
       )}
 
-      {/* Hidden trigger for ContactSalesModal */}
-      <div className="hidden">
-        <ContactSalesModal 
-          key={`${modalIntent}-${modalPartnerType || "default"}`}
-          intent={modalIntent} 
-          partnerType={modalPartnerType as "Reseller" | "Service Provider" | "Consulting" | "Build" | undefined} 
-        />
-      </div>
       <Footer />
     </div>
   );

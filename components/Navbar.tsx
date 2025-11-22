@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import ProductsDropdown from "./ProductsDropdown";
 import SolutionsDropdown from "./SolutionsDropdown";
 import MobileMenu from "./MobileMenu";
-import ContactSalesModal from "./ContactSalesModal";
+import HubSpotContactModal from "./HubSpotContactModal";
 
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
@@ -63,33 +63,15 @@ export default function Navbar() {
           <ProductsDropdown />
           <SolutionsDropdown />
           <NavLink href="/partner">Partners</NavLink>
-          <NavLink href="/careers">Careers</NavLink>
-          <NavLink href="/company">Company</NavLink>
+          <NavLink href="/company/careers">Careers</NavLink>
+          <NavLink href="/company/about">Company</NavLink>
           <NavLink href="/pricing">Pricing</NavLink>
         </nav>
         <div className="hidden items-center gap-3 md:flex">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => {
-              // Trigger contact modal - will be handled by ContactSalesModal component
-              const button = document.querySelector('[data-contact-trigger][data-intent="sales"]') as HTMLButtonElement;
-              button?.click();
-            }}
-            className="group relative overflow-hidden rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-purple-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/50"
-          >
-            <motion.span
-              className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0"
-              initial={{ x: "-100%" }}
-              whileHover={{ x: "100%" }}
-              transition={{ duration: 0.6, repeat: Infinity, repeatDelay: 2 }}
-            />
-            <span className="relative">Contact Sales</span>
-          </motion.button>
-          {/* Hidden trigger for ContactSalesModal */}
-          <div className="hidden">
-            <ContactSalesModal intent="sales" />
-          </div>
+          <HubSpotContactModal 
+            triggerText="Contact Sales"
+            triggerClassName="group relative overflow-hidden rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-purple-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/50"
+          />
         </div>
         {/* Mobile Menu */}
         <div className="md:hidden">

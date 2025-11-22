@@ -5,11 +5,12 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Menu, ChevronDown } from "lucide-react";
+import HubSpotContactModal from "./HubSpotContactModal";
 
 const navItems = [
   { label: "Partners", href: "/partner" },
-  { label: "Careers", href: "/careers" },
-  { label: "Company", href: "/company" },
+  { label: "Careers", href: "/company/careers" },
+  { label: "Company", href: "/company/about" },
   { label: "Pricing", href: "/pricing" },
 ];
 
@@ -276,13 +277,12 @@ export default function MobileMenu() {
 
                     {/* Footer Actions */}
                     <div className="border-t border-zinc-200 p-4 dark:border-zinc-800">
-                      <Link
-                        href="/contact"
-                        onClick={handleLinkClick}
-                        className="block rounded-md bg-purple-600 px-4 py-2 text-center text-sm font-semibold text-white transition-colors hover:bg-purple-700"
-                      >
-                        Contact Sales
-                      </Link>
+                      <div onClick={handleLinkClick}>
+                        <HubSpotContactModal 
+                          triggerText="Contact Sales"
+                          triggerClassName="block w-full rounded-md bg-purple-600 px-4 py-2 text-center text-sm font-semibold text-white transition-colors hover:bg-purple-700"
+                        />
+                      </div>
                     </div>
                   </div>
                 </motion.div>
