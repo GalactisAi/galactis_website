@@ -61,6 +61,7 @@ export default function HubSpotContactModal({
   }
 
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const observerRef = useRef<MutationObserver | null>(null);
   const formContainerId = useId();
   const [open, setOpen] = useState(false);
   const [formRendered, setFormRendered] = useState(false);
@@ -80,6 +81,19 @@ export default function HubSpotContactModal({
       return;
     }
 
+    if (observerRef.current) {
+      observerRef.current.disconnect();
+    }
+
+    observerRef.current = new MutationObserver(() => {
+      if (target.querySelector("iframe")) {
+        setFormRendered(true);
+        observerRef.current?.disconnect();
+      }
+    });
+
+    observerRef.current.observe(target, { childList: true, subtree: true });
+
     window.hbspt.forms.create({
       region: HUBSPOT_REGION,
       portalId: HUBSPOT_PORTAL_ID,
@@ -87,6 +101,13 @@ export default function HubSpotContactModal({
       target: `#${formContainerId}`,
       onFormReady: () => setFormRendered(true),
     });
+
+    setTimeout(() => {
+      if (target.querySelector("iframe")) {
+        setFormRendered(true);
+        observerRef.current?.disconnect();
+      }
+    }, 3000);
   }, [formContainerId]);
 
   useEffect(() => {
@@ -113,6 +134,7 @@ export default function HubSpotContactModal({
 
     return () => {
       cancelled = true;
+      observerRef.current?.disconnect();
       if (containerRef.current) {
         containerRef.current.innerHTML = "";
       }
