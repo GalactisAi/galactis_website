@@ -2,11 +2,11 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import HubSpotContactModal from "@/components/HubSpotContactModal";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Clock, Users, Rocket, Mail, MapPin, ArrowRight, CheckCircle2 } from "lucide-react";
 import MagneticButton from "@/components/MagneticButton";
+import { getSalesFormUrl } from "@/lib/hubspotForms";
 
 const funnelSteps = [
   {
@@ -141,9 +141,8 @@ export default function ContactPage() {
               <div className="mt-6">
                 <MagneticButton
                   onClick={() => {
-                    // Trigger the contact modal
-                    const button = document.querySelector('[data-contact-trigger][data-intent="sales"]') as HTMLButtonElement;
-                    button?.click();
+                    // Redirect directly to HubSpot form
+                    window.open(getSalesFormUrl(), "_blank", "noopener,noreferrer");
                   }}
                   className="w-full rounded-lg bg-gradient-to-r from-emerald-500 to-teal-500 px-6 py-4 text-lg font-semibold text-white shadow-lg hover:shadow-2xl hover:from-emerald-600 hover:to-teal-600 transition-all duration-300"
                   magneticStrength={0.2}
@@ -311,8 +310,6 @@ export default function ContactPage() {
         </section>
       </main>
       
-      {/* Hidden trigger for HubSpot Contact Modal */}
-      <HubSpotContactModal triggerClassName="hidden" />
       
       <Footer />
     </div>

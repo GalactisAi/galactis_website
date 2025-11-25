@@ -2,9 +2,9 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import HubSpotContactModal from "@/components/HubSpotContactModal";
 import Link from "next/link";
 import { trackEvent } from "@/lib/analytics";
+import { getSalesFormUrl } from "@/lib/hubspotForms";
 import { motion } from "framer-motion";
 import { 
   CheckCircle2, Clock, Shield, Users, TrendingUp, 
@@ -98,10 +98,7 @@ export default function PricingPage() {
 
   const handleContactSales = () => {
     trackEvent("pricing_cta_clicked");
-    const button = document.querySelector('[data-contact-trigger][data-intent="sales"]') as HTMLButtonElement;
-    if (button) {
-      button.click();
-    }
+    window.open(getSalesFormUrl(), "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -506,8 +503,6 @@ export default function PricingPage() {
           </div>
         </section>
 
-      {/* Hidden HubSpotContactModal trigger */}
-      <HubSpotContactModal triggerClassName="hidden" />
 
       <Footer />
     </div>
