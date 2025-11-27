@@ -25,7 +25,6 @@ declare global {
 }
 
 export default function CareersApplication({ 
-  jobId, 
   onClose 
 }: { 
   jobId?: number | null; 
