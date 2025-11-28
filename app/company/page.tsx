@@ -7,7 +7,7 @@ import ScrollReveal, { ScrollRevealStagger } from "@/components/ScrollReveal";
 import AnimatedNumber from "@/components/AnimatedNumber";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Sparkles, Users, TrendingUp, Shield, Zap, Globe, Award } from "lucide-react";
+import { Users, TrendingUp, Shield, Zap, Globe, Award } from "lucide-react";
 
 const values = [
   {
@@ -36,35 +36,30 @@ const leadership = [
     title: "Chief Executive Officer",
     bio: "Sets the Galactis vision, pairing customer obsession with disciplined operating cadences to keep R&D and go-to-market tightly aligned.",
     obsession: "Vision Carrier",
-    badge: "Ship at Scale",
   },
   {
     name: "Aryan",
     title: "Chief Operating Officer",
     bio: "Leads global delivery, security, and customer success programs so every rollout hits compliance, speed, and value realization targets.",
     obsession: "Outcome Obsession",
-    badge: "Ship at Scale",
   },
   {
     name: "Nikitha",
     title: "Chief Technology Officer",
     bio: "Owns product and engineering strategy, from multi-tenant architecture to the AI roadmap powering ITAM, NetOps, and agent platforms.",
     obsession: "Platform Builder",
-    badge: "Ship at Scale",
   },
   {
     name: "Natasha",
     title: "Chief Marketing Officer",
     bio: "Drives market narrative, analyst relations, and demand programs that position Galactis as the platform of record for IT operations.",
     obsession: "Category Creator",
-    badge: "Ship at Scale",
   },
   {
     name: "Harini",
     title: "Chief Human Resources Officer",
     bio: "Cultivates the builder culture across regions, focusing on leadership development, DEI, and hybrid collaboration rituals.",
     obsession: "Culture Catalyst",
-    badge: "Ship at Scale",
   },
 ];
 
@@ -216,12 +211,6 @@ export default function AboutPage() {
                     </div>
                     
                     <div className="relative z-10">
-                      {/* Badge */}
-                      <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-purple-200 bg-purple-50 px-3 py-1 text-xs font-semibold text-purple-700 dark:border-purple-800 dark:bg-purple-900/30 dark:text-purple-300">
-                        <Sparkles className="h-3 w-3" />
-                        {leader.badge}
-                      </div>
-                      
                       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-purple-600 dark:text-purple-400">
                         {leader.title}
                       </p>
@@ -256,10 +245,6 @@ export default function AboutPage() {
                     </div>
                     
                     <div className="relative z-10">
-                      <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-purple-200 bg-purple-50 px-3 py-1 text-xs font-semibold text-purple-700 dark:border-purple-800 dark:bg-purple-900/30 dark:text-purple-300">
-                        <Sparkles className="h-3 w-3" />
-                        {leader.badge}
-            </div>
                       <p className="text-xs font-semibold uppercase tracking-[0.2em] text-purple-600 dark:text-purple-400">
                         {leader.title}
                       </p>
