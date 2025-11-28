@@ -7,7 +7,7 @@ import ScrollReveal, { ScrollRevealStagger } from "@/components/ScrollReveal";
 import AnimatedNumber from "@/components/AnimatedNumber";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Users, TrendingUp, Shield, Zap, Globe, Award } from "lucide-react";
+import { Users, TrendingUp, Shield, Zap, Globe, Award, Sparkles } from "lucide-react";
 
 const values = [
   {
