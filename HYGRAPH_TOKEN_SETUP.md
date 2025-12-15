@@ -126,3 +126,6 @@ Your token is configured with:
 ---
 
 **Note**: The token is sensitive. Never commit `.env.local` to git (it should be in `.gitignore`). For production, use your hosting platform's environment variable settings.
+
+
+

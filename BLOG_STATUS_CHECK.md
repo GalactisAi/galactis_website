@@ -156,3 +156,6 @@ curl http://localhost:3000/resources/blog | grep -i "example\|placeholder"
 ---
 
 **To verify right now**: Visit `/api/blog-diagnostic` and check the results!
+
+
+

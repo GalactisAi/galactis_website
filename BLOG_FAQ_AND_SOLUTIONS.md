@@ -267,3 +267,6 @@ Your blog already has:
 2. Publish real posts in Hygraph
 3. Monitor in Google Search Console
 4. Write regularly for best results
+
+
+

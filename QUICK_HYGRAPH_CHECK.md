@@ -77,3 +77,6 @@ Visit: `http://localhost:3000/api/blog-diagnostic`
 **The diagnostic endpoint will tell you exactly which one!**
 
 Visit `/api/blog-diagnostic` and it will show you what needs to be fixed.
+
+
+

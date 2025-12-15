@@ -4,6 +4,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
+import { marked } from "marked";
 import {
   getPostBySlug,
   getAllPostSlugs,
@@ -104,6 +105,43 @@ export default async function BlogPostPage({ params }: Props) {
     ...(post.coverImage?.url && { image: post.coverImage.url }),
   };
 
+  // Convert markdown (including bold/heading syntax) to HTML
+  const renderer = new marked.Renderer();
+  renderer.heading = (text, level) => {
+    const sizes: Record<number, string> = {
+      1: "text-4xl",
+      2: "text-3xl",
+      3: "text-2xl",
+      4: "text-xl",
+      5: "text-lg",
+      6: "text-base",
+    };
+    return `<h${level} class="${sizes[level] || "text-xl"} font-semibold mt-8 mb-3 leading-tight">${text}</h${level}>`;
+  };
+  renderer.list = (body, ordered) =>
+    `<${ordered ? "ol" : "ul"} class="${ordered ? "list-decimal" : "list-disc"} ml-6 my-4 space-y-2">${body}</${ordered ? "ol" : "ul"}>`;
+  renderer.listitem = (text) => `<li class="leading-relaxed">${text}</li>`;
+  renderer.paragraph = (text) => `<p class="my-4 leading-relaxed">${text}</p>`;
+  renderer.image = (href, title, text) =>
+    `<img src="${href}" alt="${text || ""}" class="w-full h-auto rounded-xl shadow-lg my-6" loading="lazy" />`;
+
+  const htmlContent =
+    post.content && post.content.trim().length > 0
+      ? (marked.parse(
+          post.content
+            .replace(/\r\n/g, "\n") // normalize line breaks
+            .replace(/\u00A0/g, " ") // convert non-breaking spaces
+            .trim(),
+          {
+            gfm: true,
+            breaks: true,
+            headerIds: false,
+            mangle: false,
+            renderer,
+          }
+        ) as string)
+      : "";
+
   return (
     <div className="min-h-screen bg-white dark:bg-black">
       <JsonLd data={articleJsonLd} />
@@ -170,28 +208,8 @@ export default async function BlogPostPage({ params }: Props) {
 
         {/* Article Content */}
         <article className="prose prose-lg prose-zinc mx-auto dark:prose-invert prose-headings:font-bold prose-a:text-purple-600 prose-a:no-underline hover:prose-a:underline dark:prose-a:text-purple-400 prose-img:rounded-xl prose-img:shadow-lg">
-          {/* Render content - supports HTML, markdown, or plain text */}
-          {post.content?.includes("<") ? (
-            <div dangerouslySetInnerHTML={{ __html: post.content }} />
-          ) : post.content?.includes("![") || post.content?.includes("](") ? (
-            // Render markdown images and links
-            <div
-              dangerouslySetInnerHTML={{
-                __html: post.content
-                  // Convert markdown images to HTML img tags
-                  .replace(
-                    /!\[([^\]]*)\]\(([^)]+)\)/g,
-                    '<img src="$2" alt="$1" class="w-full h-auto rounded-xl shadow-lg my-6" loading="lazy" />'
-                  )
-                  // Convert markdown links to HTML
-                  .replace(
-                    /\[([^\]]+)\]\(([^)]+)\)/g,
-                    '<a href="$2" class="text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300 underline" target="_blank" rel="noopener noreferrer">$1</a>'
-                  )
-                  // Convert line breaks
-                  .replace(/\n/g, "<br />"),
-              }}
-            />
+          {htmlContent ? (
+            <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
           ) : (
             <div className="whitespace-pre-wrap">{post.content}</div>
           )}
