@@ -122,7 +122,7 @@ export default async function BlogPostPage({ params }: Props) {
     `<${ordered ? "ol" : "ul"} class="${ordered ? "list-decimal" : "list-disc"} ml-6 my-4 space-y-2">${body}</${ordered ? "ol" : "ul"}>`;
   renderer.listitem = (text) => `<li class="leading-relaxed">${text}</li>`;
   renderer.paragraph = (text) => `<p class="my-4 leading-relaxed">${text}</p>`;
-  renderer.image = (href, title, text) =>
+  renderer.image = (href, _title, text) =>
     `<img src="${href}" alt="${text || ""}" class="w-full h-auto rounded-xl shadow-lg my-6" loading="lazy" />`;
 
   const htmlContent =
