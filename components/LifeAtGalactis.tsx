@@ -14,6 +14,13 @@ const leaders = [
     icon: Target,
     gradient: "from-purple-500 via-indigo-500 to-violet-500",
   },
+   { name: "Nikitha",
+    role: "CTO",
+    focus: "Platform builder",
+    quote: "\"Sense-Decide-Act is our product map—and our culture.\"",
+    icon: Blocks,
+    gradient: "from-teal-500 via-emerald-500 to-green-500",
+  },
   {
     name: "Aryan",
     role: "Head of IT",
@@ -21,14 +28,6 @@ const leaders = [
     quote: "\"Compliance, value, and speed can coexist when telemetry is shared.\"",
     icon: Zap,
     gradient: "from-indigo-500 via-blue-500 to-cyan-500",
-  },
-  {
-    name: "Nikitha",
-    role: "CTO",
-    focus: "Platform builder",
-    quote: "\"Sense-Decide-Act is our product map—and our culture.\"",
-    icon: Blocks,
-    gradient: "from-teal-500 via-emerald-500 to-green-500",
   },
 ];
 
