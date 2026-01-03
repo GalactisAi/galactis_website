@@ -16,13 +16,13 @@ const execTeam = [
   },
   {
     name: "Aryan",
-    role: "COO",
-    bio: "Drives delivery, customer success, and security programs to ensure every deployment hits compliance and ROI goals.",
+    role: "Head of IT",
+    bio: "Drives IT operations, infrastructure, and security, ensuring reliable systems, compliant deployments, and consistent delivery at scale.",
   },
   {
     name: "Natasha",
-    role: "CMO",
-    bio: "Shaped the Galactis category narrative with analysts, partners, and enterprise communities worldwide.",
+    role: "Head Investor Relations",
+    bio: "Drives market narrative, analyst relations, and demand programs that position Galactis as the platform of record for IT operations.",
   },
   {
     name: "Parul",
