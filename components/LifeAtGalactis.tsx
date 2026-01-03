@@ -8,7 +8,7 @@ import { useRef } from "react";
 const leaders = [
   {
     name: "Madhujith",
-    role: "Founder & CEO",
+    role: "CEO",
     focus: "Vision carrier",
     quote: "\"Operators deserve software that thinks like they do.\"",
     icon: Target,
@@ -16,7 +16,7 @@ const leaders = [
   },
   {
     name: "Aryan",
-    role: "COO",
+    role: "Head of IT",
     focus: "Outcome obsession",
     quote: "\"Compliance, value, and speed can coexist when telemetry is shared.\"",
     icon: Zap,
