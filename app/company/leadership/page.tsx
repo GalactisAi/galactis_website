@@ -26,7 +26,7 @@ const execTeam = [
   },
   {
     name: "Parul",
-    role: "CHO",
+    role: "CHR",
     bio: "Builds the builder-operator culture across New York, Bengaluru, Dublin, and Singapore hubs.",
   },
 ];
