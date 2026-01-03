@@ -33,31 +33,31 @@ const values = [
 const leadership = [
   {
     name: "Madhujith",
-    title: "Chief Executive Officer",
+    title: "CEO",
     bio: "Sets the Galactis vision, pairing customer obsession with disciplined operating cadences to keep R&D and go-to-market tightly aligned.",
     obsession: "Vision Carrier",
   },
   {
-    name: "Aryan",
-    title: "Chief Operating Officer",
-    bio: "Leads global delivery, security, and customer success programs so every rollout hits compliance, speed, and value realization targets.",
-    obsession: "Outcome Obsession",
-  },
-  {
     name: "Nikitha",
-    title: "Chief Technology Officer",
+    title: "CTO",
     bio: "Owns product and engineering strategy, from multi-tenant architecture to the AI roadmap powering ITAM, NetOps, and agent platforms.",
     obsession: "Platform Builder",
   },
   {
+    name: "Aryan",
+    title: "Head of IT",
+    bio: "Drives IT operations, infrastructure, and security, ensuring reliable systems, compliant deployments, and consistent delivery at scale.",
+    obsession: "Outcome Obsession",
+  },
+  {
     name: "Natasha",
-    title: "Chief Marketing Officer",
+    title: "Head Investor Relations",
     bio: "Drives market narrative, analyst relations, and demand programs that position Galactis as the platform of record for IT operations.",
     obsession: "Category Creator",
   },
   {
-    name: "Harini",
-    title: "Chief Human Resources Officer",
+    name: "Parul",
+    title: "CHR",
     bio: "Cultivates the builder culture across regions, focusing on leadership development, DEI, and hybrid collaboration rituals.",
     obsession: "Culture Catalyst",
   },

@@ -6,27 +6,27 @@ import Link from "next/link";
 const execTeam = [
   {
     name: "Madhujith",
-    role: "Chief Executive Officer",
+    role: "CEO",
     bio: "Guides Galactis across product, go-to-market, and culture. Former CIO who led multi-region ITAM modernization at a tier-one bank.",
   },
   {
-    name: "Aryan",
-    role: "Chief Operating Officer",
-    bio: "Drives delivery, customer success, and security programs to ensure every deployment hits compliance and ROI goals.",
-  },
-  {
     name: "Nikitha",
-    role: "Chief Technology Officer",
+    role: "CTO",
     bio: "Owns platform architecture and AI roadmap after leading observability and automation teams at hyperscale cloud providers.",
   },
   {
+    name: "Aryan",
+    role: "COO",
+    bio: "Drives delivery, customer success, and security programs to ensure every deployment hits compliance and ROI goals.",
+  },
+  {
     name: "Natasha",
-    role: "Chief Marketing Officer",
+    role: "CMO",
     bio: "Shaped the Galactis category narrative with analysts, partners, and enterprise communities worldwide.",
   },
   {
-    name: "Harini",
-    role: "Chief People Officer",
+    name: "Parul",
+    role: "CHO",
     bio: "Builds the builder-operator culture across New York, Bengaluru, Dublin, and Singapore hubs.",
   },
 ];

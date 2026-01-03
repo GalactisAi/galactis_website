@@ -44,10 +44,10 @@ export default function Footer() {
               />
                 <span className="text-base font-semibold tracking-wide text-white dark:text-white">Galactis.ai</span>
             </Link>
-              <p className="text-sm text-white/70">
+              <p className="text-sm text-white/90">
                 The leading platform for technology leaders. ITAM, NetOps, and AI agents.
             </p>
-              <div className="mt-4 space-y-1 text-xs text-white/60">
+              <div className="mt-4 space-y-1 text-xs text-white/80">
               <p>info@galactis.ai</p>
                 <p>Wing A, Greenwood · Rajiv Gandhi Salai · Chennai, IN</p>
               </div>
@@ -71,13 +71,13 @@ export default function Footer() {
             <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.3em] text-emerald-200">Security</p>
                 <p className="text-lg font-semibold text-white">Enterprise certifications</p>
-                <p className="text-xs text-white/70">
+                <p className="text-xs text-white/90">
                   Mapped to the documents hosted on galactis.ai/security. Request evidence any time.
               </p>
             </div>
               <div className="flex flex-wrap gap-3">
               {["SOC 2 Type II", "ISO 27001", "HIPAA", "GDPR"].map((badge) => (
-                  <div key={badge} className="flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-wide">
+                  <div key={badge} className="flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white/90">
                     <CheckCircle className="h-4 w-4 text-emerald-300" />
                     {badge}
                 </div>
@@ -92,10 +92,10 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="mt-8 rounded-3xl border border-white/10 bg-white/5 p-4 text-xs text-white/70">
+          <div className="mt-8 rounded-3xl border border-white/10 bg-white/5 p-4 text-xs text-white/90">
             <div className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between">
               <p>© {new Date().getFullYear()} Galactis.ai · All rights reserved</p>
-              <div className="flex items-center gap-2 text-white/60">
+              <div className="flex items-center gap-2 text-white/85">
                 <Sparkles className="h-4 w-4 text-purple-300" />
                 Easter egg: ask the homepage chatbot “What’s the Sense-Decide-Act mantra?” for a surprise meme.
               </div>
@@ -112,7 +112,7 @@ function FooterSocial({ href, label, children }: { href: string; label: string; 
     <a
       href={href}
       aria-label={label}
-      className="rounded-full border border-white/20 p-2 text-white/70 transition hover:border-white hover:text-white"
+      className="rounded-full border border-white/20 p-2 text-white/90 transition hover:border-white hover:text-white"
     >
       {children}
     </a>
@@ -130,11 +130,11 @@ function FooterColumn({
 }) {
   return (
     <div className={className}>
-      <h3 className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-zinc-500 dark:text-zinc-400">{heading}</h3>
-      <ul className="space-y-2 text-sm text-zinc-600 dark:text-zinc-300">
+      <h3 className="mb-3 text-xs font-semibold uppercase tracking-[0.3em] text-zinc-200 dark:text-zinc-200">{heading}</h3>
+      <ul className="space-y-2 text-sm text-zinc-300 dark:text-zinc-200">
         {links.map((link) => (
           <li key={link.label}>
-            <a className="transition hover:text-purple-600 dark:hover:text-purple-400" href={link.href}>
+            <a className="text-white/90 transition hover:text-purple-300 dark:hover:text-purple-300" href={link.href}>
               {link.label}
             </a>
           </li>
