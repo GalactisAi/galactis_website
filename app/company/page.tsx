@@ -43,12 +43,7 @@ const leadership = [
     bio: "Owns product and engineering strategy, from multi-tenant architecture to the AI roadmap powering ITAM, NetOps, and agent platforms.",
     obsession: "Platform Builder",
   },
-  {
-    name: "Aryan",
-    title: "Head of IT",
-    bio: "Drives IT operations, infrastructure, and security, ensuring reliable systems, compliant deployments, and consistent delivery at scale.",
-    obsession: "Outcome Obsession",
-  },
+  
   {
     name: "Natasha",
     title: "Head Investor Relations",
@@ -57,9 +52,15 @@ const leadership = [
   },
   {
     name: "Parul",
-    title: "CHR",
+    title: "HR",
     bio: "Cultivates the builder culture across regions, focusing on leadership development, DEI, and hybrid collaboration rituals.",
     obsession: "Culture Catalyst",
+  },
+  {
+    name: "Tiffany Chelsea",
+    title: "CMO",
+    bio: "Leads brand strategy, demand generation, and customer marketing programs that accelerate enterprise adoption of Galactis platforms.",
+    obsession: "Growth Accelerator",
   },
 ];
 

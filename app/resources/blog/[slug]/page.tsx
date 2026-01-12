@@ -10,7 +10,7 @@ import {
   getAllPostSlugs,
   formatPostDate,
   calculateReadTime,
-} from "@/lib/hygraph";
+} from "@/lib/blog-api";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -61,8 +61,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-// Revalidate every hour
-export const revalidate = 3600;
+// Revalidate instantly - no caching for instant blog updates
+export const revalidate = 0;
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;

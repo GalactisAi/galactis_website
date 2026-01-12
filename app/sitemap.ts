@@ -1,4 +1,4 @@
-import { getAllPosts } from "@/lib/hygraph";
+import { getAllPosts } from "@/lib/blog-api";
 
 const BASE_URL = "https://galactis.ai";
 
@@ -26,7 +26,7 @@ export default async function sitemap() {
     { url: `${BASE_URL}/solutions/telecommunications`, lastModified: now, priority: 0.8, changeFrequency: "monthly" },
   ];
 
-  // Dynamic blog posts from Hygraph
+  // Dynamic blog posts from Replit Blog API
   let blogPages: {
     url: string;
     lastModified: Date;

@@ -2,16 +2,16 @@ import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
 /**
- * API route for revalidating blog pages when content is updated in Hygraph
+ * API route for revalidating blog pages when content is updated in Replit BlogAdmin
  * 
  * This allows instant updates without redeployment when you publish new posts.
  * 
- * Setup in Hygraph:
- * 1. Go to Webhooks in Hygraph Studio
- * 2. Create a new webhook
- * 3. URL: https://your-domain.com/api/revalidate
- * 4. Events: Select "Publish" and "Unpublish" for Post model
- * 5. Add header: x-webhook-secret = your secret (set in .env.local)
+ * Setup in Replit BlogAdmin (if webhook support is available):
+ * 1. Configure webhook to call this endpoint when posts are published/updated
+ * 2. URL: https://your-domain.com/api/revalidate
+ * 3. Add header: x-webhook-secret = your secret (set REVALIDATION_SECRET in .env.local)
+ * 
+ * Alternatively, pages will auto-refresh on next visit due to revalidate: 0 setting
  */
 export async function POST(request: NextRequest) {
   // Verify webhook secret for security

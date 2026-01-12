@@ -14,11 +14,7 @@ const execTeam = [
     role: "CTO",
     bio: "Owns platform architecture and AI roadmap after leading observability and automation teams at hyperscale cloud providers.",
   },
-  {
-    name: "Aryan",
-    role: "Head of IT",
-    bio: "Drives IT operations, infrastructure, and security, ensuring reliable systems, compliant deployments, and consistent delivery at scale.",
-  },
+  
   {
     name: "Natasha",
     role: "Head Investor Relations",
@@ -26,8 +22,13 @@ const execTeam = [
   },
   {
     name: "Parul",
-    role: "CHR",
+    role: "HR",
     bio: "Builds the builder-operator culture across New York, Bengaluru, Dublin, and Singapore hubs.",
+  },
+  {
+    name: "Tiffany Chelsea",
+    role: "CMO",
+    bio: "Drives brand positioning, demand generation, and customer marketing initiatives that establish Galactis as the platform of choice for enterprise IT operations.",
   },
 ];
 

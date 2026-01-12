@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import Link from "next/link";
-import { getAllPosts, formatPostDate, BlogPost } from "@/lib/hygraph";
+import { getAllPosts, formatPostDate, BlogPost } from "@/lib/blog-api";
 
 export const metadata = {
   title: "Blog | Galactis.ai",
@@ -10,10 +10,10 @@ export const metadata = {
     "Thought leadership and technical tutorials from the Galactis.ai engineering, product, and strategy teams.",
 };
 
-// Revalidate every hour for fresh content
-export const revalidate = 3600;
+// Revalidate instantly - no caching for instant blog updates
+export const revalidate = 0;
 
-// Fallback posts for when Hygraph is not configured
+// Fallback posts for when Blog API is not configured
 const fallbackPosts: BlogPost[] = [
   {
     id: "1",
@@ -79,30 +79,29 @@ function BlogCard({ post }: { post: BlogPost }) {
 }
 
 export default async function BlogPage() {
-  // Fetch posts from Hygraph
+  // Fetch posts from Replit Blog API
   let posts = await getAllPosts(12);
 
   // Debug: Log what we got
   if (process.env.NODE_ENV === "development") {
-    console.log(`[Blog Page] Fetched ${posts.length} posts from Hygraph`);
+    console.log(`[Blog Page] Fetched ${posts.length} posts from Blog API`);
     if (posts.length > 0) {
       console.log(`[Blog Page] Post titles:`, posts.map((p) => p.title));
     } else {
-      console.warn("[Blog Page] ⚠️ No posts from Hygraph");
+      console.warn("[Blog Page] ⚠️ No posts from Blog API");
       console.warn("[Blog Page] Possible causes:");
-      console.warn("  1. HYGRAPH_ENDPOINT not set in environment variables");
-      console.warn("  2. No published posts in Hygraph Studio");
-      console.warn("  3. GraphQL query field mismatch (check schema)");
+      console.warn("  1. BLOG_API_URL not set in environment variables");
+      console.warn("  2. BLOG_API_KEY not set in environment variables");
+      console.warn("  3. No published posts in Replit BlogAdmin");
       console.warn("  4. Network/API error - check server logs above");
     }
   }
 
-  // Use fallback if no posts returned (Hygraph not configured or error)
+  // Use fallback if no posts returned (Blog API not configured or error)
   const isUsingFallback = posts.length === 0;
   if (isUsingFallback) {
-    console.warn("[Blog Page] ⚠️ Using fallback placeholder posts - real Hygraph posts not available");
-    console.warn("[Blog Page] To fix: Ensure HYGRAPH_ENDPOINT is set and posts are published in Hygraph");
-    console.warn("[Blog Page] Visit /api/blog-diagnostic to check connection status");
+    console.warn("[Blog Page] ⚠️ Using fallback placeholder posts - real Blog API posts not available");
+    console.warn("[Blog Page] To fix: Ensure BLOG_API_URL and BLOG_API_KEY are set in environment variables");
     posts = fallbackPosts;
   }
 
@@ -149,11 +148,7 @@ export default async function BlogPage() {
             <div className="mx-auto mt-6 max-w-2xl rounded-lg border border-yellow-500/50 bg-yellow-50 p-4 text-sm text-yellow-800 dark:border-yellow-500/30 dark:bg-yellow-900/20 dark:text-yellow-300">
               <p className="font-semibold">⚠️ Development Notice: Using Placeholder Posts</p>
               <p className="mt-1">
-                Real Hygraph posts are not available. Check{" "}
-                <a href="/api/blog-diagnostic" className="underline hover:text-yellow-900 dark:hover:text-yellow-200">
-                  /api/blog-diagnostic
-                </a>{" "}
-                for connection status.
+                Real Blog API posts are not available. Check your BLOG_API_URL and BLOG_API_KEY environment variables.
               </p>
             </div>
           )}

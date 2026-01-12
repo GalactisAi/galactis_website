@@ -21,14 +21,7 @@ const leaders = [
     icon: Blocks,
     gradient: "from-teal-500 via-emerald-500 to-green-500",
   },
-  {
-    name: "Aryan",
-    role: "Head of IT",
-    focus: "Outcome obsession",
-    quote: "\"Compliance, value, and speed can coexist when telemetry is shared.\"",
-    icon: Zap,
-    gradient: "from-indigo-500 via-blue-500 to-cyan-500",
-  },
+
 ];
 
 const cultureStats = [
@@ -129,7 +122,8 @@ export default function LifeAtGalactis() {
           </motion.p>
         </div>
 
-        <div className="mt-16 grid gap-6 lg:grid-cols-3">
+        <div className="mt-16 flex justify-center">
+          <div className="grid gap-6 lg:grid-cols-2 max-w-4xl w-full">
           {leaders.map((leader, index) => (
             <motion.div
               key={leader.name}
@@ -197,6 +191,7 @@ export default function LifeAtGalactis() {
               </div>
             </motion.div>
           ))}
+          </div>
         </div>
 
         <div className="mt-16 grid gap-6 lg:grid-cols-[1.2fr,0.8fr]">
