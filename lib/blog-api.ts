@@ -45,9 +45,6 @@ export async function getAllPosts(
   }
 
   try {
-    // #region agent log
-    fetch('http://127.0.0.1:7253/ingest/d48b7ff2-f13d-4f7f-98df-b86fb70d9568',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'blog-api.ts:48',message:'Fetching posts - entry',data:{apiUrl,hasKey:!!apiKey},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A,B,C,D,E'})}).catch(()=>{});
-    // #endregion
     const response = await fetch(`${apiUrl}/external/posts`, {
       headers: {
         'x-api-key': apiKey,
@@ -56,19 +53,11 @@ export async function getAllPosts(
       cache: 'no-store',
     });
 
-    // #region agent log
-    fetch('http://127.0.0.1:7253/ingest/d48b7ff2-f13d-4f7f-98df-b86fb70d9568',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'blog-api.ts:56',message:'Response status',data:{status:response.status,statusText:response.statusText,ok:response.ok},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A,B,C,D,E'})}).catch(()=>{});
-    // #endregion
-
     if (!response.ok) {
       throw new Error(`Blog API returned ${response.status}: ${response.statusText}`);
     }
 
     const rawData = await response.json();
-    
-    // #region agent log
-    fetch('http://127.0.0.1:7253/ingest/d48b7ff2-f13d-4f7f-98df-b86fb70d9568',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'blog-api.ts:62',message:'Raw API response structure',data:{isArray:Array.isArray(rawData),type:typeof rawData,keys:rawData?Object.keys(rawData):null,firstItemKeys:Array.isArray(rawData)&&rawData[0]?Object.keys(rawData[0]):null,firstItemSample:Array.isArray(rawData)&&rawData[0]?{id:rawData[0].id,title:rawData[0].title,name:rawData[0].name,slug:rawData[0].slug,publishedDate:rawData[0].publishedDate,createdAt:rawData[0].createdAt,date:rawData[0].date}:null},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A,B,C,D'})}).catch(()=>{});
-    // #endregion
 
     // Handle different response structures
     let posts: BlogPost[] = [];
@@ -85,16 +74,8 @@ export async function getAllPosts(
       }
     }
 
-    // #region agent log
-    fetch('http://127.0.0.1:7253/ingest/d48b7ff2-f13d-4f7f-98df-b86fb70d9568',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'blog-api.ts:75',message:'After structure handling',data:{postsCount:posts.length,firstPost:posts[0]?{id:posts[0].id,title:posts[0].title,name:posts[0].name,slug:posts[0].slug,publishedDate:posts[0].publishedDate,createdAt:posts[0].createdAt,allKeys:Object.keys(posts[0]||{})}:null},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A,B,C,D'})}).catch(()=>{});
-    // #endregion
-
     // Transform posts to match expected format
     const transformedPosts: BlogPost[] = posts.map((post: any, index: number) => {
-      // #region agent log
-      fetch('http://127.0.0.1:7253/ingest/d48b7ff2-f13d-4f7f-98df-b86fb70d9568',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'blog-api.ts:80',message:'Transforming post',data:{index,rawPost:post,hasTitle:!!post.title,hasName:!!post.name,hasSlug:!!post.slug,hasPublishedDate:!!post.publishedDate,hasCreatedAt:!!post.createdAt},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A,C,E'})}).catch(()=>{});
-      // #endregion
-      
       // Handle nested attributes (like Strapi format)
       const postData = post.attributes || post;
       
@@ -112,17 +93,9 @@ export async function getAllPosts(
                    postData.image ? { url: postData.image } : undefined,
       };
     });
-
-    // #region agent log
-    fetch('http://127.0.0.1:7253/ingest/d48b7ff2-f13d-4f7f-98df-b86fb70d9568',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'blog-api.ts:95',message:'After transformation',data:{transformedCount:transformedPosts.length,firstTransformed:transformedPosts[0]},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A,C,E'})}).catch(()=>{});
-    // #endregion
     
     // Apply pagination
     const paginatedPosts = transformedPosts.slice(skip, skip + first);
-    
-    // #region agent log
-    fetch('http://127.0.0.1:7253/ingest/d48b7ff2-f13d-4f7f-98df-b86fb70d9568',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'blog-api.ts:100',message:'Final return',data:{paginatedCount:paginatedPosts.length,returning:paginatedPosts.map(p=>({id:p.id,title:p.title,slug:p.slug,publishedDate:p.publishedDate}))},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A,B,C,D,E'})}).catch(()=>{});
-    // #endregion
     
     if (paginatedPosts.length > 0) {
       console.log(`✅ Successfully fetched ${paginatedPosts.length} posts from Blog API`);
