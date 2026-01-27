@@ -63,7 +63,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 // Revalidate instantly - no caching for instant blog updates
 export const revalidate = 0;
+// Revalidate instantly - no caching for instant blog updates
+export const revalidate = 0;
+// Allow dynamic generation of routes not in generateStaticParams (fixes 404 for new posts)
+export const dynamicParams = true;
 
+export default async function BlogPostPage({ params }: Props) {
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
