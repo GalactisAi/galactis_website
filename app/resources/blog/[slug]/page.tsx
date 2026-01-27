@@ -63,12 +63,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 // Revalidate instantly - no caching for instant blog updates
 export const revalidate = 0;
-// Revalidate instantly - no caching for instant blog updates
-export const revalidate = 0;
 // Allow dynamic generation of routes not in generateStaticParams (fixes 404 for new posts)
 export const dynamicParams = true;
 
-export default async function BlogPostPage({ params }: Props) {
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
@@ -80,6 +77,9 @@ export default async function BlogPostPage({ params }: Props) {
   const readTime = post.content
     ? calculateReadTime(post.content)
     : 5;
+
+  // Get blog API URL for image transformation
+  const blogApiUrl = process.env.BLOG_API_URL || "https://blog-nest-galactis.replit.app";
 
   // Structured data for SEO (Article schema)
   const articleJsonLd = {
@@ -127,13 +127,31 @@ export default async function BlogPostPage({ params }: Props) {
     `<${ordered ? "ol" : "ul"} class="${ordered ? "list-decimal" : "list-disc"} ml-6 my-4 space-y-2">${body}</${ordered ? "ol" : "ul"}>`;
   renderer.listitem = (text) => `<li class="leading-relaxed">${text}</li>`;
   renderer.paragraph = (text) => `<p class="my-4 leading-relaxed">${text}</p>`;
-  renderer.image = (href, _title, text) =>
-    `<img src="${href}" alt="${text || ""}" class="w-full h-auto rounded-xl shadow-lg my-6" loading="lazy" />`;
+  renderer.image = (href, _title, text) => {
+    // Convert relative backend paths to absolute URLs
+    let imageUrl = href;
+    if (href && href.startsWith('/objects/uploads/')) {
+      imageUrl = `${blogApiUrl}${href}`;
+    }
+    return `<img src="${imageUrl}" alt="${text || ""}" class="w-full h-auto rounded-xl shadow-lg my-6" loading="lazy" />`;
+  };
+
+  // Transform content: convert relative image paths to absolute URLs
+  let processedContent = post.content || '';
+  if (processedContent) {
+    // Replace markdown image syntax with relative paths
+    processedContent = processedContent.replace(
+      /!\[([^\]]*)\]\((\/objects\/uploads\/[^)]+)\)/g,
+      (_match, alt, path) => {
+        return `![${alt}](${blogApiUrl}${path})`;
+      }
+    );
+  }
 
   const htmlContent =
-    post.content && post.content.trim().length > 0
+    processedContent && processedContent.trim().length > 0
       ? (marked.parse(
-          post.content
+          processedContent
             .replace(/\r\n/g, "\n") // normalize line breaks
             .replace(/\u00A0/g, " ") // convert non-breaking spaces
             .trim(),
