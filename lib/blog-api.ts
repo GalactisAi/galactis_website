@@ -25,6 +25,9 @@ export interface BlogPost {
     url: string;
   };
   authors?: Author[];
+  canonicalUrl?: string;
+  metaTitle?: string;
+  metaDescription?: string;
 }
 
 // ============================================
@@ -115,6 +118,9 @@ export async function getAllPosts(
                    postData.coverImage ? { url: postData.coverImage } :
                    postData.image ? { url: postData.image } : undefined,
         authors: authors?.length ? authors : undefined,
+        canonicalUrl: postData.canonicalUrl ?? undefined,
+        metaTitle: postData.metaTitle ?? undefined,
+        metaDescription: postData.metaDescription ?? undefined,
       };
     });
     
@@ -197,6 +203,9 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
             postData.coverImage ? { url: postData.coverImage } :
             postData.image ? { url: postData.image } : undefined,
           authors: authors?.length ? authors : undefined,
+          canonicalUrl: postData.canonicalUrl ?? undefined,
+          metaTitle: postData.metaTitle ?? undefined,
+          metaDescription: postData.metaDescription ?? undefined,
         };
       }
     } catch {

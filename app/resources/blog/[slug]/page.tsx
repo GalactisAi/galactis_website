@@ -35,12 +35,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  const title = post.metaTitle ?? `${post.title} | Galactis.ai Blog`;
+  const description = post.metaDescription ?? post.excerpt;
+
   return {
-    title: `${post.title} | Galactis.ai Blog`,
-    description: post.excerpt,
+    title,
+    description,
+    ...(post.canonicalUrl && {
+      alternates: { canonical: post.canonicalUrl },
+    }),
     openGraph: {
-      title: post.title,
-      description: post.excerpt,
+      title: post.metaTitle ?? post.title,
+      description: post.metaDescription ?? post.excerpt,
       type: "article",
       publishedTime: post.publishedDate,
       ...(post.coverImage?.url && {
