@@ -4,6 +4,8 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
+import BlogRefreshTrigger from "@/components/BlogRefreshTrigger";
+import BlogImage from "@/components/BlogImage";
 import { marked } from "marked";
 import {
   getPostBySlug,
@@ -61,8 +63,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-// Revalidate instantly - no caching for instant blog updates
+// Always fetch fresh data - no static caching
 export const revalidate = 0;
+export const dynamic = "force-dynamic";
 // Allow dynamic generation of routes not in generateStaticParams (fixes 404 for new posts)
 export const dynamicParams = true;
 
@@ -89,10 +92,21 @@ export default async function BlogPostPage({ params }: Props) {
     description: post.excerpt,
     datePublished: post.publishedDate,
     dateModified: post.updatedAt || post.publishedDate,
-    author: {
-      "@type": "Organization",
-      name: "Galactis.ai",
-    },
+    ...(post.authors?.length
+      ? {
+          author: post.authors.map((a) => ({
+            "@type": "Person" as const,
+            name: a.name,
+            ...(a.description && { description: a.description }),
+            ...(a.image && { image: a.image }),
+          })),
+        }
+      : {
+          author: {
+            "@type": "Organization" as const,
+            name: "Galactis.ai",
+          },
+        }),
     publisher: {
       "@type": "Organization",
       name: "Galactis.ai",
@@ -165,6 +179,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   return (
     <div className="min-h-screen bg-white dark:bg-black">
+      <BlogRefreshTrigger />
       <JsonLd data={articleJsonLd} />
       <Navbar />
       <main className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
@@ -205,24 +220,35 @@ export default async function BlogPostPage({ params }: Props) {
           </p>
 
           {/* Meta info */}
-          <div className="mt-8 flex items-center gap-4 border-y border-zinc-200 py-4 text-sm text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
+          <div className="mt-8 flex flex-wrap items-center gap-4 border-y border-zinc-200 py-4 text-sm text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
             <time>{formatPostDate(post.publishedDate)}</time>
             <span>·</span>
             <span>{readTime} min read</span>
+            {post.authors?.length ? (
+              <>
+                <span>·</span>
+                <span className="flex items-center gap-2">
+                  {post.authors[0].image ? (
+                    <BlogImage
+                      src={post.authors[0].image}
+                      alt={post.authors[0].name}
+                      className="h-6 w-6 rounded-full object-cover"
+                    />
+                  ) : null}
+                  <span>By {post.authors[0].name}</span>
+                </span>
+              </>
+            ) : null}
           </div>
         </header>
 
         {/* Cover Image - Shows between header and article content */}
         {post.coverImage?.url && post.coverImage.url.trim() !== "" ? (
           <div className="mb-12 -mx-4 sm:mx-0">
-            <img
+            <BlogImage
               src={post.coverImage.url}
               alt={post.title}
               className="w-full h-auto rounded-2xl object-cover shadow-lg"
-              onError={(e) => {
-                console.error("Failed to load cover image:", post.coverImage?.url);
-                e.currentTarget.style.display = "none";
-              }}
             />
           </div>
         ) : null}
@@ -235,6 +261,41 @@ export default async function BlogPostPage({ params }: Props) {
             <div className="whitespace-pre-wrap">{post.content}</div>
           )}
         </article>
+
+        {/* About the Author(s) */}
+        {post.authors?.length ? (
+          <div className="mt-12 border-t border-zinc-200 pt-8 dark:border-zinc-800">
+            <h2 className="mb-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+              {post.authors.length === 1 ? "About the Author" : "About the Authors"}
+            </h2>
+            <div className="flex flex-col gap-8">
+              {post.authors.map((author) => (
+                <div
+                  key={author.name}
+                  className="flex flex-col gap-4 sm:flex-row sm:items-start"
+                >
+                  {author.image ? (
+                    <BlogImage
+                      src={author.image}
+                      alt={author.name}
+                      className="h-20 w-20 shrink-0 rounded-full object-cover"
+                    />
+                  ) : null}
+                  <div className="min-w-0">
+                    <p className="font-semibold text-zinc-900 dark:text-zinc-100">
+                      {author.name}
+                    </p>
+                    {author.description ? (
+                      <p className="mt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                        {author.description}
+                      </p>
+                    ) : null}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : null}
 
         {/* Back to Blog */}
         <div className="mt-12 border-t border-zinc-200 pt-8 dark:border-zinc-800">

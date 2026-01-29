@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
+import BlogRefreshTrigger from "@/components/BlogRefreshTrigger";
 import Link from "next/link";
 import { getAllPosts, formatPostDate, BlogPost } from "@/lib/blog-api";
 
@@ -10,8 +11,9 @@ export const metadata = {
     "Thought leadership and technical tutorials from the Galactis.ai engineering, product, and strategy teams.",
 };
 
-// Revalidate instantly - no caching for instant blog updates
+// Always fetch fresh data - no static caching
 export const revalidate = 0;
+export const dynamic = "force-dynamic";
 
 // Fallback posts for when Blog API is not configured
 const fallbackPosts: BlogPost[] = [
@@ -48,6 +50,11 @@ function BlogCard({ post }: { post: BlogPost }) {
         <time className="text-xs text-zinc-500 dark:text-zinc-400">
           {formatPostDate(post.publishedDate)}
         </time>
+        {post.authors?.length ? (
+          <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
+            By {post.authors[0].name}
+          </p>
+        ) : null}
         <h2 className="mt-3 text-xl font-semibold text-zinc-900 transition-colors group-hover:text-purple-600 dark:text-zinc-100 dark:group-hover:text-purple-400">
           {post.title}
         </h2>
@@ -132,6 +139,7 @@ export default async function BlogPage() {
 
   return (
     <div className="min-h-screen bg-white dark:bg-black">
+      <BlogRefreshTrigger />
       <JsonLd data={blogListJsonLd} />
       <Navbar />
       <main className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">

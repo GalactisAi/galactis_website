@@ -7,6 +7,12 @@ const BLOG_API_KEY = process.env.BLOG_API_KEY || "blog_d22633088dd732c932a363df0
 // TYPE DEFINITIONS
 // ============================================
 
+export interface Author {
+  name: string;
+  description?: string;
+  image?: string;
+}
+
 export interface BlogPost {
   id: string;
   title: string;
@@ -18,6 +24,7 @@ export interface BlogPost {
   coverImage?: {
     url: string;
   };
+  authors?: Author[];
 }
 
 // ============================================
@@ -79,6 +86,22 @@ export async function getAllPosts(
       // Handle nested attributes (like Strapi format)
       const postData = post.attributes || post;
       
+      // Map authors array (API returns { name, description, image })
+      // Convert relative image paths (e.g. /objects/uploads/...) to absolute URLs
+      const authors: Author[] | undefined = Array.isArray(postData.authors)
+        ? postData.authors.map((a: any) => {
+            let imageUrl = a.image ?? undefined;
+            if (imageUrl && typeof imageUrl === 'string' && imageUrl.startsWith('/')) {
+              imageUrl = `${apiUrl}${imageUrl}`;
+            }
+            return {
+              name: a.name ?? '',
+              description: a.description ?? undefined,
+              image: imageUrl,
+            };
+          }).filter((a: Author) => a.name)
+        : undefined;
+
       return {
         id: postData.id || postData._id || String(index),
         title: postData.title || postData.name || postData.heading || 'Untitled',
@@ -91,6 +114,7 @@ export async function getAllPosts(
                    postData.image?.url ? { url: postData.image.url } :
                    postData.coverImage ? { url: postData.coverImage } :
                    postData.image ? { url: postData.image } : undefined,
+        authors: authors?.length ? authors : undefined,
       };
     });
     
@@ -145,7 +169,35 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
       });
       
       if (response.ok) {
-        post = await response.json();
+        const rawPost = await response.json();
+        const postData = rawPost.attributes || rawPost;
+        const authors: Author[] | undefined = Array.isArray(postData.authors)
+          ? postData.authors.map((a: any) => {
+              let imageUrl = a.image ?? undefined;
+              if (imageUrl && typeof imageUrl === 'string' && imageUrl.startsWith('/')) {
+                imageUrl = `${apiUrl}${imageUrl}`;
+              }
+              return {
+                name: a.name ?? '',
+                description: a.description ?? undefined,
+                image: imageUrl,
+              };
+            }).filter((a: Author) => a.name)
+          : undefined;
+        post = {
+          id: postData.id || postData._id || '0',
+          title: postData.title || postData.name || postData.heading || 'Untitled',
+          slug: postData.slug || postData.url || generateSlug(postData.title || postData.name || ''),
+          excerpt: postData.excerpt || postData.description || postData.summary || '',
+          content: postData.content || postData.body || postData.html || '',
+          publishedDate: postData.publishedDate || postData.createdAt || postData.date || postData.publishedAt || new Date().toISOString(),
+          updatedAt: postData.updatedAt || postData.updated || postData.modifiedAt,
+          coverImage: postData.coverImage?.url ? { url: postData.coverImage.url } :
+            postData.image?.url ? { url: postData.image.url } :
+            postData.coverImage ? { url: postData.coverImage } :
+            postData.image ? { url: postData.image } : undefined,
+          authors: authors?.length ? authors : undefined,
+        };
       }
     } catch {
       // Single post endpoint doesn't exist, fall back to filtering
