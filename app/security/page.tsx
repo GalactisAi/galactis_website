@@ -1,6 +1,14 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
+export const metadata = {
+  title: {
+    absolute: "Security at Galactis.ai - Our Commitment",
+  },
+  description:
+    "Learn about the security standards and practices at Galactis.ai to protect data, ensure compliance, and maintain trust with customers and partners.",
+};
+
 export default function SecurityPage() {
   return (
     <div className="min-h-screen bg-white dark:bg-black">

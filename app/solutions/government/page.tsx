@@ -1,5 +1,13 @@
 import IndustryPage from "@/components/IndustryPage";
 
+export const metadata = {
+  title: {
+    absolute: "Government & Public Sector IT Solutions | Galactis.ai",
+  },
+  description:
+    "Government and public sector IT solutions using predictive AI to strengthen compliance, protect data sovereignty, and support secure operations.",
+};
+
 export default function GovernmentPage() {
   return (
     <IndustryPage

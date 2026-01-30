@@ -1,5 +1,13 @@
 import IndustryPage from "@/components/IndustryPage";
 
+export const metadata = {
+  title: {
+    absolute: "IT Solutions for Financial Services | Galactis.ai",
+  },
+  description:
+    "Financial services IT solutions powered by predictive AI to support regulatory compliance, audit readiness, and secure operations across banking, insurance, and capital markets.",
+};
+
 export default function FinancialServicesPage() {
   return (
     <IndustryPage

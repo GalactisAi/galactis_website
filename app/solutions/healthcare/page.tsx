@@ -1,5 +1,13 @@
 import IndustryPage from "@/components/IndustryPage";
 
+export const metadata = {
+  title: {
+    absolute: "Healthcare IT Solutions & Compliance | Galactis.ai",
+  },
+  description:
+    "Healthcare and life sciences IT solutions powered by predictive AI to support compliance, operational efficiency, and secure IT operations for regulated organizations.",
+};
+
 export default function HealthcarePage() {
   return (
     <IndustryPage

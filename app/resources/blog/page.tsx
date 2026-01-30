@@ -6,9 +6,11 @@ import Link from "next/link";
 import { getAllPosts, formatPostDate, BlogPost } from "@/lib/blog-api";
 
 export const metadata = {
-  title: "Blog | Galactis.ai",
+  title: {
+    absolute: "Galactis Blog - Network, ITAM & IT Automation",
+  },
   description:
-    "Thought leadership and technical tutorials from the Galactis.ai engineering, product, and strategy teams.",
+    "Explore the Galactis.ai blog for expert insights, guides, and trends on IT operations, network monitoring, ITAM, automation, and modern technology best practices.",
 };
 
 // Always fetch fresh data - no static caching

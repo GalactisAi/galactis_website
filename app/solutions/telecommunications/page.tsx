@@ -1,5 +1,13 @@
 import IndustryPage from "@/components/IndustryPage";
 
+export const metadata = {
+  title: {
+    absolute: "Telecommunications IT Solutions | Galactis.ai",
+  },
+  description:
+    "Telecommunications IT solutions designed to support service assurance and compliance, enhanced with predictive AI for proactive network operations.",
+};
+
 export default function TelecomPage() {
   return (
     <IndustryPage

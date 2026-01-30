@@ -1,0 +1,17 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: "Contact Us - Galactis.ai",
+  },
+  description:
+    "Reach out to the Galactis.ai team. Contact us for product inquiries, support, partnership opportunities, or to learn more about our solutions and services.",
+};
+
+export default function ContactLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return <>{children}</>;
+}

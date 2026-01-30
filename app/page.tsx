@@ -22,6 +22,14 @@ import CustomerProof from "@/components/CustomerProof";
 import LifeAtGalactis from "@/components/LifeAtGalactis";
 import StickyCTABand from "@/components/StickyCTABand";
 
+export const metadata = {
+  title: {
+    absolute: "Network Monitoring & IT Asset Management Software - Galactis.ai",
+  },
+  description:
+    "Enterprise network monitoring and IT asset management software powered by predictive AI to track assets, monitor performance, reduce risk, and streamline IT operations at scale.",
+};
+
 const industrySpotlights = [
   {
     industry: "Financial Services",
