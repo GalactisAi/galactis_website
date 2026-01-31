@@ -59,8 +59,7 @@ export async function getAllPosts(
       headers: {
         'x-api-key': apiKey,
       },
-      // No cache - fetch fresh data every time for instant updates
-      cache: 'no-store',
+      next: { revalidate: 60 },
     });
 
     if (!response.ok) {

@@ -13,9 +13,8 @@ export const metadata = {
     "Explore the Galactis.ai blog for expert insights, guides, and trends on IT operations, network monitoring, ITAM, automation, and modern technology best practices.",
 };
 
-// Always fetch fresh data - no static caching
-export const revalidate = 0;
-export const dynamic = "force-dynamic";
+// ISR: revalidate at most every 60 seconds so page can be served from cache
+export const revalidate = 60;
 
 // Fallback posts for when Blog API is not configured
 const fallbackPosts: BlogPost[] = [
