@@ -6,6 +6,9 @@ export const metadata = {
   },
   description:
     "Retail and e-commerce IT solutions designed to support compliance and operational resilience, enhanced with predictive AI for smarter operations.",
+  alternates: {
+    canonical: "https://galactis.ai/solutions/retail-ecommerce",
+  },
 };
 
 export default function RetailEcommercePage() {

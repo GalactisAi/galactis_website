@@ -11,6 +11,9 @@ export const metadata = {
   },
   description:
     "Explore the Galactis.ai blog for expert insights, guides, and trends on IT operations, network monitoring, ITAM, automation, and modern technology best practices.",
+  alternates: {
+    canonical: "https://galactis.ai/resources/blog",
+  },
 };
 
 // ISR: revalidate at most every 60 seconds so page can be served from cache

@@ -31,5 +31,8 @@ export const metadata: Metadata = {
     title: "Careers at Galactis.ai - Join Our Team",
     description: "Explore careers at Galactis.ai. Join us to build innovative software, collaborate with top talent, and grow your career in network monitoring and IT solutions.",
   },
+  alternates: {
+    canonical: "https://galactis.ai/careers",
+  },
 };
 

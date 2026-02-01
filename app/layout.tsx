@@ -77,6 +77,9 @@ export const metadata: Metadata = {
     site: "@galactis_ai",
     creator: "@galactis_ai",
   },
+  other: {
+    "google-site-verification": "mf_OyAh7D6uZ_ST_PUa4QuagC0KSbc-1nB41TKyQctg",
+  },
   // Icons are auto-generated from app/icon.tsx and app/apple-icon.tsx
 };
 
@@ -94,7 +97,30 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <meta
+          name="google-site-verification"
+          content="mf_OyAh7D6uZ_ST_PUa4QuagC0KSbc-1nB41TKyQctg"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MBJFZBMM');`,
+          }}
+        />
+      </head>
       <body className={`${inter.variable} ${jetbrains.variable} antialiased`}>
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-MBJFZBMM"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
         {children}
         <Analytics />
         <SpeedInsights />

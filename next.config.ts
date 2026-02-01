@@ -68,6 +68,16 @@ const nextConfig: NextConfig = {
         destination: "/company",
         permanent: true, // 301 redirect for SEO
       },
+      {
+        source: "/products/itam",
+        destination: "/products/it-asset-management-software",
+        permanent: true, // 301 redirect for SEO
+      },
+      {
+        source: "/products/network-monitoring",
+        destination: "/products/network-monitoring-software",
+        permanent: true, // 301 redirect for SEO
+      },
     ];
   },
 };

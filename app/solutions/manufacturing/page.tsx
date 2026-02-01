@@ -6,6 +6,9 @@ export const metadata = {
   },
   description:
     "Manufacturing IT solutions powered by predictive AI to improve operational efficiency, reduce downtime, and support compliance across smart factories and industrial environments.",
+  alternates: {
+    canonical: "https://galactis.ai/solutions/manufacturing",
+  },
 };
 
 export default function ManufacturingPage() {

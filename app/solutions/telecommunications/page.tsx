@@ -6,6 +6,9 @@ export const metadata = {
   },
   description:
     "Telecommunications IT solutions designed to support service assurance and compliance, enhanced with predictive AI for proactive network operations.",
+  alternates: {
+    canonical: "https://galactis.ai/solutions/telecommunications",
+  },
 };
 
 export default function TelecomPage() {
