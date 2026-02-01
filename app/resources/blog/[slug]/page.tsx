@@ -155,6 +155,23 @@ export default async function BlogPostPage({ params }: Props) {
     }
     return `<img src="${imageUrl}" alt="${text || ""}" class="w-full h-auto rounded-xl shadow-lg my-6" loading="lazy" />`;
   };
+  // Wrap tables in scroll container for mobile + add base styling
+  renderer.table = (header, body) =>
+    `<div class="my-6 overflow-x-auto rounded-xl border border-zinc-200 dark:border-zinc-700"><table class="min-w-full divide-y divide-zinc-200 dark:divide-zinc-700"><thead>${header}</thead><tbody class="divide-y divide-zinc-200 dark:divide-zinc-700">${body}</tbody></table></div>`;
+  renderer.tablerow = (content) => `<tr>${content}</tr>`;
+  renderer.tablecell = (content, flags) => {
+    const tag = flags.header ? "th" : "td";
+    const align =
+      flags.align === "center"
+        ? " text-center"
+        : flags.align === "right"
+          ? " text-right"
+          : " text-left";
+    const cellClass = flags.header
+      ? `px-4 py-3 text-sm font-semibold text-zinc-900 dark:text-zinc-100 bg-zinc-50 dark:bg-zinc-800/50${align}`
+      : `px-4 py-3 text-sm text-zinc-700 dark:text-zinc-300${align}`;
+    return `<${tag} class="${cellClass}">${content}</${tag}>`;
+  };
 
   // Transform content: convert relative image paths to absolute URLs
   let processedContent = post.content || '';
