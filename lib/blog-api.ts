@@ -104,6 +104,23 @@ export async function getAllPosts(
           }).filter((a: Author) => a.name)
         : undefined;
 
+      // Transform cover image URL: convert relative paths to absolute URLs
+      let coverImageUrl: string | undefined;
+      if (postData.coverImage?.url) {
+        coverImageUrl = postData.coverImage.url;
+      } else if (postData.image?.url) {
+        coverImageUrl = postData.image.url;
+      } else if (postData.coverImage) {
+        coverImageUrl = postData.coverImage;
+      } else if (postData.image) {
+        coverImageUrl = postData.image;
+      }
+      
+      // Convert relative image paths (e.g. /objects/uploads/...) to absolute URLs
+      if (coverImageUrl && typeof coverImageUrl === 'string' && coverImageUrl.startsWith('/')) {
+        coverImageUrl = `${apiUrl}${coverImageUrl}`;
+      }
+
       return {
         id: postData.id || postData._id || String(index),
         title: postData.title || postData.name || postData.heading || 'Untitled',
@@ -112,10 +129,7 @@ export async function getAllPosts(
         content: postData.content || postData.body || postData.html || '',
         publishedDate: postData.publishedDate || postData.createdAt || postData.date || postData.publishedAt || new Date().toISOString(),
         updatedAt: postData.updatedAt || postData.updated || postData.modifiedAt,
-        coverImage: postData.coverImage?.url ? { url: postData.coverImage.url } : 
-                   postData.image?.url ? { url: postData.image.url } :
-                   postData.coverImage ? { url: postData.coverImage } :
-                   postData.image ? { url: postData.image } : undefined,
+        coverImage: coverImageUrl ? { url: coverImageUrl } : undefined,
         authors: authors?.length ? authors : undefined,
         canonicalUrl: postData.canonicalUrl ?? undefined,
         metaTitle: postData.metaTitle ?? undefined,
@@ -189,6 +203,23 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
               };
             }).filter((a: Author) => a.name)
           : undefined;
+        // Transform cover image URL: convert relative paths to absolute URLs
+        let coverImageUrl: string | undefined;
+        if (postData.coverImage?.url) {
+          coverImageUrl = postData.coverImage.url;
+        } else if (postData.image?.url) {
+          coverImageUrl = postData.image.url;
+        } else if (postData.coverImage) {
+          coverImageUrl = postData.coverImage;
+        } else if (postData.image) {
+          coverImageUrl = postData.image;
+        }
+        
+        // Convert relative image paths (e.g. /objects/uploads/...) to absolute URLs
+        if (coverImageUrl && typeof coverImageUrl === 'string' && coverImageUrl.startsWith('/')) {
+          coverImageUrl = `${apiUrl}${coverImageUrl}`;
+        }
+
         post = {
           id: postData.id || postData._id || '0',
           title: postData.title || postData.name || postData.heading || 'Untitled',
@@ -197,10 +228,7 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
           content: postData.content || postData.body || postData.html || '',
           publishedDate: postData.publishedDate || postData.createdAt || postData.date || postData.publishedAt || new Date().toISOString(),
           updatedAt: postData.updatedAt || postData.updated || postData.modifiedAt,
-          coverImage: postData.coverImage?.url ? { url: postData.coverImage.url } :
-            postData.image?.url ? { url: postData.image.url } :
-            postData.coverImage ? { url: postData.coverImage } :
-            postData.image ? { url: postData.image } : undefined,
+          coverImage: coverImageUrl ? { url: coverImageUrl } : undefined,
           authors: authors?.length ? authors : undefined,
           canonicalUrl: postData.canonicalUrl ?? undefined,
           metaTitle: postData.metaTitle ?? undefined,

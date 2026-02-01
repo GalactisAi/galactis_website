@@ -80,7 +80,15 @@ export const metadata: Metadata = {
   other: {
     "google-site-verification": "mf_OyAh7D6uZ_ST_PUa4QuagC0KSbc-1nB41TKyQctg",
   },
-  // Icons are auto-generated from app/icon.tsx and app/apple-icon.tsx
+  icons: {
+    icon: [
+      { url: "/icon", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: [
+      { url: "/apple-icon", sizes: "180x180", type: "image/png" },
+    ],
+  },
 };
 
 export const viewport: Viewport = {
