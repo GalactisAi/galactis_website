@@ -1,6 +1,6 @@
 import { getAllPosts } from "@/lib/blog-api";
 
-const BASE_URL = "https://galactis.ai";
+const BASE_URL = "https://www.galactis.ai";
 
 export default async function sitemap() {
   const now = new Date();

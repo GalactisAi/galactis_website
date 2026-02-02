@@ -41,9 +41,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description,
-    ...(post.canonicalUrl && {
-      alternates: { canonical: post.canonicalUrl },
-    }),
+    alternates: {
+      canonical: post.canonicalUrl || `https://www.galactis.ai/resources/blog/${post.slug}`,
+    },
     openGraph: {
       title: post.metaTitle ?? post.title,
       description: post.metaDescription ?? post.excerpt,
@@ -118,12 +118,12 @@ export default async function BlogPostPage({ params }: Props) {
       name: "Galactis.ai",
       logo: {
         "@type": "ImageObject",
-        url: "https://galactis.ai/galactis-logo.svg",
+        url: "https://www.galactis.ai/galactis-logo.svg",
       },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://galactis.ai/resources/blog/${post.slug}`,
+      "@id": `https://www.galactis.ai/resources/blog/${post.slug}`,
     },
     wordCount: post.content?.split(/\s+/).length || 0,
     articleSection: "Technology",

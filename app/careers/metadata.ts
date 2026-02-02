@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     description: "Explore careers at Galactis.ai. Join us to build innovative software, collaborate with top talent, and grow your career in network monitoring and IT solutions.",
   },
   alternates: {
-    canonical: "https://galactis.ai/careers",
+    canonical: "https://www.galactis.ai/careers",
   },
 };
 

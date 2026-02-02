@@ -13,7 +13,7 @@ export const metadata = {
   description:
     "Explore the Galactis.ai blog for expert insights, guides, and trends on IT operations, network monitoring, ITAM, automation, and modern technology best practices.",
   alternates: {
-    canonical: "https://galactis.ai/resources/blog",
+    canonical: "https://www.galactis.ai/resources/blog",
   },
 };
 
@@ -136,13 +136,13 @@ export default async function BlogPage() {
     name: "Galactis.ai Blog",
     description:
       "Thought leadership and technical tutorials from the Galactis.ai engineering, product, and strategy teams.",
-    url: "https://galactis.ai/resources/blog",
+    url: "https://www.galactis.ai/resources/blog",
     publisher: {
       "@type": "Organization",
       name: "Galactis.ai",
       logo: {
         "@type": "ImageObject",
-        url: "https://galactis.ai/galactis-logo.svg",
+        url: "https://www.galactis.ai/galactis-logo.svg",
       },
     },
     blogPost: posts.slice(0, 10).map((post) => ({
@@ -150,7 +150,7 @@ export default async function BlogPage() {
       headline: post.title,
       description: post.excerpt,
       datePublished: post.publishedDate,
-      url: `https://galactis.ai/resources/blog/${post.slug}`,
+      url: `https://www.galactis.ai/resources/blog/${post.slug}`,
     })),
   };
 

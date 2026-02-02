@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Reach out to the Galactis.ai team. Contact us for product inquiries, support, partnership opportunities, or to learn more about our solutions and services.",
   alternates: {
-    canonical: "https://galactis.ai/contact",
+    canonical: "https://www.galactis.ai/contact",
   },
 };
 

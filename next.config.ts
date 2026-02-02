@@ -58,6 +58,18 @@ const nextConfig: NextConfig = {
   // Redirects for SEO migration
   async redirects() {
     return [
+      // Redirect non-www to www (301 permanent redirect)
+      {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "galactis.ai",
+          },
+        ],
+        destination: "https://www.galactis.ai/:path*",
+        permanent: true,
+      },
       {
         source: "/company/careers",
         destination: "/careers",

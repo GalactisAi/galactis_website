@@ -7,7 +7,7 @@ export const metadata = {
   description:
     "Government and public sector IT solutions using predictive AI to strengthen compliance, protect data sovereignty, and support secure operations.",
   alternates: {
-    canonical: "https://galactis.ai/solutions/government",
+    canonical: "https://www.galactis.ai/solutions/government",
   },
 };
 

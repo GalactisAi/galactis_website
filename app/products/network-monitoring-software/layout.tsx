@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Network monitoring software for enterprises using predictive AI to monitor performance, detect outages early, and gain real-time visibility across on-prem, cloud, and hybrid networks.",
   alternates: {
-    canonical: "https://galactis.ai/products/network-monitoring-software",
+    canonical: "https://www.galactis.ai/products/network-monitoring-software",
   },
 };
 

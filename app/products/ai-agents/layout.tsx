@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "A flexible AI agents platform that helps companies design and deploy agents tailored to their unique needs, workflows, and business objectives.",
   alternates: {
-    canonical: "https://galactis.ai/products/ai-agents",
+    canonical: "https://www.galactis.ai/products/ai-agents",
   },
 };
 

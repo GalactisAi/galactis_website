@@ -18,7 +18,7 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://galactis.ai"),
+  metadataBase: new URL("https://www.galactis.ai"),
   title: {
     default: "Galactis.ai | Enterprise ITAM, Network Monitoring & AI Agents",
     template: "%s | Galactis.ai",
@@ -40,9 +40,9 @@ export const metadata: Metadata = {
   publisher: "Galactis.ai",
   category: "technology",
   alternates: {
-    canonical: "https://galactis.ai",
+    canonical: "https://www.galactis.ai",
     languages: {
-      "en-US": "https://galactis.ai",
+      "en-US": "https://www.galactis.ai",
     },
   },
   robots: {
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    url: "https://galactis.ai",
+    url: "https://www.galactis.ai",
     siteName: "Galactis.ai",
     title: "Galactis.ai | Enterprise ITAM, Network Monitoring & AI Agents",
     description:
@@ -82,11 +82,7 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/icon", type: "image/png" },
       { url: "/favicon.ico", sizes: "any" },
-    ],
-    apple: [
-      { url: "/apple-icon", sizes: "180x180", type: "image/png" },
     ],
   },
 };

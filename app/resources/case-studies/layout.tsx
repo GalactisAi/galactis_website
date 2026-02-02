@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Explore how Galactis.ai transforms technology operations for global enterprises. Read case studies from ICICI Bank, Airtel, Corpay, and more.",
   alternates: {
-    canonical: "https://galactis.ai/resources/case-studies",
+    canonical: "https://www.galactis.ai/resources/case-studies",
   },
 };
 

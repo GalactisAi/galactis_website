@@ -7,7 +7,7 @@ export const metadata = {
   description:
     "Financial services IT solutions powered by predictive AI to support regulatory compliance, audit readiness, and secure operations across banking, insurance, and capital markets.",
   alternates: {
-    canonical: "https://galactis.ai/solutions/financial-services",
+    canonical: "https://www.galactis.ai/solutions/financial-services",
   },
 };
 

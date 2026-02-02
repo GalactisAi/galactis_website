@@ -8,7 +8,7 @@ export const metadata = {
   description:
     "Learn about the security standards and practices at Galactis.ai to protect data, ensure compliance, and maintain trust with customers and partners.",
   alternates: {
-    canonical: "https://galactis.ai/security",
+    canonical: "https://www.galactis.ai/security",
   },
 };
 

@@ -7,7 +7,7 @@ export const metadata = {
   description:
     "Healthcare and life sciences IT solutions powered by predictive AI to support compliance, operational efficiency, and secure IT operations for regulated organizations.",
   alternates: {
-    canonical: "https://galactis.ai/solutions/healthcare",
+    canonical: "https://www.galactis.ai/solutions/healthcare",
   },
 };
 

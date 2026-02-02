@@ -29,7 +29,7 @@ export const metadata = {
   description:
     "Enterprise network monitoring and IT asset management software powered by predictive AI to track assets, monitor performance, reduce risk, and streamline IT operations at scale.",
   alternates: {
-    canonical: "https://galactis.ai",
+    canonical: "https://www.galactis.ai",
   },
 };
 
