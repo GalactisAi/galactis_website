@@ -52,7 +52,7 @@ export default function Footer() {
                 <p>Wing A, Greenwood · Rajiv Gandhi Salai · Chennai, IN</p>
               </div>
               <div className="mt-5 flex gap-3">
-                <FooterSocial href="https://www.linkedin.com/company/galactisaitech/posts/?feedView=all" label="LinkedIn">
+                <FooterSocial href="https://www.linkedin.com/company/galactisaitech" label="LinkedIn">
                   <Linkedin className="h-4 w-4" />
                 </FooterSocial>
                 <FooterSocial href="https://www.instagram.com/galactis_tech/" label="Instagram">

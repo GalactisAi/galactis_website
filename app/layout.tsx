@@ -81,9 +81,7 @@ export const metadata: Metadata = {
     "google-site-verification": "mf_OyAh7D6uZ_ST_PUa4QuagC0KSbc-1nB41TKyQctg",
   },
   icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-    ],
+    icon: "/favicon.png",
   },
 };
 
