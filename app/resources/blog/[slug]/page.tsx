@@ -31,11 +31,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!post) {
     return {
-      title: "Post Not Found | Galactis.ai Blog",
+      title: "Post Not Found | Galactis Blog",
     };
   }
 
-  const title = post.metaTitle ?? `${post.title} | Galactis.ai Blog`;
+  const title = post.metaTitle ?? `${post.title} | Galactis Blog`;
   const description = post.metaDescription ?? post.excerpt;
 
   return {
@@ -110,12 +110,12 @@ export default async function BlogPostPage({ params }: Props) {
       : {
           author: {
             "@type": "Organization" as const,
-            name: "Galactis.ai",
+            name: "Galactis",
           },
         }),
     publisher: {
       "@type": "Organization",
-      name: "Galactis.ai",
+      name: "Galactis",
       logo: {
         "@type": "ImageObject",
         url: "https://www.galactis.ai/galactis-logo.svg",

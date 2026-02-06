@@ -11,7 +11,7 @@ export const metadata = {
     absolute: "Galactis Blog - Network, ITAM & IT Automation",
   },
   description:
-    "Explore the Galactis.ai blog for expert insights, guides, and trends on IT operations, network monitoring, ITAM, automation, and modern technology best practices.",
+    "Explore the Galactis blog for expert insights, guides, and trends on IT operations, network monitoring, ITAM, automation, and modern technology best practices.",
   alternates: {
     canonical: "https://www.galactis.ai/resources/blog",
   },
@@ -133,13 +133,13 @@ export default async function BlogPage() {
   const blogListJsonLd = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    name: "Galactis.ai Blog",
+    name: "Galactis Blog",
     description:
-      "Thought leadership and technical tutorials from the Galactis.ai engineering, product, and strategy teams.",
+      "Thought leadership and technical tutorials from the Galactis engineering, product, and strategy teams.",
     url: "https://www.galactis.ai/resources/blog",
     publisher: {
       "@type": "Organization",
-      name: "Galactis.ai",
+      name: "Galactis",
       logo: {
         "@type": "ImageObject",
         url: "https://www.galactis.ai/galactis-logo.svg",
@@ -166,7 +166,7 @@ export default async function BlogPage() {
             Blog
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
-            Thought leadership and technical tutorials from the Galactis.ai
+            Thought leadership and technical tutorials from the Galactis
             engineering, product, and strategy teams.
           </p>
           {isUsingFallback && process.env.NODE_ENV === "development" && (

@@ -39,7 +39,7 @@ export default function Footer() {
               <Link href="/" className="mb-4 inline-flex items-center gap-2">
               <img 
                 src="/galactis-logo.svg" 
-                  alt="Galactis.ai logo"
+                  alt="Galactis"
                   className="h-10 w-auto"
               />
                 <span className="text-base font-semibold tracking-wide text-white dark:text-white">Galactis.ai</span>

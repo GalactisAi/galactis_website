@@ -3,10 +3,10 @@ import Footer from "@/components/Footer";
 
 export const metadata = {
   title: {
-    absolute: "Security at Galactis.ai - Our Commitment",
+    absolute: "Security at Galactis - Our Commitment",
   },
   description:
-    "Learn about the security standards and practices at Galactis.ai to protect data, ensure compliance, and maintain trust with customers and partners.",
+    "Learn about the security standards and practices at Galactis to protect data, ensure compliance, and maintain trust with customers and partners.",
   alternates: {
     canonical: "https://www.galactis.ai/security",
   },

@@ -20,8 +20,8 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.galactis.ai"),
   title: {
-    default: "Galactis.ai | Enterprise ITAM, Network Monitoring & AI Agents",
-    template: "%s | Galactis.ai",
+    default: "Galactis | Enterprise ITAM, Network Monitoring & AI Agents",
+    template: "%s | Galactis",
   },
   description:
     "Transform operations with AI-powered IT Asset Management, Network Intelligence & Autonomous Agents. Trusted by regulated enterprises worldwide.",
@@ -35,9 +35,9 @@ export const metadata: Metadata = {
     "NOC automation",
     "B2B SaaS",
   ],
-  applicationName: "Galactis.ai",
-  authors: [{ name: "Galactis.ai" }],
-  publisher: "Galactis.ai",
+  applicationName: "Galactis",
+  authors: [{ name: "Galactis" }],
+  publisher: "Galactis",
   category: "technology",
   alternates: {
     canonical: "https://www.galactis.ai",
@@ -59,8 +59,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "https://www.galactis.ai",
-    siteName: "Galactis.ai",
-    title: "Galactis.ai | Enterprise ITAM, Network Monitoring & AI Agents",
+    siteName: "Galactis",
+    title: "Galactis | Enterprise ITAM, Network Monitoring & AI Agents",
     description:
       "Single operating system for IT Asset Management, Network Intelligence, and AI Agents. Built for financial services, telecom, healthcare, and public sector leaders.",
     images: [
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Galactis.ai platform overview",
+        alt: "Galactis platform overview",
       },
     ],
   },

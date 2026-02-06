@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Custom AI Agents Platform for Business Needs | Galactis.ai",
+    absolute: "Custom AI Agents Platform for Business Needs | Galactis",
   },
   description:
     "A flexible AI agents platform that helps companies design and deploy agents tailored to their unique needs, workflows, and business objectives.",

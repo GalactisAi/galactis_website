@@ -24,7 +24,7 @@ import StickyCTABand from "@/components/StickyCTABand";
 
 export const metadata = {
   title: {
-    absolute: "Network Monitoring & IT Asset Management Software - Galactis.ai",
+    absolute: "Network Monitoring & IT Asset Management Software - Galactis",
   },
   description:
     "Enterprise network monitoring and IT asset management software powered by predictive AI to track assets, monitor performance, reduce risk, and streamline IT operations at scale.",
@@ -64,20 +64,28 @@ export default function Home() {
         data={{
           "@context": "https://schema.org",
           "@type": "Organization",
-          name: "Galactis.ai",
-          url: "https://galactis.ai",
+          name: "Galactis",
+          url: "https://galactis.ai/",
           logo: "https://galactis.ai/galactis-logo.svg",
-          description:
-            "Enterprise ITAM, Network Monitoring & AI Agents Platform",
+          description: "Enterprise network monitoring and IT asset management software powered by predictive AI to track assets, monitor performance, reduce risk, and streamline IT operations at scale.",
+          brand: {
+            "@type": "Brand",
+            name: "Galactis",
+          },
+          foundingDate: "2022",
+          founder: {
+            "@type": "Person",
+            name: "Madhujith Arumugam",
+          },
           contactPoint: {
             "@type": "ContactPoint",
-            telephone: "+1-XXX-XXX-XXXX",
-            contactType: "sales",
+            contactType: "customer support",
+            email: "info@galactis.ai",
             areaServed: "Worldwide",
+            availableLanguage: ["English"],
           },
           sameAs: [
-            "https://linkedin.com/company/galactis-ai",
-            "https://twitter.com/galactis_ai",
+            "https://www.linkedin.com/company/galactisaitech",
           ],
         }}
       />

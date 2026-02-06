@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Galactis.ai Pricing | Network Monitoring & ITAM Software Plans",
+    absolute: "Galactis Pricing | Network Monitoring & ITAM Software Plans",
   },
   description:
     "Choose the right plan for network monitoring software and ITAM software. Flexible pricing for organizations of all sizes with features that scale with your needs.",

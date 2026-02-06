@@ -2,7 +2,7 @@ import IndustryPage from "@/components/IndustryPage";
 
 export const metadata = {
   title: {
-    absolute: "Manufacturing IT Solutions | Galactis.ai",
+    absolute: "Manufacturing IT Solutions | Galactis",
   },
   description:
     "Manufacturing IT solutions powered by predictive AI to improve operational efficiency, reduce downtime, and support compliance across smart factories and industrial environments.",

@@ -2,7 +2,7 @@ import IndustryPage from "@/components/IndustryPage";
 
 export const metadata = {
   title: {
-    absolute: "Retail & E-commerce IT Solutions | Galactis.ai",
+    absolute: "Retail & E-commerce IT Solutions | Galactis",
   },
   description:
     "Retail and e-commerce IT solutions designed to support compliance and operational resilience, enhanced with predictive AI for smarter operations.",

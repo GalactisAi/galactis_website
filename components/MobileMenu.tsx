@@ -122,7 +122,7 @@ export default function MobileMenu() {
                       >
                         <img
                           src="/galactis-logo.svg"
-                          alt="Galactis.ai company logo, stylized geometric 'G' with blue-purple gradient"
+                          alt="Galactis"
                           className="h-10 w-auto flex-shrink-0 md:h-12"
                           style={{ display: "block", maxWidth: "none", objectFit: "contain" }}
                         />

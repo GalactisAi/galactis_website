@@ -2,7 +2,7 @@ import IndustryPage from "@/components/IndustryPage";
 
 export const metadata = {
   title: {
-    absolute: "Telecommunications IT Solutions | Galactis.ai",
+    absolute: "Telecommunications IT Solutions | Galactis",
   },
   description:
     "Telecommunications IT solutions designed to support service assurance and compliance, enhanced with predictive AI for proactive network operations.",

@@ -2,7 +2,7 @@ import IndustryPage from "@/components/IndustryPage";
 
 export const metadata = {
   title: {
-    absolute: "Healthcare IT Solutions & Compliance | Galactis.ai",
+    absolute: "Healthcare IT Solutions & Compliance | Galactis",
   },
   description:
     "Healthcare and life sciences IT solutions powered by predictive AI to support compliance, operational efficiency, and secure IT operations for regulated organizations.",

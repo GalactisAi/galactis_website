@@ -49,7 +49,7 @@ export default function Navbar() {
             >
               <img 
                 src="/galactis-logo.svg" 
-                alt="Galactis.ai company logo, stylized geometric 'G' with blue-purple gradient" 
+                alt="Galactis" 
                 className="h-12 md:h-14 w-auto flex-shrink-0"
                 style={{ display: "block", maxWidth: "none", objectFit: "contain" }}
               />
