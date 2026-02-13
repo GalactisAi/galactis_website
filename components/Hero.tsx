@@ -7,19 +7,19 @@ import React from "react";
 import HeroVisualization from "./HeroVisualization";
 
 // Split headline into words for staggered animation
-const headlineWords = "Put AI to Work for Your Enterprise Technology Stack".split(" ");
-const gradientWords = ["Enterprise", "Technology", "Stack"];
+const headlineWords = "AI-Powered IT Asset & Network Monitoring for Enterprises ".split(" ");
+const gradientWords = ["Asset", "Network", "Monitoring", "Enterprises"];
 const heroMetrics = [
   {
     label: "IT Asset Management",
-    stat: "₹2.8 Cr waste removed",
-    detail: "Based on the ITAM blueprint featured on galactis.ai/products/itam.",
+    stat: "₹2.8 Cr in IT Spend Optimized",
+    detail: "Identified and eliminated unused, duplicate, and unmanaged assets using Galactis ITAM.",
     href: "/products/itam",
   },
   {
     label: "Network Intelligence",
-    stat: "99.95% uptime",
-    detail: "Data from the Airtel study in the Network Monitoring page.",
+    stat: "99.95% Network Uptime",
+    detail: "Achieved through predictive monitoring and proactive anomaly detection.",
     href: "/products/network-monitoring",
   },
   {
@@ -147,7 +147,7 @@ export default function Hero() {
               })}
             </h1>
                 <p className="mt-4 text-base leading-relaxed text-gray-200 sm:text-lg">
-              Unified ITAM, Network Intelligence & Autonomous Agents. One platform to see, control, and optimize your entire IT environment.
+              Unified IT Asset Management and Network Monitoring platform that gives enterprises real-time visibility, predictive insights, and proactive control across on-prem, cloud, and hybrid environments.
             </p>
 
             {/* Trust badges with staggered fade-in */}

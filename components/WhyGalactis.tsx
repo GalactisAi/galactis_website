@@ -8,24 +8,24 @@ import { ScrollRevealStagger } from "./ScrollReveal";
 const reasons = [
   {
     icon: Layers,
-    title: "Single platform for ITAM, NOC, and AI agents",
+    title: "Single Source of Truth for Enterprise Assets",
     description:
-      "Inventory, contracts, telemetry, and agent automation share the same data fabric, so CIO, COO, and CTO teams finally work from one plan of record.",
-    proof: ["₹2.8 Cr average waste eliminated", "220+ systems bi-directionally synced"],
+      "All asset, contract, and dependency data is reconciled into a single system of record, eliminating drift, duplication, and shadow IT across large environments.",
+    proof: ["₹2.8 Cr average IT waste eliminated", "220+ enterprise systems bi-directionally synced"],
   },
   {
     icon: Brain,
-    title: "AI-native automation with human-grade guardrails",
+    title: "Proactive, Not Reactive, Network Operations",
     description:
-      "Galactis pairs graph AI, LLM copilots, and deterministic runbooks. Impact scoring, human approvals, and rollback capture learning into every workflow.",
-    proof: ["42% fewer P1 incidents", "120K calls handled autonomously"],
+      "Galactis shifts teams from alert-driven firefighting to predictive detection, identifying risk patterns before incidents impact users or SLAs.",
+    proof: ["99.95% uptime achieved", "42% fewer P1 incidents"],
   },
   {
     icon: ShieldCheck,
-    title: "Compliance-first architecture",
+    title: " Custom AI Agents for Enterprises",
     description:
-      "SOC 2 Type II, ISO 27001, HIPAA, PCI-DSS, and regional privacy frameworks are enforced at the platform level with immutable audit trails and data residency controls.",
-    proof: ["0 PHI findings across healthcare deployments", "Regulator-ready evidence packs in 7 days"],
+      "Galactis designs and builds AI agents based on specific client requirements, delivered as a managed service with enterprise-grade controls, approvals, and auditability.",
+    proof: ["120K+ operational tasks automated", "Governed deployments across regulated industries"],
   },
 ];
 
@@ -94,10 +94,10 @@ export default function WhyGalactis() {
         <div className="text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-purple-600">Why Galactis</p>
           <h2 className="mt-3 text-3xl font-bold text-gray-900 dark:text-white lg:text-4xl">
-            Platform decisions driven by real enterprise requirements
+            Why Enterprises Run Galactis in Production
           </h2>
           <p className="mt-4 text-base text-gray-600 dark:text-gray-300">
-            Everything showcased below pulls directly from our ITAM blueprints, network operations briefs, and AI agent governance guides already running in production.
+            Galactis is built from live enterprise deployments, shaped by real-world constraints like scale, uptime, compliance, and operational accountability.
           </p>
         </div>
         <ScrollRevealStagger direction="up" staggerDelay={0.12} className="mt-12 grid gap-6 sm:gap-7 md:grid-cols-3 lg:gap-8">

@@ -8,7 +8,7 @@ export default function EnterpriseCTA() {
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-white/80">Next best step</p>
           <h2 className="mt-4 text-3xl font-bold">Co-design a pilot that proves business value in 8 weeks</h2>
           <p className="mt-3 text-white/80">
-            Bring your KPIs, tech stack, and constraints. We bring reference architectures, integration pods, and executive alignment to accelerate adoption.
+            Bring your KPIs and environment. We deploy a governed pilot across IT assets, networks, and workflows to validate outcomes, before full rollout.
           </p>
           <div className="mt-6 flex flex-wrap gap-4">
             <Link

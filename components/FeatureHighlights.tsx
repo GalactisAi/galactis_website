@@ -15,25 +15,25 @@ type Feature = {
 const features: Feature[] = [
   {
     title: "Technology Value Office",
-    description: "ITAM + FinOps controls aligned to CFO dashboards and regulator inspections.",
+    description: "IT Asset and FinOps programs designed to help enterprises reduce waste, improve license governance, and meet regulatory expectations.",
     icon: Gauge,
     bullets: ["Effective License Position with scenario planning", "Chargeback-ready benchmarks for every BU"],
   },
   {
     title: "Autonomous Network Operations",
-    description: "Predictive observability, blast radius modeling, and AI-assisted runbooks.",
+    description: " Predictive network operations programs focused on preventing incidents, reducing escalation, and improving uptime at scale.",
     icon: Network,
     bullets: ["Correlate NetFlow, NPS, and telemetry in one graph", "Trigger low-code remediation with human approval"],
   },
   {
     title: "AI Agents Studio",
-    description: "Design multimodal agents orchestrating APIs, RPA, and people with enterprise guardrails.",
+    description: " Custom AI agents delivered as a managed service, designed around specific client workflows and governed by enterprise controls.",
     icon: Bot,
     bullets: ["Studio with prompt, policy, and knowledge layers", "Observability cockpit for drift, redaction, and rollback"],
   },
   {
     title: "Compliance & Trust",
-    description: "Security controls inherited across SOC 2, ISO 27001, HIPAA, PCI-DSS, FedRAMP-in-progress.",
+    description: " Enterprise security and compliance programs enforced across SOC 2, ISO 27001, HIPAA, PCI-DSS, and regional requirements.",
     icon: ShieldCheck,
     bullets: ["Immutable audit trails + evidence packs", "Data residency + segregation by geography"],
   },
@@ -85,10 +85,10 @@ export default function FeatureHighlights() {
         <div className="flex flex-col gap-4 text-center sm:text-left">
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-purple-600">Platform architecture</p>
           <h2 className="text-3xl font-bold text-zinc-900 dark:text-white">
-            Every pillar is mapped to real programs already deployed with customers
+            How Galactis Programs Are Deployed in the Real World
           </h2>
           <p className="text-base text-zinc-600 dark:text-zinc-300">
-            The highlights below summarize content from the ITAM blueprint, NOC automation briefings, and AI agent studio docs available in the product.
+            These examples show how enterprises use Galactis across asset management, network operations, and selectively delivered AI services.
           </p>
         </div>
         <ScrollRevealStagger

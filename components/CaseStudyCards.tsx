@@ -130,10 +130,11 @@ export default function CaseStudyCards() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <ScrollReveal direction="fade" delay={0.1}>
           <h2 className="text-center text-3xl font-bold text-gray-900 dark:text-white lg:text-4xl">
-            Outcomes sourced from live Galactis programs
+            Real Outcomes from Enterprise Deployments
           </h2>
           <p className="mt-4 text-center text-base text-gray-600 dark:text-gray-400">
-            Pulling directly from the case studies and solution briefs on galactis.ai/resources.
+          Measured results from Galactis programs running in production across regulated industries.
+
           </p>
         </ScrollReveal>
 

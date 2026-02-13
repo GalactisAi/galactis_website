@@ -130,7 +130,7 @@ export default function PlatformShowcase() {
           <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-purple-600">Deployments</p>
-              <h3 className="text-2xl font-semibold text-zinc-900 dark:text-white">Platform decisions driven by enterprise requirements</h3>
+              <h3 className="text-2xl font-semibold text-zinc-900 dark:text-white">How Enterprises Use Galactis in Production</h3>
             </div>
           </div>
           <div className="flex gap-4 overflow-x-auto pb-4 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">

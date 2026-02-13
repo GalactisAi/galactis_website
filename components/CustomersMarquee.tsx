@@ -23,11 +23,11 @@ export default function CustomersMarquee() {
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-purple-600">Proof in production</p>
               <h3 className="text-2xl font-semibold text-zinc-900 dark:text-zinc-100">
-                Trusted by digital, network, and operations leaders worldwide
+              Trusted by enterprise digital, network, and operations leaders worldwide
               </h3>
             </div>
             <p className="text-sm text-zinc-600 dark:text-zinc-400">
-              Regulated industries rely on Galactis for ITAM, NOC, and AI agent modernization.
+              Regulated enterprises rely on Galactis for production-grade IT asset management and network operations, with optional AI services delivered under strict governance.
             </p>
           </div>
           <div className="relative mt-8 overflow-hidden">

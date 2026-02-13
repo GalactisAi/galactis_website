@@ -26,7 +26,7 @@ export default function PlatformBlueprint() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-purple-600">Platform Blueprint</p>
-          <h2 className="mt-3 text-3xl font-bold text-zinc-900 dark:text-white">One brain across assets, networks, and AI agents</h2>
+          <h2 className="mt-3 text-3xl font-bold text-zinc-900 dark:text-white">One operational brain across assets and networks</h2>
           <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-300">
             Galactis unifies visibility, intelligence, and automation layers so operations leaders can shape outcomes from a single canvas.
           </p>
