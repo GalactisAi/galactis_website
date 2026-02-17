@@ -19,7 +19,6 @@ import PlatformShowcase from "@/components/PlatformShowcase";
 import IndustrySpotlightCards from "@/components/IndustrySpotlightCards";
 import ImpactStreams from "@/components/ImpactStreams";
 import CustomerProof from "@/components/CustomerProof";
-import LifeAtGalactis from "@/components/LifeAtGalactis";
 import StickyCTABand from "@/components/StickyCTABand";
 import FAQ from "@/components/FAQ";
 
@@ -117,7 +116,6 @@ export default function Home() {
         </section>
         <TestimonialCarousel />
         <CaseStudyCards />
-        <LifeAtGalactis />
         <PlatformBlueprint />
         <UseCaseTabs />
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">

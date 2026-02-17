@@ -15,7 +15,7 @@ const testimonials = [
       { label: "Annual Savings", value: "₹1.2 Cr", useINR: true },
       { label: "Time to Value", value: "6 months" },
     ],
-    icon: "🏦",
+    rating: 5,
   },
   {
     quote:
@@ -27,7 +27,7 @@ const testimonials = [
       { label: "MTTR", value: "22 min" },
       { label: "NPS Improvement", value: "+18" },
     ],
-    icon: "📡",
+    rating: 5,
   },
   {
     quote:
@@ -39,7 +39,7 @@ const testimonials = [
       { label: "Annual Savings", value: "₹1.5 Cr", useINR: true },
       { label: "Sites Powered", value: "4" },
     ],
-    icon: "📞",
+    rating: 4.5,
   },
 ];
 
@@ -90,9 +90,11 @@ export default function TestimonialCarousel() {
                 initial={{ scale: 0, rotate: -180 }}
                 animate={{ scale: 1, rotate: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-6xl text-center"
+                className="flex justify-center"
               >
-                {testimonial.icon}
+                <div className="text-2xl text-yellow-500 dark:text-yellow-400">
+                  {testimonial.rating === 5 ? "★★★★★" : "★★★★☆"}
+                </div>
               </motion.div>
               <blockquote className="mt-8 text-center text-xl font-medium leading-relaxed text-gray-800 dark:text-gray-100">
                 "{displayedQuote}"
