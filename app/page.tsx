@@ -21,6 +21,7 @@ import ImpactStreams from "@/components/ImpactStreams";
 import CustomerProof from "@/components/CustomerProof";
 import LifeAtGalactis from "@/components/LifeAtGalactis";
 import StickyCTABand from "@/components/StickyCTABand";
+import FAQ from "@/components/FAQ";
 
 export const metadata = {
   title: {
@@ -122,6 +123,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <EnterpriseCTA />
         </div>
+        <FAQ />
         <StickyCTABand />
       </main>
       <Footer />
