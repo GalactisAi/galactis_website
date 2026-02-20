@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ROICalculator from "@/components/ROICalculator";
@@ -10,7 +11,7 @@ import Link from "next/link";
 import { 
   Package, Shield, TrendingUp, Database, CheckCircle2, 
   ArrowRight, FileText, AlertCircle, Clock,
-  Layers, DollarSign, Lock
+  Layers, DollarSign, Lock, ChevronDown
 } from "lucide-react";
 import CompanyLogo from "@/components/CompanyLogo";
 
@@ -18,19 +19,19 @@ const programs = [
   {
     icon: Database,
     title: "Unified Software Intelligence",
-    description: "Normalize catalogs, contracts, and telemetry across on-prem, SaaS, and cloud to unlock a single license truth.",
+    description: "Bring software inventory, license data, and usage signals together across on-prem, SaaS, and cloud environments in one accurate system.",
     features: ["Auto-discovery", "Contract normalization", "Usage tracking", "AI enrichment"]
   },
   {
     icon: Package,
     title: "Lifecycle Command Center",
-    description: "Track every device from requisition to retirement with IoT signals, warranty data, and automated chain-of-custody.",
+    description: "Track assets from purchase to retirement with clear ownership history, warranty visibility, and automated lifecycle workflows.",
     features: ["Asset tracking", "Warranty management", "Disposal certification", "Chain of custody"]
   },
   {
     icon: FileText,
-    title: "Audit + Compliance Cockpit",
-    description: "Generate regulator-ready evidence packs and simulate vendor audits before they arrive.",
+    title: "Audit & Compliance Control",
+    description: "Maintain audit-ready records with automated evidence collection, compliance reporting, and proactive risk identification across your asset estate.",
     features: ["Evidence automation", "Audit simulation", "Compliance reporting", "Risk scoring"]
   },
 ];
@@ -39,43 +40,43 @@ const useCases = [
   {
     icon: DollarSign,
     title: "Technology Value Office",
-    description: "Benchmark unit economics, allocate chargebacks, and orchestrate reclaim campaigns across business units.",
-    metrics: { savings: "₹2.8 Cr", efficiency: "85% automated" },
+    description: "Track asset-level spend, allocate costs accurately, and recover unused licenses across business units with measurable financial impact.",
+    metrics: { savings: "₹2.8 Cr recovered", efficiency: "85% automated" },
     company: "ICICI Bank"
   },
   {
     icon: Shield,
     title: "License Defense",
-    description: "Automate tier-one vendor audits (Oracle, IBM, Microsoft) with certified playbooks and documentation trails.",
-    metrics: { penalties: "₹1.5 Cr avoided", time: "7 days prep" },
+    description: "Prepare for vendor audits with structured evidence, automated reconciliation, and defensible usage data across major software vendors.",
+    metrics: { penalties: "₹1.5 Cr risk avoided", time: "Audit-ready in days" },
     company: "Infosys"
   },
   {
     icon: Package,
-    title: "Hardware Refresh",
-    description: "Predict end-of-life, trigger procurement, and ensure certified disposal with regulatory evidence.",
-    metrics: { assets: "50K tracked", compliance: "100%" },
+    title: "Hardware Refresh & Disposal",
+    description: "Forecast asset end-of-life, plan refresh cycles, and execute certified disposal with complete compliance and traceable documentation.",
+    metrics: { assets: "50K+ assets tracked", compliance: "100% compliant disposal" },
     company: "TCS"
   },
 ];
 
 const transformations = [
   {
-    title: "Shadow IT Eliminated",
+    title: "Shadow IT Control (85% Reduction)",
     stat: "85%",
     points: [
-      "AI enrichment classifies 12M+ titles with zero manual spreadsheets",
-      "Drift detection flags unauthorized SaaS and cloud spend within 24 hours",
-      "Automated alerts to procurement and security teams"
+      "Automatically identify and normalize millions of software titles without manual effort",
+      "Detect unauthorized SaaS and cloud spend within 24 hours",
+      "Trigger real-time alerts for procurement, finance, and security teams"
     ]
   },
   {
-    title: "Financial Governance",
+    title: "Financial Governance & Cost Control (₹2.8 Cr Impact)",
     stat: "₹2.8 Cr",
     points: [
-      "Continuous Effective License Position with scenario planning",
-      "FinOps dashboards translate usage into rupee value impact",
-      "Real-time cost allocation across business units"
+      "Maintain a continuous license position with forward-looking scenarios",
+      "Convert usage data into clear financial impact using FinOps dashboards",
+      "Allocate IT costs accurately across departments in real time"
     ]
   },
 ];
@@ -89,7 +90,74 @@ const complianceBadges = [
   "SOC 2 Type II", "ISO 27001", "GDPR", "HIPAA", "ITIL 4 Aligned"
 ];
 
+const assetManagementCards = [
+  {
+    title: "Automated Asset Visibility",
+    description: "Automatically surface hardware, software, SaaS, and cloud assets across environments using continuous discovery. Maintain a real-time, trustworthy asset inventory with accurate ownership, usage, and configuration data, without spreadsheets or manual reconciliation."
+  },
+  {
+    title: "Complete Asset Lifecycle Control",
+    description: "Oversee IT assets from purchase to retirement with full financial, operational, and user history. Improve planning, reduce underutilization, and make informed decisions using a single system of record."
+  },
+  {
+    title: "Self-Service Requests and Automation",
+    description: "Streamline asset requests, approvals, provisioning, and renewals through a centralized service catalog. Enforce policies, eliminate manual handoffs, and ensure consistent execution with configurable, automated workflows across teams."
+  },
+  {
+    title: "Temporary Asset and Loan Management",
+    description: "Track shared, loaned, and temporary equipment with clear ownership and timelines. Reduce asset loss, improve availability, and ensure timely returns using assignment tracking, reminders, and audit-ready records."
+  },
+  {
+    title: "Proactive Maintenance Management",
+    description: "Plan and manage asset maintenance schedules, warranties, and service activities in one place. Prevent downtime, control maintenance costs, and extend asset lifespan with proactive alerts and maintenance visibility."
+  }
+];
+
+const faqData = [
+  {
+    question: "What is IT Asset Management software?",
+    answer: "IT Asset Management software helps organizations track, manage, and optimize hardware, software, SaaS, and cloud assets across their entire lifecycle from discovery to retirement."
+  },
+  {
+    question: "How does ITAM software improve visibility across assets?",
+    answer: "ITAM software continuously discovers assets across on-prem, SaaS, and cloud environments, creating a single, real-time source of truth for ownership, usage, configuration, and cost data."
+  },
+  {
+    question: "Does IT Asset Management software support both hardware and software assets?",
+    answer: "Yes. Modern IT Asset Management software covers hardware, software licenses, SaaS applications, cloud resources, and virtual assets within one unified platform."
+  },
+  {
+    question: "How does ITAM help reduce IT costs?",
+    answer: "ITAM software identifies unused assets, over-licensed software, duplicate purchases, and renewal risks, helping teams reclaim spend, prevent waste, and improve financial governance."
+  },
+  {
+    question: "Can ITAM software help with software license compliance?",
+    answer: "Yes. ITAM software validates license usage, enforces entitlements, and maintains audit-ready records to reduce compliance risk and avoid costly vendor penalties."
+  },
+  {
+    question: "Does the platform support asset lifecycle management?",
+    answer: "Absolutely. IT Asset Management software tracks assets from procurement and deployment through maintenance, reassignment, and secure retirement with complete historical context."
+  },
+  {
+    question: "Can ITAM integrate with service desks and workflows?",
+    answer: "Yes. ITAM software integrates with service desks to link assets with incidents, requests, and changes, enabling faster resolution and better service outcomes."
+  },
+  {
+    question: "How does ITAM handle SaaS and cloud assets?",
+    answer: "ITAM software automatically detects SaaS and cloud usage, tracks ownership and spend, flags shadow IT, and provides visibility into renewals, access, and cost optimization opportunities"
+  },
+  {
+    question: "Is IT Asset Management software suitable for large enterprises?",
+    answer: "Yes. Enterprise-grade ITAM software is built to scale across complex environments, multiple business units, and global operations with role-based access and automation."
+  },
+  {
+    question: "How long does it take to see value from ITAM software?",
+    answer: "Most teams start seeing improved visibility and cost control within weeks, with long-term value increasing as asset data, workflows, and governance mature."
+  }
+];
+
 export default function ITAssetManagementSoftwarePage() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
   return (
     <div className="min-h-screen bg-white dark:bg-black">
       <JsonLd
@@ -125,7 +193,7 @@ export default function ITAssetManagementSoftwarePage() {
           items={[
             { label: "Home", href: "/" },
             { label: "Products", href: "/products/it-asset-management-software" },
-            { label: "IT Asset Management" },
+            { label: "IT Asset Management Software" },
           ]}
         />
 
@@ -143,17 +211,13 @@ export default function ITAssetManagementSoftwarePage() {
               <Package className="h-10 w-10 text-white" />
             </motion.div>
 
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-600">IT Asset Management</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-600">ASSET VISIBILITY & GOVERNANCE</p>
             <h1 className="mt-4 text-4xl font-bold text-zinc-900 dark:text-white sm:text-5xl lg:text-6xl">
-              Know Every Asset, Contract,
-              <br />
-              <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                And Risk In One System
-              </span>
+              IT Asset Management Software
             </h1>
 
             <p className="mx-auto mt-6 max-w-3xl text-lg text-zinc-600 dark:text-zinc-300">
-              Single source of truth for software, hardware, SaaS, and cloud usage with guardrails that automate audits and reclaim millions
+              Track and optimize IT assets across hardware, software, and cloud environments with real-time visibility into usage, lifecycle, costs, and ITAM insights.
             </p>
 
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -163,7 +227,7 @@ export default function ITAssetManagementSoftwarePage() {
                   whileTap={{ scale: 0.95 }}
                   className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 text-lg font-semibold text-white shadow-xl"
                 >
-                  Get Your ITAM Solution
+                  Try ITAM Demo
                   <ArrowRight className="h-5 w-5" />
                 </motion.button>
               </Link>
@@ -217,9 +281,9 @@ export default function ITAssetManagementSoftwarePage() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-600">Core Capabilities</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-600">CORE IT ASSET CAPABILITIES</p>
             <h2 className="mt-4 text-3xl font-bold text-zinc-900 dark:text-white sm:text-4xl">
-              Three Pillars of Asset Intelligence
+              Three Pillars of IT Asset Intelligence
             </h2>
           </motion.div>
 
@@ -253,6 +317,26 @@ export default function ITAssetManagementSoftwarePage() {
             </div>
         </section>
 
+      {/* Visibility Section */}
+      <section className="bg-gradient-to-b from-zinc-50 to-white py-20 dark:from-zinc-950 dark:to-black">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <h2 className="text-3xl font-bold text-zinc-900 dark:text-white sm:text-4xl">
+              Stay in Control of Every IT Asset
+            </h2>
+            <p className="mx-auto mt-6 max-w-3xl text-lg text-zinc-600 dark:text-zinc-300">
+              Get a single, reliable view of hardware, software, SaaS, and cloud assets across their entire lifecycle.<br />
+              Our IT Asset Management software helps teams track ownership, usage, compliance, and costs with automated workflows that reduce manual effort and improve accuracy at scale.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Use Cases */}
       <section className="bg-gradient-to-b from-zinc-50 to-white py-20 dark:from-zinc-950 dark:to-black">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -262,9 +346,9 @@ export default function ITAssetManagementSoftwarePage() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-600">Enterprise Solutions</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-blue-600">ENTERPRISE IT ASSET USE CASES</p>
             <h2 className="mt-4 text-3xl font-bold text-zinc-900 dark:text-white sm:text-4xl">
-              Production-Ready Use Cases
+              Production-Ready ITAM Use Cases
             </h2>
           </motion.div>
 
@@ -330,6 +414,134 @@ export default function ITAssetManagementSoftwarePage() {
           </div>
         </section>
 
+      {/* Benefits Section */}
+      <section className="bg-white py-20 dark:bg-black">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <h2 className="text-3xl font-bold text-zinc-900 dark:text-white sm:text-4xl">
+              Benefits of Our IT Asset Management Software
+            </h2>
+          </motion.div>
+
+          <div className="mt-12 grid gap-8 lg:grid-cols-3">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.02, y: -5 }}
+              className="rounded-3xl border border-zinc-200 bg-white p-8 shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
+            >
+              <h3 className="text-xl font-bold text-zinc-900 dark:text-white">Control the Asset Lifecycle</h3>
+              <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400">
+                Track hardware, software, SaaS, and cloud assets from procurement to retirement. Automated lifecycle workflows reduce manual tracking, eliminate blind spots, and ensure assets are used efficiently throughout their lifespan.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              whileHover={{ scale: 1.02, y: -5 }}
+              className="rounded-3xl border border-zinc-200 bg-white p-8 shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
+            >
+              <h3 className="text-xl font-bold text-zinc-900 dark:text-white">Lower IT Spend With Confidence</h3>
+              <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400">
+                Understand where money is actually being spent across licenses, subscriptions, and infrastructure. Identify unused assets, prevent unnecessary renewals, and make data-backed decisions that directly improve cost efficiency.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              whileHover={{ scale: 1.02, y: -5 }}
+              className="rounded-3xl border border-zinc-200 bg-white p-8 shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
+            >
+              <h3 className="text-xl font-bold text-zinc-900 dark:text-white">Built-In Compliance, No Fire Drills</h3>
+              <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400">
+                Stay audit-ready with continuous visibility into licenses, contracts, and usage. Detect compliance risks early, maintain accurate records, and avoid last-minute surprises during vendor or regulatory audits.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Full Visibility Section */}
+      <section className="bg-gradient-to-b from-zinc-50 to-white py-20 dark:from-zinc-950 dark:to-black">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <h2 className="text-3xl font-bold text-zinc-900 dark:text-white sm:text-4xl">
+              Full Visibility Across Your IT Asset Estate
+            </h2>
+            <p className="mx-auto mt-6 max-w-3xl text-lg text-zinc-600 dark:text-zinc-300">
+              Get a single, trusted view of hardware, software, SaaS, and cloud assets across their entire lifecycle. Our IT Asset Management software helps teams reduce risk, control spend, and act with confidence using real-time, accurate asset data.
+            </p>
+          </motion.div>
+
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                title: "IT Asset Discovery",
+                description: "Automatically detect hardware, software, SaaS, and cloud assets across environments to maintain a continuously accurate inventory."
+              },
+              {
+                title: "Asset Lifecycle Management",
+                description: "Control assets from procurement through retirement with complete financial, operational, and ownership history in one system."
+              },
+              {
+                title: "Contract & Renewal Intelligence",
+                description: "Track contracts, renewals, and obligations proactively to avoid surprise costs and missed deadlines."
+              },
+              {
+                title: "Software Asset Management",
+                description: "Validate license usage, enforce entitlements, and reduce audit exposure with policy-driven software governance."
+              },
+              {
+                title: "Procurement & Inventory Control",
+                description: "Standardize purchasing, prevent duplicate spend, and maintain transparency across vendors and asset categories."
+              },
+              {
+                title: "Service Desk Integration",
+                description: "Link asset data with incidents, requests, and changes to speed resolution and improve service quality."
+              },
+              {
+                title: "Workflow Automation",
+                description: "Automate approvals, asset movements, renewals, and notifications using configurable workflows."
+              },
+              {
+                title: "Reporting & Dashboards",
+                description: "Monitor asset health, cost, compliance, and utilization with real-time reports built for IT, finance, and leadership."
+              }
+            ].map((card, index) => (
+              <motion.div
+                key={card.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                whileHover={{ scale: 1.02, y: -5 }}
+                className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
+              >
+                <h3 className="text-lg font-bold text-zinc-900 dark:text-white">{card.title}</h3>
+                <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400">{card.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Integrations & Compliance */}
       <section className="bg-gradient-to-b from-zinc-50 to-white py-20 dark:from-zinc-950 dark:to-black">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -388,8 +600,57 @@ export default function ITAssetManagementSoftwarePage() {
         </div>
       </section>
 
-      {/* ROI Calculator */}
+      {/* Track and Manage IT Assets with Confidence */}
       <section className="bg-white py-20 dark:bg-black">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <h2 className="text-3xl font-bold text-zinc-900 dark:text-white sm:text-4xl">
+              Track and Manage IT Assets with Confidence
+            </h2>
+          </motion.div>
+
+          <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {assetManagementCards.slice(0, 3).map((card, index) => (
+              <motion.div
+                key={card.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ scale: 1.02, y: -5 }}
+                className="w-full rounded-3xl border border-zinc-200 bg-white p-8 shadow-lg dark:border-zinc-800 dark:bg-zinc-900"
+              >
+                <h3 className="text-xl font-bold text-zinc-900 dark:text-white">{card.title}</h3>
+                <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400">{card.description}</p>
+              </motion.div>
+            ))}
+            <div className="col-span-1 flex justify-center gap-6 md:col-span-2 lg:col-span-3">
+              {assetManagementCards.slice(3).map((card, index) => (
+                <motion.div
+                  key={card.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: (index + 3) * 0.1 }}
+                  whileHover={{ scale: 1.02, y: -5 }}
+                  className="w-full rounded-3xl border border-zinc-200 bg-white p-8 shadow-lg dark:border-zinc-800 dark:bg-zinc-900 md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
+                >
+                  <h3 className="text-xl font-bold text-zinc-900 dark:text-white">{card.title}</h3>
+                  <p className="mt-3 text-sm text-zinc-600 dark:text-zinc-400">{card.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ROI Calculator */}
+      <section className="bg-gradient-to-b from-zinc-50 to-white py-20 dark:from-zinc-950 dark:to-black">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -405,6 +666,60 @@ export default function ITAssetManagementSoftwarePage() {
               <ROICalculator />
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Frequently Asked Questions */}
+      <section className="bg-white py-20 dark:bg-black">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <h2 className="text-3xl font-bold text-zinc-900 dark:text-white sm:text-4xl">
+              Frequently Asked Questions
+            </h2>
+          </motion.div>
+          
+          <div className="mt-12 space-y-4">
+            {faqData.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900"
+              >
+                <button
+                  onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                  className="flex w-full items-center justify-between p-6 text-left transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-900/50"
+                >
+                  <span className="text-lg font-semibold text-zinc-900 dark:text-white pr-4">{faq.question}</span>
+                  <ChevronDown
+                    className={`h-5 w-5 flex-shrink-0 text-blue-600 dark:text-blue-400 transition-transform ${
+                      openFaq === index ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {openFaq === index && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-6 pb-6 text-zinc-600 dark:text-zinc-400">
+                      {faq.answer}
+                    </div>
+                  </motion.div>
+                )}
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
