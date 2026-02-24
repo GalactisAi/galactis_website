@@ -2,8 +2,8 @@ import { CheckCircle, Linkedin, Instagram, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 const productLinks = [
-  { label: "IT Asset Management", href: "/products/itam" },
-  { label: "Network Monitoring", href: "/products/network-monitoring" },
+  { label: "IT Asset Management Software", href: "/products/itam" },
+  { label: "Network Monitoring Software", href: "/products/network-monitoring" },
   { label: "AI Agents Platform", href: "/products/ai-agents" },
 ];
 

@@ -8,13 +8,13 @@ import { motion } from "framer-motion";
 // Product items with icons and descriptions
 const products = [
   {
-    name: "IT Asset Management (ITAM)",
+    name: "IT Asset Management Software",
     href: "/products/itam",
     icon: Package,
     description: "Complete visibility and control over your IT assets",
   },
   {
-    name: "Network Monitoring",
+    name: "Network Monitoring Software",
     href: "/products/network-monitoring",
     icon: Network,
     description: "Real-time network intelligence and autonomous remediation",
