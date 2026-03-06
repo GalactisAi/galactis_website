@@ -277,13 +277,59 @@ export default async function BlogPostPage({ params }: Props) {
         ) : null}
 
         {/* Article Content */}
-        <article className="prose prose-lg prose-zinc mx-auto dark:prose-invert prose-headings:font-bold prose-a:text-purple-600 prose-a:no-underline hover:prose-a:underline dark:prose-a:text-purple-400 prose-img:rounded-xl prose-img:shadow-lg">
+        <article
+          data-blog-post
+          className="prose prose-lg prose-zinc mx-auto dark:prose-invert prose-headings:font-bold prose-a:text-purple-600 prose-a:no-underline hover:prose-a:underline dark:prose-a:text-purple-400 prose-img:rounded-xl prose-img:shadow-lg"
+        >
           {htmlContent ? (
-            <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+            <div className="blog-content" dangerouslySetInnerHTML={{ __html: htmlContent }} />
           ) : (
             <div className="whitespace-pre-wrap">{post.content}</div>
           )}
         </article>
+        {/* Scoped table styles for dark mode readability (blog post content only) */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+@media (prefers-color-scheme: dark) {
+  [data-blog-post] .blog-content {
+    --tw-prose-body: #ffffff;
+    --tw-prose-headings: #ffffff;
+    --tw-prose-bold: #ffffff;
+  }
+  [data-blog-post] .blog-content table,
+  [data-blog-post] .blog-content table th,
+  [data-blog-post] .blog-content table td,
+  [data-blog-post] .blog-content table * {
+    color: #ffffff !important;
+  }
+  [data-blog-post] .blog-content table a {
+    color: #e9d5ff !important;
+  }
+  [data-blog-post] .blog-content table a:hover {
+    color: #f3e8ff !important;
+  }
+  [data-blog-post] .blog-content div:has(> table) {
+    overflow-x: auto;
+  }
+  [data-blog-post] .blog-content table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid rgba(255,255,255,0.25);
+  }
+  [data-blog-post] .blog-content table th,
+  [data-blog-post] .blog-content table td {
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 12px;
+  }
+  [data-blog-post] .blog-content table th {
+    background: rgba(255,255,255,0.06);
+  }
+  [data-blog-post] .blog-content table td {
+    background: transparent;
+  }
+}
+`,
+        }} />
 
         {/* About the Author(s) */}
         {post.authors?.length ? (
