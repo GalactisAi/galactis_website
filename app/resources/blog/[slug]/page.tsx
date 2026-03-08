@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import JsonLd from "@/components/JsonLd";
 import BlogRefreshTrigger from "@/components/BlogRefreshTrigger";
 import BlogImage from "@/components/BlogImage";
+import ReviewBadge from "@/components/ReviewBadge";
 import { marked } from "marked";
 import {
   getPostBySlug,
@@ -234,7 +235,8 @@ export default async function BlogPostPage({ params }: Props) {
         </nav>
 
         {/* Article Header */}
-        <header className="mb-12">
+        <header className="relative mb-12">
+          <ReviewBadge />
           <h1 className="text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-5xl">
             {post.title}
           </h1>
