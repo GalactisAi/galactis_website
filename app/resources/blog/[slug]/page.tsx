@@ -14,6 +14,7 @@ import {
   formatPostDate,
   calculateReadTime,
 } from "@/lib/blog-api";
+import { getBlogPostRating, stripHtmlForSchema } from "@/lib/blog-schema";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -91,10 +92,12 @@ export default async function BlogPostPage({ params }: Props) {
   // Get blog API URL for image transformation
   const blogApiUrl = process.env.BLOG_API_URL || "https://blog-nest-galactis.replit.app";
 
-  // Structured data for SEO (Article schema)
+  const aggregateRating = getBlogPostRating(post);
+
+  // Structured data for SEO (BlogPosting schema)
   const articleJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
     headline: post.title,
     description: post.excerpt,
     datePublished: post.publishedDate,
@@ -129,7 +132,33 @@ export default async function BlogPostPage({ params }: Props) {
     wordCount: post.content?.split(/\s+/).length || 0,
     articleSection: "Technology",
     ...(post.coverImage?.url && { image: post.coverImage.url }),
+    ...(aggregateRating && {
+      aggregateRating: {
+        "@type": "AggregateRating" as const,
+        ratingValue: String(aggregateRating.ratingValue),
+        reviewCount: aggregateRating.reviewCount,
+        bestRating: "5",
+        worstRating: "1",
+      },
+    }),
   };
+
+  const faqs = post.faqs?.length ? post.faqs : [];
+  const faqJsonLd =
+    faqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage" as const,
+          mainEntity: faqs.map((faq) => ({
+            "@type": "Question" as const,
+            name: faq.question,
+            acceptedAnswer: {
+              "@type": "Answer" as const,
+              text: stripHtmlForSchema(faq.answer),
+            },
+          })),
+        }
+      : null;
 
   // Convert markdown (including bold/heading syntax) to HTML
   const renderer = new marked.Renderer();
@@ -205,6 +234,7 @@ export default async function BlogPostPage({ params }: Props) {
     <div className="min-h-screen bg-white dark:bg-black">
       <BlogRefreshTrigger />
       <JsonLd data={articleJsonLd} />
+      {faqJsonLd && <JsonLd data={faqJsonLd} />}
       <Navbar />
       <main className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
@@ -332,6 +362,30 @@ export default async function BlogPostPage({ params }: Props) {
 }
 `,
         }} />
+
+        {/* FAQ Section - only when post has faqs (schema matches rendered content) */}
+        {faqs.length > 0 ? (
+          <div className="mt-12 border-t border-zinc-200 pt-8 dark:border-zinc-800">
+            <h2 className="mb-6 text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+              Frequently Asked Questions
+            </h2>
+            <dl className="space-y-4">
+              {faqs.map((faq, index) => (
+                <div
+                  key={index}
+                  className="rounded-xl border border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900/50"
+                >
+                  <dt className="px-4 pt-4 text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+                    {faq.question}
+                  </dt>
+                  <dd className="px-4 pb-4 pt-2 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                    {faq.answer}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        ) : null}
 
         {/* About the Author(s) */}
         {post.authors?.length ? (

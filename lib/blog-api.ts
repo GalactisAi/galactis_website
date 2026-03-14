@@ -13,6 +13,16 @@ export interface Author {
   image?: string;
 }
 
+export interface BlogPostAggregateRating {
+  ratingValue: number;
+  reviewCount: number;
+}
+
+export interface BlogPostFaqItem {
+  question: string;
+  answer: string;
+}
+
 export interface BlogPost {
   id: string;
   title: string;
@@ -28,6 +38,8 @@ export interface BlogPost {
   canonicalUrl?: string;
   metaTitle?: string;
   metaDescription?: string;
+  aggregateRating?: BlogPostAggregateRating;
+  faqs?: BlogPostFaqItem[];
 }
 
 // ============================================
@@ -121,6 +133,21 @@ export async function getAllPosts(
         coverImageUrl = `${apiUrl}${coverImageUrl}`;
       }
 
+      const aggregateRating = postData.aggregateRating
+        ? {
+            ratingValue: Number(postData.aggregateRating.ratingValue ?? postData.aggregateRating.rating ?? 0),
+            reviewCount: Number(postData.aggregateRating.reviewCount ?? postData.aggregateRating.review_count ?? 0),
+          }
+        : undefined;
+      const faqs = Array.isArray(postData.faqs)
+        ? (postData.faqs as any[])
+            .filter((f: any) => f && (f.question || f.name) && (f.answer || f.text))
+            .map((f: any) => ({
+              question: String(f.question ?? f.name ?? "").trim(),
+              answer: String(f.answer ?? f.text ?? "").trim(),
+            }))
+        : undefined;
+
       return {
         id: postData.id || postData._id || String(index),
         title: postData.title || postData.name || postData.heading || 'Untitled',
@@ -134,6 +161,8 @@ export async function getAllPosts(
         canonicalUrl: postData.canonicalUrl ?? undefined,
         metaTitle: postData.metaTitle ?? undefined,
         metaDescription: postData.metaDescription ?? undefined,
+        aggregateRating: aggregateRating?.reviewCount ? aggregateRating : undefined,
+        faqs: faqs?.length ? faqs : undefined,
       };
     });
     
@@ -220,6 +249,21 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
           coverImageUrl = `${apiUrl}${coverImageUrl}`;
         }
 
+        const aggregateRating = postData.aggregateRating
+          ? {
+              ratingValue: Number(postData.aggregateRating.ratingValue ?? postData.aggregateRating.rating ?? 0),
+              reviewCount: Number(postData.aggregateRating.reviewCount ?? postData.aggregateRating.review_count ?? 0),
+            }
+          : undefined;
+        const faqs = Array.isArray(postData.faqs)
+          ? (postData.faqs as any[])
+              .filter((f: any) => f && (f.question || f.name) && (f.answer || f.text))
+              .map((f: any) => ({
+                question: String(f.question ?? f.name ?? "").trim(),
+                answer: String(f.answer ?? f.text ?? "").trim(),
+              }))
+          : undefined;
+
         post = {
           id: postData.id || postData._id || '0',
           title: postData.title || postData.name || postData.heading || 'Untitled',
@@ -233,6 +277,8 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
           canonicalUrl: postData.canonicalUrl ?? undefined,
           metaTitle: postData.metaTitle ?? undefined,
           metaDescription: postData.metaDescription ?? undefined,
+          aggregateRating: aggregateRating?.reviewCount ? aggregateRating : undefined,
+          faqs: faqs?.length ? faqs : undefined,
         };
       }
     } catch {
