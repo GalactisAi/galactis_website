@@ -132,19 +132,23 @@ export default async function BlogPostPage({ params }: Props) {
     wordCount: post.content?.split(/\s+/).length || 0,
     articleSection: "Technology",
     ...(post.coverImage?.url && { image: post.coverImage.url }),
+  };
+
+  const canonicalUrl =
+    post.canonicalUrl || `https://www.galactis.ai/resources/blog/${post.slug}`;
+  const webPageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage" as const,
+    "@id": `${canonicalUrl}#webpage`,
+    name: post.title,
+    url: canonicalUrl,
     ...(aggregateRating && {
-      review: {
-        "@type": "Review" as const,
-        reviewRating: {
-          "@type": "Rating" as const,
-          ratingValue: String(aggregateRating.ratingValue),
-          bestRating: "5",
-          worstRating: "1",
-        },
-        author: {
-          "@type": "Organization" as const,
-          name: "Galactis Readers",
-        },
+      aggregateRating: {
+        "@type": "AggregateRating" as const,
+        ratingValue: String(aggregateRating.ratingValue),
+        reviewCount: aggregateRating.reviewCount,
+        bestRating: "5",
+        worstRating: "1",
       },
     }),
   };
@@ -240,6 +244,7 @@ export default async function BlogPostPage({ params }: Props) {
     <div className="min-h-screen bg-white dark:bg-black">
       <BlogRefreshTrigger />
       <JsonLd data={articleJsonLd} />
+      <JsonLd data={webPageJsonLd} />
       {faqJsonLd && <JsonLd data={faqJsonLd} />}
       <Navbar />
       <main className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
