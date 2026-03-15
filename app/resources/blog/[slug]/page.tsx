@@ -133,12 +133,18 @@ export default async function BlogPostPage({ params }: Props) {
     articleSection: "Technology",
     ...(post.coverImage?.url && { image: post.coverImage.url }),
     ...(aggregateRating && {
-      aggregateRating: {
-        "@type": "AggregateRating" as const,
-        ratingValue: String(aggregateRating.ratingValue),
-        reviewCount: aggregateRating.reviewCount,
-        bestRating: "5",
-        worstRating: "1",
+      review: {
+        "@type": "Review" as const,
+        reviewRating: {
+          "@type": "Rating" as const,
+          ratingValue: String(aggregateRating.ratingValue),
+          bestRating: "5",
+          worstRating: "1",
+        },
+        author: {
+          "@type": "Organization" as const,
+          name: "Galactis Readers",
+        },
       },
     }),
   };
