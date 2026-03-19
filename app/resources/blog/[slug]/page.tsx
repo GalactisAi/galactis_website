@@ -93,11 +93,14 @@ export default async function BlogPostPage({ params }: Props) {
   const blogApiUrl = process.env.BLOG_API_URL || "https://blog-nest-galactis.replit.app";
 
   const aggregateRating = getBlogPostRating(post);
+  const canonicalUrl =
+    post.canonicalUrl || `https://www.galactis.ai/resources/blog/${post.slug}`;
 
   // Structured data for SEO (BlogPosting schema)
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "@id": `${canonicalUrl}#blogposting`,
     headline: post.title,
     description: post.excerpt,
     datePublished: post.publishedDate,
@@ -127,21 +130,20 @@ export default async function BlogPostPage({ params }: Props) {
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://www.galactis.ai/resources/blog/${post.slug}`,
+      "@id": `${canonicalUrl}#webpage`,
     },
     wordCount: post.content?.split(/\s+/).length || 0,
     articleSection: "Technology",
     ...(post.coverImage?.url && { image: post.coverImage.url }),
   };
 
-  const canonicalUrl =
-    post.canonicalUrl || `https://www.galactis.ai/resources/blog/${post.slug}`;
   const webPageJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage" as const,
     "@id": `${canonicalUrl}#webpage`,
     name: post.title,
     url: canonicalUrl,
+    mainEntity: { "@id": `${canonicalUrl}#blogposting` },
     ...(aggregateRating && {
       aggregateRating: {
         "@type": "AggregateRating" as const,

@@ -118,31 +118,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
+              "@type": "WebSite",
               name: "Galactis",
               url: "https://www.galactis.ai/",
-              logo: "https://www.galactis.ai/favicon.png",
               description:
                 "Enterprise network monitoring and IT asset management software powered by predictive AI to track assets, monitor performance, reduce risk, and streamline IT operations at scale.",
-              brand: {
-                "@type": "Brand",
-                name: "Galactis",
-              },
-              foundingDate: "2022",
-              founder: {
-                "@type": "Person",
-                name: "Madhujith Arumugam",
-              },
-              contactPoint: {
-                "@type": "ContactPoint",
-                contactType: "customer support",
-                email: "info@galactis.ai",
-                areaServed: "Worldwide",
-                availableLanguage: ["English"],
-              },
-              sameAs: [
-                "https://www.linkedin.com/company/galactisaitech",
-              ],
             }),
           }}
         />
